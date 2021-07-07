@@ -5,8 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <div class="container-register" id="container-register">
+    <div class="form-container sign-up-container">
+      <form class="form__register" action="#">
+        <h1 class="form__title">Crea una cuenta</h1>
+        <div class="social-container">
+          <a class="form__link" href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a class="form__link" href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        </div>
+        <span class="form__span">o utiliza tu correo electrónico para registrarte</span>
+        <input class="form__input" type="text" placeholder="Nombre Pyme" />
+        <input class="form__input" type="email" placeholder="Email" />
+        <input class="form__input" type="password" placeholder="Contraseña" />
+        <select class="form__input" name="area" id="area__pyme">
+          <option value="" active>Rubro</option>
+          <option value="Alimentos">Alimentos</option>
+          <option value="Textil">Textil</option>
+          <option value="Agropecuaria">Agropecuaria</option>
+          </select>  
+        <button class="form__button">Registrarte</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form class="form__register" action="#">
+        <h1 class="form__title">Inicio de Sesión</h1>
+        <div class="social-container">
+          <a class="form__link" href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a class="form__link" href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        </div>
+        <span class="form__span">o utiliza tu correo electrónico</span>
+        <input class="form__input" type="email" placeholder="Email" />
+        <input class="form__input" type="password" placeholder="Contraseña" />
+        <a class="form__link" href="#">¿Olvidaste tu contraseña?</a>
+        <button class="form__button">Iniciar Sesión</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1 class="form__title">Bienvenid@s!</h1>
+          <p class="form__p">Inicia sesión con información de tu Pyme</p>
+          <button class="form__button ghost" id="signIn">Iniciar Sesión</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1 class="form__title">Red Social de Pymes!</h1>
+          <p class="form__p">Unete y podras dar a conocer tu Pyme, también conoceras a otras Pyme</p>
+          <button class="form__button ghost" id="signUp">Registrate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p class="form__p">
+      Red Social Pymes &copy; 2021
+    </p>
+  </footer>
+
   <script type="module" src="main.js"></script>
 </body>
 </html>
