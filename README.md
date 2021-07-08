@@ -1,3 +1,25 @@
+HU1: yo, como pyme nueva quiero registrarme y crear una cuenta de forma sencilla para mostrar mis productos en una plataforma que sea amigable.
+Criterio mínimo de aceptación:
+- El usuario puede registrarse de forma sencilla y precisa.
+- Se le garantizará al usuario su seguridad y privacidad a través de la aceptación de términos y condiciones legales.
+- El usuario puede ingresar el nombre de la Pyme, email y contraseña. También podrá registrarse a través de su cuenta google o facebook en caso de tenerla y querer hacerlo.
+- Se guiará al usuario a una creación de contraseña de inicio de sesión que sea segura.
+- El usuario puede determinar el rubro al que pertenece.
+- El usuario recibirá un email de verificación de registro de cuenta.
+- El usuario podrá iniciar sesión ingresando su email y contraseña creada.
+- La contraseña al ser ingresada para iniciar sesión, estará enmascarada.
+- El usuario al ingresar su contraseña podrá tener la opción de hacerla visible.
+- Todos los campos deberán ser rellenados por el usuario para su posterior validación.
+
+
+
+HU?: yo, como pyme quiero registrarme y crear una cuenta para darme a conocer en el rubro que desempeño e interactuar con otras pymes.
+Criterio mínimo de aceptación:
+
+
+
+<details>
+
 # Creando una Red Social
 
 ## Índice
@@ -324,3 +346,4 @@ Otras:
 * [Mobile First - desarrolloweb.com](https://desarrolloweb.com/articulos/mobile-first-responsive.html)
 * [Mobile First - ZURB](https://zurb.com/word/mobile-first)
 * [Mobile First Is NOT Mobile Only - Nielsen Norman Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
+  </details>
