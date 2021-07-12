@@ -9,9 +9,9 @@ const signInButton = document.getElementById('signIn');
 const containerRegister = document.getElementById('container-register');
 
 signUpButton.addEventListener('click', () => {
-	containerRegister.classList.add("right-panel-active");
+  containerRegister.classList.add('right-panel-active');
 });
 
 signInButton.addEventListener('click', () => {
-	containerRegister.classList.remove("right-panel-active");
+  containerRegister.classList.remove('right-panel-active');
 });
