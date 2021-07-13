@@ -1,4 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
+import { router } from './router/routers.js';
 import { myFunction } from './lib/index.js';
 
 myFunction();
@@ -21,5 +22,6 @@ signUpBtn.addEventListener('click', () => {
 signInBtn.addEventListener('click', () => {
   container.classList.remove('sign-up-mode');
 });
+
 
 
