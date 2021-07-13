@@ -97,6 +97,19 @@ Definición de terminado:
 
 ## 5. Prototipo y diseño
 
+- Diseño de baja fidelidad
+
+![Prototipo baja fidelidad desktop Sign-in](./src/images/prototipo_desktop_sign-in.jpeg)
+![Prototipo baja fidelidad desktop Sign-up](./src/images/prototipo_desktop_sign-up.jpeg)
+![Prototipo baja fidelidad mobile Sign-in](./src/images/prototipo_mobile_sign-in.jpg)
+![Prototipo baja fidelidad mobile Sign-up](./src/images/prototipo_mobile_sign-up.jpg)
+
+-Diseño de alta fidelidad
+![Prototipo baja fidelidad desktop Sign-in](./src/images/Figma-Desktop-1.png)
+![Prototipo baja fidelidad desktop Sign-up](./src/images/Figma-Desktop-2.png)
+![Prototipo baja fidelidad iPhone 11 Pro Max Sign-in](./src/images/Figma-iPhone11ProMax-1.png)
+![Prototipo baja fidelidad iPhone 11 Pro Max Sign-up](./src/images/Figma-iPhone11ProMax-2.png)
+
 ## 6. Interfaz
 
 ## 7. Modo de usuarios
