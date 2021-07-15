@@ -1,10 +1,11 @@
 //import {googleLogin} from '../lib/index.js';
+
 export const viewForms = () => {
-  /*const containerFormTemplate = document.createElement('div');
+  const containerFormTemplate = document.createElement('div');
   containerFormTemplate.className = 'container__form-template';
-  containerFormTemplate.id = 'container__form-template';*/
+  containerFormTemplate.id = 'container__form-template';
+
   const formTemplate = `
-  <div class="container__form-template">
   <div class="container__forms">
     <div class="forms-container">
       <div class="signin-signup">
@@ -91,14 +92,12 @@ export const viewForms = () => {
         <!--LOGO PYME-->
       </div>
     </div>
-    </div>
   </div>`;
-  /*containerFormTemplate.innerHTML = formTemplate;*/
+
+  containerFormTemplate.innerHTML = formTemplate;
   /*const googleLoginBtn = document.querySelector("#google_login");
   googleLoginBtn.addEventListener('click', () => {
            googleLogin();
   });*/
-  return formTemplate;
+  return containerFormTemplate;
 };
-
-
