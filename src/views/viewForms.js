@@ -1,3 +1,4 @@
+//import {googleLogin} from '../lib/index.js';
 export const viewForms = () => {
   /*const containerFormTemplate = document.createElement('div');
   containerFormTemplate.className = 'container__form-template';
@@ -23,7 +24,7 @@ export const viewForms = () => {
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="social-icon">
+            <a href="#" id="google_login" class="social-icon">
               <i class="fab fa-google"></i>
             </a>
           </div>
@@ -93,5 +94,11 @@ export const viewForms = () => {
     </div>
   </div>`;
   /*containerFormTemplate.innerHTML = formTemplate;*/
+  /*const googleLoginBtn = document.querySelector("#google_login");
+  googleLoginBtn.addEventListener('click', () => {
+           googleLogin();
+  });*/
   return formTemplate;
 };
+
+

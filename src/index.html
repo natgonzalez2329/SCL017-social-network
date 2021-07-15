@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"></script>
+<script
+    src="https://kit.fontawesome.com/64d58efce2.js"
+    crossorigin="anonymous"></script>
   <title>Punto Pyme</title>
-  <link rel="stylesheet" href="form.css" />
+<link rel="stylesheet" href="form.css" />
 </head>
 <body>
   <header></header>
@@ -20,7 +20,8 @@
         <il><a href='#/profile'>profile</a></il>
       </ul>
     </div>
-    <div id="root"></div>
+<button id="google_login">Probando Google</button>
+<div id="root"></div>
 </main>
   <footer>
     <p class="form__p">
@@ -28,5 +29,25 @@
     </p>
   </footer>
  <script type="module" src="main.js"></script>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA-7wjgyCL8NqhOvM0D_tlfirof1p-k5l0",
+    authDomain: "punto-pyme.firebaseapp.com",
+    projectId: "punto-pyme",
+    storageBucket: "punto-pyme.appspot.com",
+    messagingSenderId: "332879123428",
+    appId: "1:332879123428:web:bd43ea94ed68952721edf1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
