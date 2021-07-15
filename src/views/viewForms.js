@@ -1,8 +1,9 @@
 export const viewForms = () => {
+  window.location.hash = '#/';
   /*const containerFormTemplate = document.createElement('div');
   containerFormTemplate.className = 'container__form-template';
   containerFormTemplate.id = 'container__form-template';*/
-  const formTemplate = `
+  document.getElementById('root').innerHTML = `
   <div class="container__form-template">
   <div class="container__forms">
     <div class="forms-container">
@@ -93,5 +94,5 @@ export const viewForms = () => {
     </div>
   </div>`;
   /*containerFormTemplate.innerHTML = formTemplate;*/
-  return formTemplate;
+  //return formTemplate;
 };

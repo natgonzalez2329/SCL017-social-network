@@ -4,8 +4,33 @@ import { viewProfile } from './views/viewProfile.js';
 
 const containerViews = document.querySelector('#root');
 
+export const router = () => {window.addEventListener('hashchange', () => {
+  containerViews.innerHTML = '#/';
+  if (window.location.hash === '#/') {
+    viewForms();
+  const signInBtn = document.querySelector('#sign-in-btn');
+  const signUpBtn = document.querySelector('#sign-up-btn');
+  const container = document.querySelector('.container__forms');
+  signUpBtn.addEventListener('click', () => {
+    container.classList.add('sign-up-mode');
+  });
+  signInBtn.addEventListener('click', () => {
+    container.classList.remove('sign-up-mode');
+  });
+  } else if (window.location.hash === '#/wall') {
+    viewWall();
+  } else if (
+    window.location.hash === '#/profile') {
+    viewProfile();
+  } else {
+    console.log(4);
+    containerViews.innerHTML = 'Error 404';
+  }
+});
+};
 
-export const router = (route) => {
+
+/*export const router = (route) => {
   console.log(route);
   //containerViews.innerHTML = '';
   if (route === '#/') {
@@ -27,7 +52,7 @@ export const router = (route) => {
     containerViews.innerHTML = 'Error 404';
   }
   return containerViews;
-};
+};*/
 
 /*const router = (route) => {
   switch (route) {

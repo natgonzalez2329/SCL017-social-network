@@ -2,7 +2,7 @@ import { router } from '../routers.js';
 //import { viewHeaderMenu } from '../views/headerMenu.js';
 import { viewForms } from '../views/viewForms.js';
 
-export const initialize = () => {
+/*export const initialize = () => {
   //document.getElementById('root').innerHTML = viewHeaderMenu();
   document.getElementById('root').innerHTML += viewForms();
   window.location.hash = '/';
@@ -18,4 +18,4 @@ export const initialize = () => {
   signInBtn.addEventListener('click', () => {
     container.classList.remove('sign-up-mode');
   });
-};
+};*/

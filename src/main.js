@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
-import { init, myFunction } from './lib/index.js';
+import { myFunction } from './lib/index.js';
+import { router } from './routers.js';
 
 myFunction();
-window.addEventListener('load', init);
+window.addEventListener('load', router);
