@@ -1,18 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
-
 import { myFunction } from './lib/index.js';
-
+import { initialize } from './lib/init.js';
 myFunction();
-
-
-const sign_in_btn = document.querySelector('#sign-in-btn');
-const sign_up_btn = document.querySelector('#sign-up-btn');
-const container = document.querySelector('.container');
-
-sign_up_btn.addEventListener('click', () => {
-  container.classList.add('sign-up-mode');
-});
-
-sign_in_btn.addEventListener('click', () => {
-  container.classList.remove('sign-up-mode');
-});
+window.addEventListener('load', initialize);
