@@ -1,6 +1,8 @@
 // Este es el punto de entrada de tu aplicacion
+import { firebaseInit } from './lib/firebase.js';
 import { myFunction } from './lib/index.js';
-import { router } from './routers.js';
+import { init } from './lib/init.js';
 
+firebaseInit();
 myFunction();
-window.addEventListener('load', router);
+window.addEventListener('load', init);
