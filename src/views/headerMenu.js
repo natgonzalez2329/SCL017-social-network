@@ -1,6 +1,6 @@
 export const viewHeaderMenu = () => {
-  /*const containerHeaderMenuTemplate = document.createElement('div');
-  containerHeaderMenuTemplate.className = 'container__menu-template';*/
+  const containerHeaderMenuTemplate = document.createElement('div');
+  containerHeaderMenuTemplate.className = 'container__menu-template';
   const headerMenuTemplate = `
     <div class="container__menu-template">menu provisional
     <ul>
@@ -9,6 +9,6 @@ export const viewHeaderMenu = () => {
       <il><a href='#/profile'>profile</a></il>
     </ul>
   </div>`;
-  /*containerHeaderMenuTemplate.innerHTML = headerMenuTemplate;*/
-  return headerMenuTemplate;
+  containerHeaderMenuTemplate.innerHTML = headerMenuTemplate;
+  return containerHeaderMenuTemplate;
 };

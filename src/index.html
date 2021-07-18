@@ -7,47 +7,33 @@
 <script
     src="https://kit.fontawesome.com/64d58efce2.js"
     crossorigin="anonymous"></script>
+<link
+    rel="icon"
+    href="./images/favicon.png"
+    type="image/x-icon"
+    />
   <title>Punto Pyme</title>
-<link rel="stylesheet" href="form.css" />
+<link rel="stylesheet" href="style/form.css" />
 </head>
 <body>
   <header></header>
   <main>
     <div class="container__menu-template">menu provisional
       <ul>
-        <il><a href='#/'>forms</a></il>
-        <il><a href='#/wall'>wall</a></il>
+        <il><a href=''>forms</a></il>
+        <il><a href='#/feed'>feed</a></il>
         <il><a href='#/profile'>profile</a></il>
+        <il><a href='#/' id='logout-btn'>Logout</a></il>
       </ul>
     </div>
-<button id="google_login">Probando Google</button>
 <div id="root"></div>
 </main>
-  <footer>
-    <p class="form__p">
-      Red Social Pymes &copy; 2021
-    </p>
-  </footer>
- <script type="module" src="main.js"></script>
- <!-- The core Firebase JS SDK is always required and must be listed first -->
+<footer> <p class="form__p">Punto Pyme &copy; 2021</p> </footer>
+<script type="module" src="main.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyA-7wjgyCL8NqhOvM0D_tlfirof1p-k5l0",
-    authDomain: "punto-pyme.firebaseapp.com",
-    projectId: "punto-pyme",
-    storageBucket: "punto-pyme.appspot.com",
-    messagingSenderId: "332879123428",
-    appId: "1:332879123428:web:bd43ea94ed68952721edf1"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
+<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
 </body>
 </html>
