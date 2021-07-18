@@ -35,7 +35,36 @@ Punto Pyme es una aplicación web gratuita, esta plataforma permite a toda Pyme 
 
 Respondiendo a esa invisibilidad y desventaja frente a las grandes compañias, es un gran apoyo para asi aprovecharse de las grandes ventajas que puede ocupar pertener a una Red Social como Punto Pyme, en donde juega un papel fundamental para darse a conocer al crear imagen de marca. Permiten atender más rápido y a más clientes a través de promociones efectivas, las cuales tendran un impacto e importancia en la venta. 
 ## 3. Perfil de usuarios
-Tipos de Pymes y usuarios/clientes
+Punto Pyme va dirigido a todas las Pymes y usuarios que quieran fomentar la economía local, creando una comunidad en base a la sinergía y la unión de fuerzas, apoyandose en el poder de las Redes Sociales, con el objetivo de dar a conocer la marca, promocionar la compra/venta de servicios y/o productos a través de esta plataforma. Por lo tanto, entre los perfiles de usuario, destacan:
+- Pymes: * 
+  - Microempresa (<10 trabajadores).
+  - Pequeña (<50 trabajadores).
+  - Mediana (<250 trabajadores).
+- Clientes.
+*(Clasificación según el Ministerios de Economía Fomento y Turismo de Chile).
+
+Una vez identificados dichos perfiles de usuarios, se procedio a realizar una encuesta como técnica de investigación con el objetivo de apreciar la experiencia y consideraciones de los mismos para determinar la necesidad de una Red Social centrada en las Pymes, a través de la encuesta se determino, que:
+
+* El 39.1% se identifica como Pymes de tipo Microempresa, seguido por un 32.6% de Pymes Pequeñas y un 28.3% de Usuarios.
+* Los rubros o áreas comerciales a las que pertenecen las Pymes o a las cuales los usuarios suelen comprar, predominan:
+   - 21.7% Comercio al Por Mayor y al Por Menor.
+   - 15.2% Otras actividades de Servicios.
+   - 10.9% Transporte y Almacenamiento.
+   - 10.9% Actividades de Alojamientos y de Servicios de Comidas. 
+   - 8.7% Actividades Artísticas, de Entretenimiento y Recreativas.
+   - 8.7% Industrias Manufactureras.
+   
+* El 97.8% han utilizado alguna Red Social para vender o comprar.
+* 100%  conincide que publica con mayor frecuencia en su perfil al vender contenido de tipo texto con imágen.
+* 100% como usuario valora en un perfil de compra/venta contenido de tipo texto con imágen.
+* El 43.5% frecuentemente y un 30.4% muy frecuentemente vende por Redes Sociales. 
+* El 45.7% frecuentemente y un 39.1% muy frecuentemente busca y compra productos por Redes Sociales.
+* La recomendaciones son la interacción más valorada con un 47.8%, al momento de decidir una compra, seguida por los comentarios respondidos (45.7%), número de publicaciones (45.7%) y por último el número de likes (37%).
+* El 50% le gusta comprar de forma on-line.
+* Un 65.2% le suele comprar a Pymes o pequeños comerciantes.
+* El 100% cree que las Pymes necesitan más áreas o espacios para darse a conocer.
+
+
 ## 4. Historias de usuarios
 Historia de usuario 1: "yo, como pyme nueva quiero registrarme y crear una cuenta de forma sencilla para mostrar mis productos en una plataforma que sea amigable."
 
