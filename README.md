@@ -1,23 +1,125 @@
-HU1: yo, como pyme nueva quiero registrarme y crear una cuenta de forma sencilla para mostrar mis productos en una plataforma que sea amigable.
-Criterio mínimo de aceptación:
+# Social Network
+
+# PUNTO PYME
+
+## Índice
+
+* [1. Preámbulo](#1-preámbulo)
+* [2. Descripción general](#2-descripción-general)
+* [3. Perfil de usuarios](#2-perfil-de-usuarios)
+* [4. Historias de usuarios](#3-historias-de-usuarios)
+* [5. Prototipo y diseño](#4-prototipo-y-diseño)
+* [6. Interfaz](#5-interfaz)
+* [7. Modo de usuarios](#6-modo-de-usuarios)
+* [8. Tecnología](#7-tecnología)
+* [9. Enlace web](#8-enlace-web)
+
+***
+## 1. Preámbulo
+
+Hoy todo está en las Redes Sociales, por lo que para las empresas es clave no sólo estar en línea, sino también tener presencia, y por supuesto, operar correctamente, a través de los canales de social media marketing.
+
+Estudios de We Are Social indican que 3 de cada 4 chilenos son activos en redes sociales. De hecho, de acuerdo a cifras de Movistar Chile, un 94% de los usuarios utilizan apps como Facebook o un 75% utilizan Instagram.
+
+ Las Redes Sociales ha revolucionado el mundo comercial, transformándose en el mejor aliado para mejorar la gestión de los emprendedores, de esta manera, las plataformas a las que se puede acceder a través de los diferentes tipos de dispositivos ayudan y potencian el crecimiento del negocio de forma acelerada en contraste de los resultados obtenidos con métodos tradicionales. 
+
+ Debido al reciente suceso mundial de la Pandemia, la economía se desestabilizo dando paso a una era tecnológica que antes era opcional, convirtiendose actualmente una de las principales e indispensable forma de hacer negocio, a través de la internet, llegando ser pilar fundamental en el desarrollo y crecimiento de Pymes de una forma más rápida y accesible dandose a conocer sus respectivos productos y servicios, teniendo estos mayor alcance de usuarios a un costo asequible, ya sea a nivel local, nacional o internacional.
+
+ Algunos tuvieron que partir de cero, otros debieron reducir su personal. Y ante la incertidumbre vieron una única solución: vender sus productos por internet y llevarlos hasta la puerta de las casas.
+
+ Para ello, tuvieron que potenciar fuertemente las redes sociales, algo que ha sido el salvavidas para que microempresas sigan funcionando a lo largo del país. Una forma de vender que llegó para quedarse.
+
+ Cada vez son más populares y atrayentes establecer negocios a través de las Redes Sociales, cada día se suman mas Pymes por una necesidad que la actualidad demanda, que es la cercanía a través de redes para sustentar y potenciar la economía a nivel local. Sin embargo, se tiene presente que hay pymes y pequeños negocios que corren con ciertas desventajas, porque todavía no cuentan con el conocimiento o las herramientas para transformar sus ventas al mundo digital.
+## 2. Descripción general
+Punto Pyme es una aplicación web gratuita, esta plataforma permite a toda Pyme potenciar su emprendimiento, independientemente de la etapa en que se encuentre. A través de un ámbito profesional y amigable, se busca crear una comunidad en línea para impulsar un compromiso al apoyar la economía local, en donde podran interactuar con sus clientes, y encontrar servicios o proveedores	para sus necesidades.
+
+Respondiendo a esa invisibilidad y desventaja frente a las grandes compañias, es un gran apoyo para asi aprovecharse de las grandes ventajas que puede ocupar pertener a una Red Social como Punto Pyme, en donde juega un papel fundamental para darse a conocer al crear imagen de marca. Permiten atender más rápido y a más clientes a través de promociones efectivas, las cuales tendran un impacto e importancia en la venta. 
+## 3. Perfil de usuarios
+Tipos de Pymes y usuarios/clientes
+## 4. Historias de usuarios
+Historia de usuario 1: "yo, como pyme nueva quiero registrarme y crear una cuenta de forma sencilla para mostrar mis productos en una plataforma que sea amigable."
+
+Criterios de aceptación:
 - El usuario puede registrarse de forma sencilla y precisa.
-- Se le garantizará al usuario su seguridad y privacidad a través de la aceptación de términos y condiciones legales.
-- El usuario puede ingresar el nombre de la Pyme, email y contraseña. También podrá registrarse a través de su cuenta google o facebook en caso de tenerla y querer hacerlo.
+- El usuario puede ingresar el nombre de la Pyme o usuario, email y contraseña.
+- El usuario tendrá la opción de registrarse a través de su cuenta Google o Facebook en caso de tenerla, dichas cuentas deben ser válidas.
 - Se guiará al usuario a una creación de contraseña de inicio de sesión que sea segura.
 - El usuario puede determinar el rubro al que pertenece.
-- El usuario recibirá un email de verificación de registro de cuenta.
+- El usuario recibirá un email de verificación de registro de cuenta.ELIMINAR
+- Se le garantizará al usuario su seguridad y privacidad a través de la aceptación de términos y condiciones legales.
 - El usuario podrá iniciar sesión ingresando su email y contraseña creada.
-- La contraseña al ser ingresada para iniciar sesión, estará enmascarada.
+- El usuario solamente puede iniciar sesión cuando sus credenciales (email y contraseña) son válidas.
+- Tanto en el formulario de registro e inicio de sesión la contraseña al ser ingresada estará enmascarada.
 - El usuario al ingresar su contraseña podrá tener la opción de hacerla visible.
 - Todos los campos deberán ser rellenados por el usuario para su posterior validación.
+- El registro e inicio de sesión puede hacerse fácilmente desde cualquier dispositivo.
+
+Definición de terminado:
+* [X] Definir prototipo de formulario de registro e inicio de sesión.
+* [X] Definir y plasmar diseño interactivo.
+* [X] En el formulario de registro crear campos de datos a través de input para ingresar: pyme/usuario, correo electrónico y contraseña.
+* [X] Validación de nombre de usuario/pyme, no aceptar repeticiones.
+* [X] Validación de correo electrónico por expresiones regulares.
+* [X] Validación de contraseña, que cumpla criterios mínimos de seguridad.
+* [X] Enmascarar contraseña.
+* [X] Botón que permita hacer visible la contraseña.
+* [X] Despliegue de opciones que determinen el rubro de la pyme, a través del elemento select.
+* [X] Botones con iconos representativos de Facebook y Google para poder registrarse a través de las cuentas de esta plataforma.
+* [X] Crear mensaje descriptivo emergete con instrucciones claras, en caso de que los datos no cumplan con la validación de los mismos.
+* [X] Botón "Registrarte" para crear cuenta y acceder a la Social Network.
+* [X] Apartado informativo de aceptación de términos y condiciones legales al registrarse.
+* [X] Enlace con opción a Iniciar Sesión si se tiene una cuenta ya registrada.
+* [X] En el formulario de Inicio de Sesión crear campos a través de input para ingresar: correo electrónico y contraseña.
+* [X] Validar correo electrónicos y contraseña de usuarios ya registrados.
+* [X] Enmascarar contraseña.
+* [X] Botón que permita hacer visible la contraseña.
+* [X] Botones con iconos representativos de Facebook y Google para poder iniciar sesión a través de las cuentas de esta plataforma.
+* [X] Crear mensaje descriptivo emergete con instrucciones claras, en caso de que los datos no cumplan con la validación de los mismos.
+* [X] Botón "Iniciar Sesión" para acceder a la Social Network.
+* [X] Enlace con opción a Registarse si aun no se tiene una cuenta creada.
+* [X] Autenticación y guardado de datos por Firebase.
+* [X] Deben ser responsive.
 
 
 
-HU?: yo, como pyme quiero registrarme y crear una cuenta para darme a conocer en el rubro que desempeño e interactuar con otras pymes.
-Criterio mínimo de aceptación:
+Historia de usuario 2: "yo, como pyme establecida, quiero dar a conocer mis productos y servicios para aumentar mis ventas."
+
+Criterios de aceptación:
+
+Definición de terminado:
 
 
+Historia de usuario 3: "yo, como pyme grande quiero buscar otras pymes que vendan insumos y materia prima de mi interés para potenciarnos mutuamente."
 
+Criterios de aceptación:
+
+Definición de terminado:
+
+## 5. Prototipo y diseño
+
+- Diseño de baja fidelidad
+
+![Prototipo baja fidelidad desktop Sign-in](./src/images/prototipo_desktop_sign-in.jpeg)
+![Prototipo baja fidelidad desktop Sign-up](./src/images/prototipo_desktop_sign-up.jpeg)
+![Prototipo baja fidelidad mobile Sign-in](./src/images/prototipo_mobile_sign-in.jpg)
+![Prototipo baja fidelidad mobile Sign-up](./src/images/prototipo_mobile_sign-up.jpg)
+
+-Diseño de alta fidelidad
+![Prototipo baja fidelidad desktop Sign-in](./src/images/Figma-Desktop-1.png)
+![Prototipo baja fidelidad desktop Sign-up](./src/images/Figma-Desktop-2.png)
+![Prototipo baja fidelidad iPhone 11 Pro Max Sign-in](./src/images/Figma-iPhone11ProMax-1.png)
+![Prototipo baja fidelidad iPhone 11 Pro Max Sign-up](./src/images/Figma-iPhone11ProMax-2.png)
+
+## 6. Interfaz
+
+## 7. Modo de usuarios
+
+## 8. Tecnología
+
+## 9. Enlace web
+
+
+***
 <details>
 
 # Creando una Red Social
