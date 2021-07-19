@@ -53,13 +53,22 @@
   grid-template-columns: 1fr;
   z-index: 5;
 }
-.image-logo{
+.divLogoImage{
+  width: 2em;
+  position: absolute;
+  z-index: 100;
+  visibility: visible;
+  display: block;
+}
+.logoImage{
   height: 25%;
   border-radius: 20%;
   margin-top: 0;
+  visibility: visible;
+  
 }
 
-.image-logo2{
+.logoImage2{
   height: 35%;
   border-radius: 20%;
   margin-top: -30%;

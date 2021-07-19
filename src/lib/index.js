@@ -47,7 +47,7 @@ const googleLoginBtn = document.getElementById("google_login");
  .auth()
  .signInWithPopup(provider)
  .then((result) => {
-   /** @type {firebase.auth.OAuthCredential} */
+   /* @type {firebase.auth.OAuthCredential} */
    var credential = result.credential;
 
    // The signed-in user info.
@@ -69,6 +69,7 @@ const googleLoginBtn = document.getElementById("google_login");
 
    // ...
  });
+ 
 }
 
 const facebookLoginBtn = document.getElementById("facebook_login");

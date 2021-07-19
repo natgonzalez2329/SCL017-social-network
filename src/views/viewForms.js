@@ -67,8 +67,10 @@ export const viewForms = () => {
     </div>
     <div class="panels-container">
       <div class="panel left-panel">
+      <div class="divLogoImage>
+      <img class="logoImage" src="./images/logo.png"/>
+    </div>
         <div class="content">
-        <img class="image-logo" src="../images/logo.png">
           <h3>Punto Pyme</h3>
           <p>
             La forma más sencilla de hacer crecer tu emprendimiento!
@@ -80,8 +82,10 @@ export const viewForms = () => {
       <!--LOGO PYME-->
       </div>
       <div class="panel right-panel">
+      <div class="divLogoImage>
+      <img class="logoImage2" src="./images/logo.png"/>
+    </div>
         <div class="content">
-        <img class="image-logo2" src="../images/logo.png">
           <h3>Bienvenid@s!</h3>
           <p>
             Únete a nuestra comunidad y potencia tu emprendimiento. Aquí encontrarás lo que necesitas!
@@ -100,6 +104,8 @@ export const viewForms = () => {
   googleLoginBtn.addEventListener('click', () => {
            googleLogin();
   });*/
+  
+
   return formTemplate;
 };
 
