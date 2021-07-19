@@ -99,18 +99,6 @@ export const viewForms = () => {
       </div>
     </div>
   </div>`;
-<<<<<<< HEAD
-  /*containerFormTemplate.innerHTML = formTemplate;*/
-  /*const googleLoginBtn = document.querySelector("#google_login");
-  googleLoginBtn.addEventListener('click', () => {
-           googleLogin();
-  });*/
-  
-
-  return formTemplate;
-};
-=======
->>>>>>> 540118595174b5a52bf3a5e9fbacbe35d3fc08af
 
   containerFormTemplate.innerHTML = formTemplate;
 
