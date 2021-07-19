@@ -108,7 +108,7 @@ form.sign-in-form {
   height: 2.5em;
   border-radius: 50px;
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 15% 70% 15%;
   padding: 0 0.4rem;
   position: relative;
 }
