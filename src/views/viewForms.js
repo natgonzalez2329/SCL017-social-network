@@ -1,4 +1,4 @@
-import { googleLogin, firebaseSignUp, firebaseLogIn } from '../lib/firebase.js';
+import { googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin } from '../lib/firebase.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -24,7 +24,7 @@ export const viewForms = () => {
           <button type="submit" class="btn__form" form="form-signin" id="btn-signin">Iniciar Sesión</button>
           <p class="social-text">O accede con una Red Social</p>
           <div class="social-media">
-            <a href="#" class="social-icon">
+            <a href="#" id="facebook_login" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="#" id="google_login" class="social-icon">
@@ -61,7 +61,7 @@ export const viewForms = () => {
           <button type="submit" id="btn-signup" form="form-signup" class="btn__form">Registrarte</button>
           <p class="social-text">Registrate con una Red Social</p>
           <div class="social-media">
-            <a href="#" class="social-icon">
+            <a href="#"  id="facebook_login2" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="#" class="social-icon">
@@ -197,5 +197,15 @@ export const viewForms = () => {
   const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
   googleLoginBtn.addEventListener('click', () => googleLogin());
 
+    
+  //inicio de sesion Facebook
+const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
+facebookLoginBtn.addEventListener('click', () => FacebookLogin());
+
+const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
+facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
+
   return containerFormTemplate;
+
 };
+
