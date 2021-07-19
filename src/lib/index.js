@@ -1,12 +1,11 @@
-//import { singIn } from './auth.js';
-
-
+import { logOut } from './firebase.js';
 // aqui exportaras las funciones que necesites
 const myFunction = () => {
   // aqui tu codigo
-  console.log('Hola mundo!');
+  // console.log('Hola mundo!');
 };
 
+<<<<<<< HEAD
 const googleLogin = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
@@ -77,5 +76,10 @@ facebookLoginBtn.addEventListener('click', ()=>{
   FacebookLogin();
  });
 
+=======
+//event-cierre de sesión--remover funcion de este archivo cuando se haga el componente del menu
+const logOutBtn = document.querySelector('#logout-btn');
+logOutBtn.addEventListener('click', () => logOut());
+>>>>>>> 540118595174b5a52bf3a5e9fbacbe35d3fc08af
 
-export { myFunction, googleLogin, FacebookLogin};
+export { myFunction };

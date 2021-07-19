@@ -1,24 +1,25 @@
-//import {googleLogin} from '../lib/index.js';
+import { googleLogin, firebaseSignUp, firebaseLogIn } from '../lib/firebase.js';
+
 export const viewForms = () => {
-  /*const containerFormTemplate = document.createElement('div');
+  const containerFormTemplate = document.createElement('div');
   containerFormTemplate.className = 'container__form-template';
-  containerFormTemplate.id = 'container__form-template';*/
+  containerFormTemplate.id = 'container__form-template';
+
   const formTemplate = `
-  <div class="container__form-template">
   <div class="container__forms">
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="#" class="sign-in-form">
+        <form action="#" class="sign-in-form" id="form-signin">
           <h2 class="title">Inicio de Sesión</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input class="input__form" type="text" placeholder="Correo Electrónico" />
+            <input class="input__form" type="text" placeholder="Correo Electrónico" required id="signin-email" />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" />
+            <input class="input__form" type="password" placeholder="Contraseña" required id="signin-password"/>
           </div>
-          <a href="#/posts"><input type="button" class="btn__form" value="Iniciar Sesión"/></a>
+          <button type="submit" class="btn__form" form="form-signin" id="btn-signin">Iniciar Sesión</button>
           <p class="social-text">O accede con una Red Social</p>
           <div class="social-media">
             <a href="#" class="social-icon">
@@ -29,19 +30,19 @@ export const viewForms = () => {
             </a>
           </div>
         </form>
-        <form action="#" class="sign-up-form">
+        <form action="#" class="sign-up-form" id="form-signup">
           <h2 class="title">Crea una cuenta</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input class="input__form" type="text" placeholder="Usuario" />
+            <input class="input__form" type="text" id='user-name' placeholder="Usuario" />
           </div>
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input class="input__form" type="email" placeholder="Correo Electrónico" />
+            <input class="input__form" type="email" id="user-email" placeholder="Correo Electrónico" required />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" />
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" required minlength="6"/>
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
@@ -52,7 +53,7 @@ export const viewForms = () => {
               <option value="Agropecuaria">Agropecuaria</option>
               </select>  
           </div>
-          <a href="#/posts"><input type="button" class="btn__form" value="Registrarte" /></a>
+          <button type="submit" id="btn-signup" form="form-signup" class="btn__form">Registrarte</button>
           <p class="social-text">Registrate con una Red Social</p>
           <div class="social-media">
             <a href="#" class="social-icon">
@@ -97,8 +98,8 @@ export const viewForms = () => {
         <!--LOGO PYME-->
       </div>
     </div>
-    </div>
   </div>`;
+<<<<<<< HEAD
   /*containerFormTemplate.innerHTML = formTemplate;*/
   /*const googleLoginBtn = document.querySelector("#google_login");
   googleLoginBtn.addEventListener('click', () => {
@@ -108,5 +109,51 @@ export const viewForms = () => {
 
   return formTemplate;
 };
+=======
+>>>>>>> 540118595174b5a52bf3a5e9fbacbe35d3fc08af
 
+  containerFormTemplate.innerHTML = formTemplate;
 
+  // switch panel formularios
+  const signInPanelBtn = containerFormTemplate.querySelector('#sign-in-btn');
+  const signUpPanelBtn = containerFormTemplate.querySelector('#sign-up-btn');
+  const signUpForm = containerFormTemplate.querySelector('#form-signup');
+  const signInForm = containerFormTemplate.querySelector('#form-signin');
+  const container = containerFormTemplate.querySelector('.container__forms');
+  signUpPanelBtn.addEventListener('click', () => {
+    container.classList.add('sign-up-mode');
+  });
+  signInPanelBtn.addEventListener('click', () => {
+    container.classList.remove('sign-up-mode');
+  });
+
+//registro de cuenta, email y contraseña-event
+  signUpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userEmail = containerFormTemplate.querySelector('#user-email').value;
+    const userPassword = containerFormTemplate.querySelector('#user-password').value;
+    const userName = containerFormTemplate.querySelector('#user-name').value;
+    const area = containerFormTemplate.querySelector('#area__pyme');
+    const userArea = area.options[area.selectedIndex].text;
+    firebaseSignUp({
+      userEmail,
+      userPassword,
+      userName,
+      userArea,
+    });
+  });
+
+  //inicio de sesión email y contraseña-event
+  signInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userEmail = containerFormTemplate.querySelector('#signin-email').value;
+    const userPassword = containerFormTemplate.querySelector('#signin-password').value;
+    firebaseLogIn({ userEmail, userPassword });
+  });
+
+  //inicio de sesión google-event
+  const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
+  googleLoginBtn.addEventListener('click', () => googleLogin());
+
+  return containerFormTemplate;
+};
