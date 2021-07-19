@@ -5,8 +5,8 @@ const myFunction = () => {
   // console.log('Hola mundo!');
 };
 
-export { myFunction };
-
 //event-cierre de sesión--remover funcion de este archivo cuando se haga el componente del menu
 const logOutBtn = document.querySelector('#logout-btn');
 logOutBtn.addEventListener('click', () => logOut());
+
+export { myFunction };
