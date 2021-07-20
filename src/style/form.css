@@ -384,6 +384,9 @@ form.sign-in-form {
     left: 50%;
   }
 }
+.error-input {
+  color: red;
+}
 
 footer {
   background-color: #222;

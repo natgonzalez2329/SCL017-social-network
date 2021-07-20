@@ -13,12 +13,14 @@ export const viewForms = () => {
           <h2 class="title">Inicio de Sesión</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input class="input__form" type="text" placeholder="Correo Electrónico" required id="signin-email" />
+            <input class="input__form" type="text" placeholder="Correo Electrónico" id="signin-email" autocomplete="off" />
           </div>
+          <span class="error-input" id="email-in-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" required id="signin-password"/>
+            <input class="input__form" type="password" placeholder="Contraseña" id="signin-password" minlength="6" maxlength="6"/>
           </div>
+          <span class="error-input" id="password-in-error"></span>
           <button type="submit" class="btn__form" form="form-signin" id="btn-signin">Iniciar Sesión</button>
           <p class="social-text">O accede con una Red Social</p>
           <div class="social-media">
@@ -34,26 +36,20 @@ export const viewForms = () => {
           <h2 class="title">Crea una cuenta</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input class="input__form" type="text" id='user-name' placeholder="Usuario" />
+            <input class="input__form" type="text" id='user-name' placeholder="Usuario" autocomplete="off" minlength="4" maxlength="20"/>
           </div>
+          <span class="error-input" id="user-error"></span>
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input class="input__form" type="email" id="user-email" placeholder="Correo Electrónico" required />
+            <input class="input__form" type="email" id="user-email" placeholder="Correo Electrónico" autocomplete="off"/>
           </div>
+          <span class="error-input" id="email-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" required minlength="6"/>
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" minlength="6" maxlength="6"/>
           </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <select class="form__select" name="area" id="area__pyme">
-              <option value="" active>Rubro</option>
-              <option value="Alimentos">Alimentos</option>
-              <option value="Textil">Textil</option>
-              <option value="Agropecuaria">Agropecuaria</option>
-              </select>  
-          </div>
-          <button type="submit" id="btn-signup" form="form-signup" class="btn__form">Registrarte</button>
+          <span class="error-input" id="password-error"></span>
+          <button type="submit" form="form-signup" class="btn__form">Registrarte</button>
           <p class="social-text">Registrate con una Red Social</p>
           <div class="social-media">
             <a href="#" class="social-icon">
@@ -109,28 +105,137 @@ export const viewForms = () => {
     container.classList.remove('sign-up-mode');
   });
 
-//registro de cuenta, email y contraseña-event
+  // expresiones regulares para validar input
+  const expression = {
+    userName: new RegExp(/^\w+$/g), // Letras, numeros, guion y guion_bajo
+    email: new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+  };
+
+//validación inputs sign up
+  const userValidate = (userNameSignUp) => {
+    const userError = containerFormTemplate.querySelector('#user-error');
+    let valid = false;
+    if (userNameSignUp === '' || userNameSignUp === null) {
+      userError.innerHTML = '*Campo obligatorio.';
+      userError.style.display = 'block';
+    }
+    if (!expression.userName.test(userNameSignUp) || (userNameSignUp.length < 4 || userNameSignUp.length > 20)) {
+      userError.innerHTML = '*Campo obligatorio. El usuario tiene que ser de 4 a 20 carácteres y solo puede contener números, letras y guión bajo.';
+      userError.style.display = 'block';
+    }
+    if (userNameSignUp.length >= 4 && userNameSignUp.length <= 20) {
+      userError.innerHTML = '';
+      userError.style.display = 'none';
+      valid = true;
+    }
+    return valid;
+  };
+  const emailValidate = (userEmailSignUp) => {
+    const emailError = containerFormTemplate.querySelector('#email-error');
+    let valid = false;
+    if (userEmailSignUp === '' || userEmailSignUp === null) {
+      emailError.innerHTML = '*Campo obligatorio. Correo no válido';
+    } else {
+      emailError.innerHTML = '';
+      emailError.style.display = 'none';
+      valid = true;
+    }
+    return valid;
+  };
+  const passwordValidate = (userPasswordSignUp) => {
+    const passwordError = containerFormTemplate.querySelector('#password-error');
+    let valid = false;
+    if ((userPasswordSignUp === '' || userPasswordSignUp === null) || (userPasswordSignUp.length !== 6)) {
+      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
+    } else if (userPasswordSignUp.length === 6) {
+      passwordError.innerHTML = '';
+      passwordError.style.display = 'none';
+      valid = true;
+    }
+    return valid;
+  };
+
+  const inputUserNameSignUp = containerFormTemplate.querySelector('#user-name');
+  inputUserNameSignUp.addEventListener('keyup', (e) => {
+    userValidate(e.target.value);
+  });
+  const inputUserEmailSignUp = containerFormTemplate.querySelector('#user-email');
+  inputUserEmailSignUp.addEventListener('keyup', (e) => {
+    emailValidate(e.target.value);
+  });
+  const inputUserPasswordSignUp = containerFormTemplate.querySelector('#user-password');
+  inputUserPasswordSignUp.addEventListener('keyup', (e) => {
+    passwordValidate(e.target.value);
+  });
+
+  //validación inputs sign in
+  const emailInValidate = (userEmailSignIn) => {
+    let valid = false;
+    const emailInError = containerFormTemplate.querySelector('#email-in-error');
+    if (userEmailSignIn === '' || userEmailSignIn === null) {
+      console.log('email es obligatorio');
+      emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
+    }
+    if (!expression.email.test(userEmailSignIn)) {
+      console.log('email es obligatorio2');
+      emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
+    }
+    if (expression.email.test(userEmailSignIn)) {
+      emailInError.innerHTML = '';
+      emailInError.style.display = 'none';
+      valid = true;
+    }
+    return valid;
+  };
+  const passwordInValidate = (userPasswordSignIn) => {
+    let valid = false;
+    const passwordInError = containerFormTemplate.querySelector('#password-in-error');
+    if ((userPasswordSignIn === '' || userPasswordSignIn === null) || (userPasswordSignIn.length !== 6)) {
+      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
+    } else if (userPasswordSignIn.length === 6) {
+      passwordInError.innerHTML = '';
+      passwordInError.style.display = 'none';
+      valid = true;
+    }
+    return valid;
+  };
+
+  const inputUserEmailSignIn = containerFormTemplate.querySelector('#signin-email');
+  inputUserEmailSignIn.addEventListener('keyup', (e) => {
+    emailInValidate(e.target.value);
+  });
+  const inputUserPasswordSignIn = containerFormTemplate.querySelector('#signin-password');
+  inputUserPasswordSignIn.addEventListener('keyup', (e) => {
+    passwordInValidate(e.target.value);
+  });
+  
+
+
+  // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const userEmail = containerFormTemplate.querySelector('#user-email').value;
-    const userPassword = containerFormTemplate.querySelector('#user-password').value;
-    const userName = containerFormTemplate.querySelector('#user-name').value;
-    const area = containerFormTemplate.querySelector('#area__pyme');
-    const userArea = area.options[area.selectedIndex].text;
-    firebaseSignUp({
-      userEmail,
-      userPassword,
-      userName,
-      userArea,
-    });
+    const userNameSignUp = inputUserNameSignUp.value;
+    const userEmailSignUp = inputUserEmailSignUp.value;
+    const userPasswordSignUp = inputUserPasswordSignUp.value;
+
+    if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
+      firebaseSignUp({
+        userEmailSignUp,
+        userPasswordSignUp,
+        userNameSignUp,
+      });
+    }
   });
 
   //inicio de sesión email y contraseña-event
   signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const userEmail = containerFormTemplate.querySelector('#signin-email').value;
-    const userPassword = containerFormTemplate.querySelector('#signin-password').value;
-    firebaseLogIn({ userEmail, userPassword });
+    const userEmailSignIn = containerFormTemplate.querySelector('#signin-email').value;
+    const userPasswordSignIn = containerFormTemplate.querySelector('#signin-password').value;
+
+    if (emailInValidate(userEmailSignIn) && passwordInValidate(userPasswordSignIn)) {
+      firebaseLogIn({ userEmailSignIn, userPasswordSignIn });
+    }
   });
 
   //inicio de sesión google-event
