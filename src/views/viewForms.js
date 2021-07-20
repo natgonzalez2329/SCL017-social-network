@@ -177,11 +177,9 @@ export const viewForms = () => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
     if (userEmailSignIn === '' || userEmailSignIn === null) {
-      console.log('email es obligatorio');
       emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
     }
     if (!expression.email.test(userEmailSignIn)) {
-      console.log('email es obligatorio2');
       emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
     }
     if (expression.email.test(userEmailSignIn)) {
@@ -220,6 +218,7 @@ export const viewForms = () => {
     const userNameSignUp = inputUserNameSignUp.value;
     const userEmailSignUp = inputUserEmailSignUp.value;
     const userPasswordSignUp = inputUserPasswordSignUp.value;
+
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);

@@ -72,9 +72,7 @@ Criterios de aceptación:
 - El usuario puede registrarse de forma sencilla y precisa.
 - El usuario puede ingresar el nombre de la Pyme o usuario, email y contraseña.
 - El usuario tendrá la opción de registrarse a través de su cuenta Google o Facebook en caso de tenerla, dichas cuentas deben ser válidas.
-- Se guiará al usuario a una creación de contraseña de inicio de sesión que sea segura.
-- El usuario puede determinar el rubro al que pertenece.
-- El usuario recibirá un email de verificación de registro de cuenta.ELIMINAR
+- El usuario recibirá un email de verificación de registro de cuenta.
 - Se le garantizará al usuario su seguridad y privacidad a través de la aceptación de términos y condiciones legales.
 - El usuario podrá iniciar sesión ingresando su email y contraseña creada.
 - El usuario solamente puede iniciar sesión cuando sus credenciales (email y contraseña) son válidas.
@@ -92,7 +90,6 @@ Definición de terminado:
 * [X] Validación de contraseña, que cumpla criterios mínimos de seguridad.
 * [X] Enmascarar contraseña.
 * [X] Botón que permita hacer visible la contraseña.
-* [X] Despliegue de opciones que determinen el rubro de la pyme, a través del elemento select.
 * [X] Botones con iconos representativos de Facebook y Google para poder registrarse a través de las cuentas de esta plataforma.
 * [X] Crear mensaje descriptivo emergete con instrucciones claras, en caso de que los datos no cumplan con la validación de los mismos.
 * [X] Botón "Registrarte" para crear cuenta y acceder a la Social Network.
