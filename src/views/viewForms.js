@@ -17,7 +17,7 @@ export const viewForms = () => {
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" required id="signin-password" required maxlength="9"/>
+            <input class="input__form" type="password" placeholder="Contraseña" required id="signin-password" required maxlength="6"/>
             <i class="far fa-eye" id="unmaskify"></i>
             <i class="far fa-eye-slash" id="maskify" style ="display:none"></i>
           </div>
@@ -44,7 +44,7 @@ export const viewForms = () => {
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" required maxlength="9"/>
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" required maxlength="6"/>
             <i class="far fa-eye" id="unmaskify2"></i>
             <i class="far fa-eye-slash" id="maskify2" style ="display:none"></i>
           </div>

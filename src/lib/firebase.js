@@ -84,10 +84,8 @@ const googleLogin = async () => {
 
 const FacebookLogin = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
- firebase
- .auth()
- .signInWithPopup(provider)
- .then((result) => {
+ firebase.auth()
+.signInWithPopup(provider).then((result) => {
    /* @type {firebase.auth.OAuthCredential} */
    var credential = result.credential;
 
@@ -110,7 +108,6 @@ const FacebookLogin = () => {
 
    // ...
  });
- 
 }
 
 //cierre de sesión
