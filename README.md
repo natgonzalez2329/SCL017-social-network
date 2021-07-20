@@ -114,9 +114,33 @@ Definición de terminado:
 Historia de usuario 2: "yo, como pyme establecida, quiero dar a conocer mis productos y servicios para aumentar mis ventas."
 
 Criterios de aceptación:
+- El usuario puede acceder a través de un menú a la opción de publicar un post.
+- El usuario al acceder a la opción de publicar un post, accede a una plantilla que tendrá opciones para personalizar.
+- El usuario en la plantilla del post tiene la opción de publicar Imágen, una breve descripción y/o rubro.
+- El usuario puede dar por publicado el post a través de un botón de publicar.
+- El usuario al visualizar el post publicado puede observar en la plantilla las siguientes descripciones: imágen, nombre de Pyme/Usuario, rubro, y/o breve descripción, likes, sección de comentarios.
+- El usuario puede observar en su perfil los post publicados.
+- El usuario puede editar los post publicados y preservar los cambios.
+- El usuario puede eliminar los posts.
+- El usuario puede confirmar si está seguro de eliminar o no un post a través de un mensaje de confirmación.
+- El usuario puede interactuar con otros posts dandole like y comentando.
+- El usuario puede quitar el like.
 
 Definición de terminado:
-
+* [X] Crear prototipo de baja fidelidad de la vista perfil y plantilla de publicación, para determinar la distribución de los elementos, siguiendo los fundamentos de mobile first.
+* [X] Crear prototipo de alta fidelidad de la vista perfil y plantilla de publicación, para determinar diseño interactivo y amigable, siguiendo los fundamentos de mobile first.
+* [X] Crear barra de navegación que contenga nombre de aplicación y menú con opción para publicar, acceder al perfil, acceder al muro y cerrar sesión.
+* [X] La barra de navegación debe ser responsive siguiendo los fundamentos de mobile first.
+* [X] Crear plantilla de publicación con la siguiente distribución: sección de imágen, nombre de Pyme/Usuario, breve descripción, likes(número de likes), sección de comentarios, botón de publicar, y botón de opción de editar y eliminar.
+* [X] Publicar: cargar imágen en publicación y/o breve descripción y guardar.
+* [X] Botón con opción de Editar y Eliminar publicación.
+* [X] Al dar click para editar un post, debe cambiar el texto por un input que permita editar el texto y preservar los cambios.
+* [X] Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada(botón guardar).
+* [X] Eliminar posts, con mensaje de confirmación para ejecutar dicha acción.
+* [X] Poder dar y quitar like a una publicación. Máximo uno por usuario.
+* [X] Mostrar en publicación número interactivo real de likes.
+* [X] Poder comentar publicaciones. 
+* [X] Mostrar post en perfil.
 
 Historia de usuario 3: "yo, como pyme grande quiero buscar otras pymes que vendan insumos y materia prima de mi interés para potenciarnos mutuamente."
 

@@ -114,7 +114,7 @@ export const viewForms = () => {
 //validación inputs sign up
   const userValidate = (userNameSignUp) => {
     const userError = containerFormTemplate.querySelector('#user-error');
-    let valid = false;
+    //let valid = false;
     if (userNameSignUp === '' || userNameSignUp === null) {
       userError.innerHTML = '*Campo obligatorio.';
       userError.style.display = 'block';
@@ -126,33 +126,33 @@ export const viewForms = () => {
     if (userNameSignUp.length >= 4 && userNameSignUp.length <= 20) {
       userError.innerHTML = '';
       userError.style.display = 'none';
-      valid = true;
+     // valid = true;
     }
-    return valid;
+    //return valid;
   };
   const emailValidate = (userEmailSignUp) => {
     const emailError = containerFormTemplate.querySelector('#email-error');
-    let valid = false;
+    //let valid = false;
     if (userEmailSignUp === '' || userEmailSignUp === null) {
       emailError.innerHTML = '*Campo obligatorio. Correo no válido';
     } else {
       emailError.innerHTML = '';
       emailError.style.display = 'none';
-      valid = true;
+     // valid = true;
     }
-    return valid;
+   // return valid;
   };
   const passwordValidate = (userPasswordSignUp) => {
     const passwordError = containerFormTemplate.querySelector('#password-error');
-    let valid = false;
+    //let valid = false;
     if ((userPasswordSignUp === '' || userPasswordSignUp === null) || (userPasswordSignUp.length !== 6)) {
       passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
     } else if (userPasswordSignUp.length === 6) {
       passwordError.innerHTML = '';
       passwordError.style.display = 'none';
-      valid = true;
+     // valid = true;
     }
-    return valid;
+    //return valid;
   };
 
   const inputUserNameSignUp = containerFormTemplate.querySelector('#user-name');
@@ -170,7 +170,7 @@ export const viewForms = () => {
 
   //validación inputs sign in
   const emailInValidate = (userEmailSignIn) => {
-    let valid = false;
+    //let valid = false;
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     if (userEmailSignIn === '' || userEmailSignIn === null) {
       console.log('email es obligatorio');
@@ -183,21 +183,21 @@ export const viewForms = () => {
     if (expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '';
       emailInError.style.display = 'none';
-      valid = true;
+     // valid = true;
     }
-    return valid;
+    //return valid;
   };
   const passwordInValidate = (userPasswordSignIn) => {
-    let valid = false;
+    //let valid = false;
     const passwordInError = containerFormTemplate.querySelector('#password-in-error');
     if ((userPasswordSignIn === '' || userPasswordSignIn === null) || (userPasswordSignIn.length !== 6)) {
       passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
     } else if (userPasswordSignIn.length === 6) {
       passwordInError.innerHTML = '';
       passwordInError.style.display = 'none';
-      valid = true;
+     // valid = true;
     }
-    return valid;
+   // return valid;
   };
 
   const inputUserEmailSignIn = containerFormTemplate.querySelector('#signin-email');
@@ -208,8 +208,6 @@ export const viewForms = () => {
   inputUserPasswordSignIn.addEventListener('keyup', (e) => {
     passwordInValidate(e.target.value);
   });
-  
-
 
   // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
@@ -218,13 +216,23 @@ export const viewForms = () => {
     const userEmailSignUp = inputUserEmailSignUp.value;
     const userPasswordSignUp = inputUserPasswordSignUp.value;
 
-    if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
+    userValidate(userNameSignUp);
+    emailValidate(userEmailSignUp);
+    passwordValidate(userPasswordSignUp)
+
+    firebaseSignUp({
+      userEmailSignUp,
+      userPasswordSignUp,
+      userNameSignUp,
+    });
+
+    /*if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
       firebaseSignUp({
         userEmailSignUp,
         userPasswordSignUp,
         userNameSignUp,
       });
-    }
+    }*/
   });
 
   //inicio de sesión email y contraseña-event
@@ -233,9 +241,14 @@ export const viewForms = () => {
     const userEmailSignIn = containerFormTemplate.querySelector('#signin-email').value;
     const userPasswordSignIn = containerFormTemplate.querySelector('#signin-password').value;
 
-    if (emailInValidate(userEmailSignIn) && passwordInValidate(userPasswordSignIn)) {
+    emailInValidate(userEmailSignIn);
+    passwordInValidate(userPasswordSignIn);
+
+    firebaseLogIn({ userEmailSignIn, userPasswordSignIn });
+
+    /*if (emailInValidate(userEmailSignIn) && passwordInValidate(userPasswordSignIn)) {
       firebaseLogIn({ userEmailSignIn, userPasswordSignIn });
-    }
+    }*/
   });
 
   //inicio de sesión google-event
