@@ -1,4 +1,4 @@
-import { googleLogin, firebaseSignUp, firebaseLogIn } from '../lib/firebase.js';
+import { googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin } from '../lib/firebase.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -17,14 +17,14 @@ export const viewForms = () => {
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" required id="signin-password" required maxlength="9"/>
+            <input class="input__form" type="password" placeholder="Contraseña" required id="signin-password" required maxlength="6"/>
             <i class="far fa-eye" id="unmaskify"></i>
             <i class="far fa-eye-slash" id="maskify" style ="display:none"></i>
           </div>
           <button type="submit" class="btn__form" form="form-signin" id="btn-signin">Iniciar Sesión</button>
           <p class="social-text">O accede con una Red Social</p>
           <div class="social-media">
-            <a href="#" class="social-icon">
+            <a href="#" id="facebook_login" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="#" id="google_login" class="social-icon">
@@ -44,7 +44,7 @@ export const viewForms = () => {
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" required maxlength="9"/>
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" required maxlength="6"/>
             <i class="far fa-eye" id="unmaskify2"></i>
             <i class="far fa-eye-slash" id="maskify2" style ="display:none"></i>
           </div>
@@ -61,7 +61,7 @@ export const viewForms = () => {
           <button type="submit" id="btn-signup" form="form-signup" class="btn__form">Registrarte</button>
           <p class="social-text">Registrate con una Red Social</p>
           <div class="social-media">
-            <a href="#" class="social-icon">
+            <a href="#"  id="facebook_login2" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="#" class="social-icon">
@@ -73,8 +73,11 @@ export const viewForms = () => {
     </div>
     <div class="panels-container">
       <div class="panel left-panel">
+      <div class="divLogoImage>
+      <img class="logoImage" src="./images/logo.png"/>
+    </div>
         <div class="content">
-          <h3>Red Social de Pymes! Punto Pyme</h3>
+          <h3>Punto Pyme</h3>
           <p>
             La forma más sencilla de hacer crecer tu emprendimiento!
           </p>
@@ -85,6 +88,9 @@ export const viewForms = () => {
       <!--LOGO PYME-->
       </div>
       <div class="panel right-panel">
+      <div class="divLogoImage>
+      <img class="logoImage2" src="./images/logo.png"/>
+    </div>
         <div class="content">
           <h3>Bienvenid@s!</h3>
           <p>
@@ -191,5 +197,15 @@ export const viewForms = () => {
   const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
   googleLoginBtn.addEventListener('click', () => googleLogin());
 
+    
+  //inicio de sesion Facebook
+const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
+facebookLoginBtn.addEventListener('click', () => FacebookLogin());
+
+const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
+facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
+
   return containerFormTemplate;
+
 };
+
