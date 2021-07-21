@@ -18,8 +18,10 @@ const firebaseSignUp = async (userData) => {
     await firebase.auth().createUserWithEmailAndPassword(userData.userEmail, userData.userPassword);
     await firebase.auth().currentUser.updateProfile({
       displayName: userData.userName,
-      phoneNumber: userData.userArea,
+     // phoneNumber: userData.userArea,
+      
     });
+    verifyEmailAddress()
     window.localStorage.setItem('puntopyme-name', userData.userName);
     window.location.hash = '#/feed';
   } catch (error) {
@@ -28,6 +30,15 @@ const firebaseSignUp = async (userData) => {
     console.log(error);
   }
 };
+
+const verifyEmailAddress = () => {
+  firebase.auth().currentUser.sendEmailVerification()
+  .then(() => {
+      console.log("Enviando correo...");
+    // Email verification sent!
+    // ...
+  });
+}
 
 //observador de usuario activo
 const isLogged = () => {
