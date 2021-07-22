@@ -1,4 +1,4 @@
-import { googleLogin, firebaseSignUp, firebaseLogIn } from '../lib/firebase.js';
+import { googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin } from '../lib/firebase.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -19,12 +19,14 @@ export const viewForms = () => {
           <div class="input-field">
             <i class="fas fa-lock"></i>
             <input class="input__form" type="password" placeholder="Contraseña" id="signin-password" minlength="6" maxlength="6"/>
+            <i class="far fa-eye" id="unmaskify"></i>
+            <i class="far fa-eye-slash" id="maskify" style ="display:none"></i>
           </div>
           <span class="error-input" id="password-in-error"></span>
           <button type="submit" class="btn__form" form="form-signin" id="btn-signin">Iniciar Sesión</button>
           <p class="social-text">O accede con una Red Social</p>
           <div class="social-media">
-            <a href="#" class="social-icon">
+            <a href="#" id="facebook_login" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="#" id="google_login" class="social-icon">
@@ -46,16 +48,18 @@ export const viewForms = () => {
           <span class="error-input" id="email-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" id="user-password" placeholder="Contraseña" minlength="6" maxlength="6"/>
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña"  minlength="6" maxlength="6"/>
+            <i class="far fa-eye" id="unmaskify2"></i>
+            <i class="far fa-eye-slash" id="maskify2" style ="display:none"></i>
           </div>
           <span class="error-input" id="password-error"></span>
-          <button type="submit" form="form-signup" class="btn__form">Registrarte</button>
+          <button type="submit" id="btn-signup" form="form-signup" class="btn__form">Registrarte</button>
           <p class="social-text">Registrate con una Red Social</p>
           <div class="social-media">
-            <a href="#" class="social-icon">
+            <a href="#"  id="facebook_login2" class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="social-icon">
+            <a href="#" id="googleLoginBtn2" class="social-icon">
               <i class="fab fa-google"></i>
             </a>
           </div>
@@ -64,8 +68,11 @@ export const viewForms = () => {
     </div>
     <div class="panels-container">
       <div class="panel left-panel">
+      <div class="divLogoImage>
+      <img class="logoImage" src="./images/logo.png"/>
+    </div>
         <div class="content">
-          <h3>Red Social de Pymes! Punto Pyme</h3>
+          <h3>Punto Pyme</h3>
           <p>
             La forma más sencilla de hacer crecer tu emprendimiento!
           </p>
@@ -76,6 +83,9 @@ export const viewForms = () => {
       <!--LOGO PYME-->
       </div>
       <div class="panel right-panel">
+      <div class="divLogoImage>
+      <img class="logoImage2" src="./images/logo.png"/>
+    </div>
         <div class="content">
           <h3>Bienvenid@s!</h3>
           <p>
@@ -91,6 +101,53 @@ export const viewForms = () => {
   </div>`;
 
   containerFormTemplate.innerHTML = formTemplate;
+
+  //-------------------- Ocultar/mostrar contraseñas en input de password-signin--------------//
+  const inputSigninPassword = containerFormTemplate.querySelector('#signin-password');
+  const btnUnmaskify = containerFormTemplate.querySelector('#unmaskify');
+  const btnMaskify = containerFormTemplate.querySelector('#maskify');
+ 
+
+  btnUnmaskify.addEventListener('click', () => {
+      inputSigninPassword.type = 'text';
+      btnUnmaskify.style.display = 'none';
+      btnMaskify.style.display = 'block';
+     setTimeout(maskify, 2000);
+  });
+
+  btnMaskify.addEventListener('click', () => {
+               maskify();
+  });
+
+  function maskify() {
+    inputSigninPassword.type = 'password';
+    btnUnmaskify.style.display = 'block';
+    btnMaskify.style.display = 'none';
+    }
+
+ //-------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
+
+ const inputPassword = containerFormTemplate.querySelector('#user-password');
+ const btnUnmaskify2 = containerFormTemplate.querySelector('#unmaskify2');
+ const btnMaskify2 = containerFormTemplate.querySelector('#maskify2');
+
+
+ btnUnmaskify2.addEventListener('click', () => {
+     inputPassword.type = 'text';
+     btnUnmaskify2.style.display = 'none';
+     btnMaskify2.style.display = 'block';
+    setTimeout(maskify2, 2000);
+ });
+
+ btnMaskify2.addEventListener('click', () => {
+              maskify2()
+ });
+
+ function maskify2() {
+   inputPassword.type = 'password';
+   btnUnmaskify2.style.display = 'block';
+   btnMaskify2.style.display = 'none';
+   }
 
   // switch panel formularios
   const signInPanelBtn = containerFormTemplate.querySelector('#sign-in-btn');
@@ -119,7 +176,6 @@ export const viewForms = () => {
       userError.innerHTML = '*Campo obligatorio.';
       userError.style.display = 'block';
     }
-    // eslint-disable-next-line max-len
     if (!expression.userName.test(userNameSignUp) || (userNameSignUp.length < 4 || userNameSignUp.length > 20)) {
       userError.innerHTML = '*Campo obligatorio. El usuario tiene que ser de 4 a 20 carácteres y solo puede contener números, letras y guión bajo.';
       userError.style.display = 'block';
@@ -212,13 +268,14 @@ export const viewForms = () => {
     passwordInValidate(e.target.value);
   });
 
+
   // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const userNameSignUp = inputUserNameSignUp.value;
     const userEmailSignUp = inputUserEmailSignUp.value;
     const userPasswordSignUp = inputUserPasswordSignUp.value;
-
+    
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
@@ -249,6 +306,16 @@ export const viewForms = () => {
   //inicio de sesión google-event
   const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
   googleLoginBtn.addEventListener('click', () => googleLogin());
+  const googleLoginBtn2 = containerFormTemplate.querySelector('#googleLoginBtn2');
+  googleLoginBtn2.addEventListener('click', () => googleLogin());
+
+    
+  //inicio de sesion Facebook
+const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
+facebookLoginBtn.addEventListener('click', () => FacebookLogin());
+
+const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
+facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
 
   return containerFormTemplate;
 };

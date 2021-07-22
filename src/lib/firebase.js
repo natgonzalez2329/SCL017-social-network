@@ -16,7 +16,12 @@ const firebaseInit = () => {
 const firebaseSignUp = async (userData) => {
   try {
     // eslint-disable-next-line max-len
-    await firebase.auth().createUserWithEmailAndPassword(userData.userEmailSignUp, userData.userPasswordSignUp);
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(
+        userData.userEmailSignUp,
+        userData.userPasswordSignUp
+      );
     await firebase.auth().currentUser.updateProfile({
       displayName: userData.userNameSignUp,
     });
@@ -42,12 +47,19 @@ const isLogged = () => {
 const firebaseLogIn = async (userData) => {
   try {
     const userCredential = await firebase
-    .auth().signInWithEmailAndPassword(userData.userEmailSignIn, userData.userPasswordSignIn);
+      .auth()
+      .signInWithEmailAndPassword(
+        userData.userEmailSignIn,
+        userData.userPasswordSignIn
+      );
     console.log(userCredential);
-    window.localStorage.setItem('puntopyme-name', userCredential.user.displayName);
+    window.localStorage.setItem(
+      'puntopyme-name',
+      userCredential.user.displayName
+    );
     // Signed in
     window.location.hash = '#/feed';
-  } catch(error) {
+  } catch (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(error);
@@ -67,8 +79,8 @@ const googleLogin = async () => {
     // The signed-in user info.
     const user = result.user;
     console.log('user', user);
-    // ...
-  } catch(error) {
+    window.location.hash = '#/feed';
+  } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -77,7 +89,39 @@ const googleLogin = async () => {
     // The firebase.auth.AuthCredential type that was used.
     const credential = error.credential;
     console.log('error', errorMessage);
-  };
+  }
+};
+
+//Inicio de sesion con facebook
+
+const FacebookLogin = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      /* @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+
+      // The signed-in user info.
+      var user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      var accessToken = credential.accessToken;
+
+      window.location.hash = '#/feed';
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+
+      // ...
+    });
 };
 
 //cierre de sesión
@@ -90,7 +134,7 @@ const logOut = async () => {
   } catch (error) {
     // An error happened.
     console.log(error);
-  };
+  }
 };
 
 export {
@@ -100,4 +144,5 @@ export {
   googleLogin,
   firebaseLogIn,
   logOut,
+  FacebookLogin,
 };

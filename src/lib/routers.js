@@ -27,5 +27,6 @@ export const router = (route) => {
       break;
     default:
       containerViews.innerHTML = 'Error 404';
+      break;
   }
 };
