@@ -12,7 +12,7 @@ export const viewForms = () => {
         <form action="#" class="sign-in-form" id="form-signin">
           <h2 class="title">Inicio de Sesión</h2>
           <div class="input-field">
-            <i class="fas fa-user"></i>
+          <i class="fas fa-user"></i>
             <input class="input__form" type="text" placeholder="Correo Electrónico" id="signin-email" autocomplete="off" />
           </div>
           <span class="error-input" id="email-in-error"></span>
@@ -232,11 +232,8 @@ export const viewForms = () => {
   const emailInValidate = (userEmailSignIn) => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
-    if (userEmailSignIn === '' || userEmailSignIn === null) {
-      emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
-    }
     if (!expression.email.test(userEmailSignIn)) {
-      emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
+      emailInError.innerHTML = '*';
     }
     if (expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '';

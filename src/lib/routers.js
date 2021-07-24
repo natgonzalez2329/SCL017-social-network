@@ -1,6 +1,7 @@
 import { viewForms } from '../views/viewForms.js';
 import { viewFeed } from '../views/viewFeed.js';
 import { viewProfile } from '../views/viewProfile.js';
+import { viewPost } from '../views/viewPost.js';
 import { isLogged } from './firebase.js';
 
 const containerViews = document.querySelector('#root');
@@ -23,6 +24,11 @@ export const router = (route) => {
     case '#/profile':
       if (isLogged()) {
         containerViews.appendChild(viewProfile()); // ruta perfil
+      } else { window.location.hash = ''; }
+      break;
+    case '#/post':
+      if (isLogged()) {
+        containerViews.appendChild(viewPost()); // ruta post
       } else { window.location.hash = ''; }
       break;
     default:
