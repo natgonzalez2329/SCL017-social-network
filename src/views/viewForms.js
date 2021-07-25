@@ -38,7 +38,7 @@ export const viewForms = () => {
           <h2 class="title">Crea una cuenta</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input class="input__form" type="text" id='user-name' placeholder="Usuario" autocomplete="off" minlength="4" maxlength="20"/>
+            <input class="input__form" type="text" id='user-name' placeholder="Usuario" autocomplete="off" minlength="4" maxlength="20" />
           </div>
           <span class="error-input" id="user-error"></span>
           <div class="input-field">
@@ -173,7 +173,7 @@ export const viewForms = () => {
     const userError = containerFormTemplate.querySelector('#user-error');
     let valid = false;
     if (userNameSignUp === '' || userNameSignUp === null) {
-      userError.innerHTML = '*Campo obligatorio.';
+      userError.innerHTML = '*Campo obligatorio. El usuario tiene que ser de 4 a 20 carácteres y solo puede contener números, letras y guión bajo';
       userError.style.display = 'block';
     }
     if (!expression.userName.test(userNameSignUp) || (userNameSignUp.length < 4 || userNameSignUp.length > 20)) {
@@ -233,7 +233,7 @@ export const viewForms = () => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
     if (!expression.email.test(userEmailSignIn)) {
-      emailInError.innerHTML = '*';
+      emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
     }
     if (expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '';

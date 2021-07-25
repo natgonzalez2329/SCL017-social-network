@@ -387,7 +387,9 @@ form.sign-in-form {
   }
 }
 .error-input {
+  text-align: left;
   color: red;
+  font-size: 0.85rem;
 }
 
 footer {

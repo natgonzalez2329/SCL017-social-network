@@ -12,7 +12,7 @@ const firebaseInit = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
-//registro con email y contraseña
+// registro con email y contraseña
 const firebaseSignUp = async (userData) => {
   try {
     // eslint-disable-next-line max-len
@@ -34,7 +34,7 @@ const firebaseSignUp = async (userData) => {
   }
 };
 
-//observador de usuario activo
+// observador de usuario activo
 const isLogged = () => {
   const user = firebase.auth().currentUser;
   if (user) {
@@ -43,7 +43,7 @@ const isLogged = () => {
   return false;
 };
 
-//inicio de sesión con email y contraseña
+// inicio de sesión con email y contraseña
 const firebaseLogIn = async (userData) => {
   try {
     const userCredential = await firebase
@@ -92,7 +92,7 @@ const googleLogin = async () => {
   }
 };
 
-//Inicio de sesion con facebook
+// Inicio de sesion con facebook
 
 const FacebookLogin = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
@@ -124,7 +124,7 @@ const FacebookLogin = () => {
     });
 };
 
-//cierre de sesión
+// cierre de sesión
 const logOut = async () => {
   try {
     await firebase.auth().signOut();
@@ -137,6 +137,16 @@ const logOut = async () => {
   }
 };
 
+// View Feed & Profile Posts
+const fetchPosts = async (fs) => {
+  const posts = await fs.firestore().collection('posttestnat').get();
+  const result = posts.docs.map((doc) => {
+    const res = { data: doc.data(), id: doc.id };
+    return res;
+  });
+  return result;
+};
+
 export {
   firebaseInit,
   firebaseSignUp,
@@ -145,4 +155,5 @@ export {
   firebaseLogIn,
   logOut,
   FacebookLogin,
+  fetchPosts,
 };
