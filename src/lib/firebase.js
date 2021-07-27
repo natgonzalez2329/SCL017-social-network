@@ -139,7 +139,7 @@ const logOut = async () => {
 
 // View Feed & Profile Posts
 const fetchPosts = async (fs) => {
-  const posts = await fs.firestore().collection('posttestnat').get();
+  const posts = await fs.firestore().collection('pyme-posts').get();
   const result = posts.docs.map((doc) => {
     const res = { data: doc.data(), id: doc.id };
     return res;

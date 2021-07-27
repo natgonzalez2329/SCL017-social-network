@@ -9,9 +9,12 @@ export const viewProfile = async () => {
   const containerProfileTemplate = document.createElement('div');
   containerProfileTemplate.className = 'container__profile-template';
   const profileTemplate = `
-    <div>Your Name: <span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
-    <div class='view__feed'>Profile</div>
-    <div class='input-field'>
+  <div class='view__profile'>Profile</div>
+  <div class="content__profile">
+  <div class='image__profile-user'>IMAGEN PERFIL</div>
+    <div class="profile-info">
+    Your Name: <span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span>
+    <div class='select-inputfield'>
             <i class='fas fa-lock'></i>
             <select class='form__select' name='area' id='area__pyme'>
               <option value='' active>Rubro</option>
@@ -19,6 +22,10 @@ export const viewProfile = async () => {
               <option value='Textil'>Textil</option>
               <option value='Agropecuaria'>Agropecuaria</option>
               </select>  
+          </div>
+          BREVE DESCRIPCIÓN
+    </div>
+    <button class='btn__edit-profile'>BOTON EDITAR PERFIL</button>
           </div>`;
   containerProfileTemplate.innerHTML = profileTemplate;
 
@@ -57,7 +64,7 @@ export const viewProfile = async () => {
       `;
     });
     const profilePostTemplate = `
-    <ul id='posts'>${containerPostProfile}</ul>`;
+    <ul id='posts' class="container__posts-profile">${containerPostProfile}</ul>`;
     containerProfileTemplate.innerHTML += profilePostTemplate;
 
     // menu Edit Delete
@@ -115,7 +122,7 @@ toggle between hiding and showing the dropdown content */
     btnDelete.addEventListener('click', async (e) => {
       e.stopPropagation();
       const id = e.target.getAttribute('noid');
-      await firebase.firestore().collection('posttestnat').doc(id).delete();
+      await firebase.firestore().collection('pyme-posts').doc(id).delete();
       console.log('Post Deleted');
       modalDelete.style.display = 'none';
       containerViews.appendChild(await viewProfile()); // ruta muro posts

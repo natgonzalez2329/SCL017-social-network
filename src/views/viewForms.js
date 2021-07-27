@@ -18,7 +18,7 @@ export const viewForms = () => {
           <span class="error-input" id="email-in-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" id="signin-password" minlength="6" maxlength="6"/>
+            <input class="input__form" type="password" placeholder="Contraseña" id="signin-password" minlength="8" maxlength="12"/>
             <i class="far fa-eye" id="unmaskify"></i>
             <i class="far fa-eye-slash" id="maskify" style ="display:none"></i>
           </div>
@@ -48,7 +48,7 @@ export const viewForms = () => {
           <span class="error-input" id="email-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" id="user-password" placeholder="Contraseña"  minlength="6" maxlength="6"/>
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña"  minlength="8" maxlength="12"/>
             <i class="far fa-eye" id="unmaskify2"></i>
             <i class="far fa-eye-slash" id="maskify2" style ="display:none"></i>
           </div>
@@ -164,7 +164,7 @@ export const viewForms = () => {
 
   // expresiones regulares para validar input
   const expression = {
-    userName: new RegExp(/^\w+$/g), // Letras, numeros, guion y guion_bajo
+    userName: new RegExp(/^\w+$/g), // Letras, numeros, guion y guion_bajo.
     email: new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   };
 
@@ -203,11 +203,15 @@ export const viewForms = () => {
   const passwordValidate = (userPasswordSignUp) => {
     const passwordError = containerFormTemplate.querySelector('#password-error');
     let valid = false;
-    if ((userPasswordSignUp === '' || userPasswordSignUp === null) || (userPasswordSignUp.length !== 6)) {
-      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
+    if (userPasswordSignUp === '' || userPasswordSignUp === null) {
+      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
       passwordError.style.display = 'block';
     }
-    if (userPasswordSignUp.length === 6) {
+    if (userPasswordSignUp.length < 8 || userPasswordSignUp.length > 12) {
+      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
+      passwordError.style.display = 'block';
+    }
+    if (userPasswordSignUp.length >= 8 && userPasswordSignUp.length <= 12) {
       passwordError.innerHTML = '';
       passwordError.style.display = 'none';
       valid = true;
@@ -234,6 +238,7 @@ export const viewForms = () => {
     let valid = false;
     if (!expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
+      emailInError.style.display = 'block';
     }
     if (expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '';
@@ -245,10 +250,15 @@ export const viewForms = () => {
   const passwordInValidate = (userPasswordSignIn) => {
     const passwordInError = containerFormTemplate.querySelector('#password-in-error');
     let valid = false;
-    if ((userPasswordSignIn === '' || userPasswordSignIn === null) || (userPasswordSignIn.length !== 6)) {
-      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
+    if (userPasswordSignIn === '' || userPasswordSignIn === null) {
+      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
+      passwordInError.style.display = 'block';
     }
-    if (userPasswordSignIn.length === 6) {
+    if (userPasswordSignIn.length < 8 || userPasswordSignIn.length > 12) {
+      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
+      passwordInError.style.display = 'block';
+    }
+    if (userPasswordSignIn.length >= 8 && userPasswordSignIn.length <= 12) {
       passwordInError.innerHTML = '';
       passwordInError.style.display = 'none';
       valid = true;
@@ -272,12 +282,12 @@ export const viewForms = () => {
     const userNameSignUp = inputUserNameSignUp.value;
     const userEmailSignUp = inputUserEmailSignUp.value;
     const userPasswordSignUp = inputUserPasswordSignUp.value;
-    
+
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
 
-  if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
+    if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
       firebaseSignUp({
         userEmailSignUp,
         userPasswordSignUp,

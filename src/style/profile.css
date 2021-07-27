@@ -1,3 +1,36 @@
+.container__profile-template {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: #f6f5f7;
+  margin: auto;
+}
+.content__profile {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.container__posts-profile {
+    list-style-type: none;
+    padding: 0;
+    max-width: 960px;
+}
+
+
+.form__select {
+  background-color: #f0f0f0;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #aaa;
+  cursor: pointer;
+  border-radius: 55px;
+}
+	
+
 .container_post-profile {
   border: 1px solid rgb(201, 201, 201);
   padding: 5px;

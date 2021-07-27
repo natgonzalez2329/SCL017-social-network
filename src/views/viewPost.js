@@ -54,13 +54,13 @@ export const viewPost = () => {
   };
 
   const postForm = containerPostTemplate.querySelector('#post-form');
-// Saving data
+  // Saving data
   postForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const { displayName, email, uid } = firebase.auth().currentUser;
     const getPostPhoto = containerPostTemplate.querySelector('#post-image').value;
     const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
-    firebase.firestore().collection('posttestnat').add({
+    firebase.firestore().collection('pyme-posts').add({
       photo: getPostPhoto,
       description: getPostInfo,
       user: {
