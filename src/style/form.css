@@ -67,6 +67,9 @@ form.sign-up-form {
 form.sign-in-form {
   z-index: 2;
 }
+.logoImage{
+  height: 3%;
+}
 .title {
   font-size: 2.2rem;
   color: #444;
@@ -191,7 +194,7 @@ form.sign-in-form {
   z-index: 6;
 }
 .image {
-  width: 100%;
+  width: 60%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
@@ -312,7 +315,7 @@ form.sign-in-form {
     grid-row: 1 / 2;
   }
   .image {
-    width: 200px;
+    width: 20%;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.6s;
   }
@@ -372,7 +375,7 @@ form.sign-in-form {
     padding: 0 1.5rem;
   }
   .image {
-    display: none;
+    width: 30%;
   }
   .panel .content {
     padding: 0.5rem 1rem;
