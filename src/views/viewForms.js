@@ -1,6 +1,4 @@
-import {
-  googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin,
-} from '../lib/firebase.js';
+import { googleLogin, firebaseSignUp, firebaseLogIn, facebookLogin } from '../lib/firebase.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -14,13 +12,13 @@ export const viewForms = () => {
         <form action="#" class="sign-in-form" id="form-signin">
           <h2 class="title">Inicio de Sesión</h2>
           <div class="input-field">
-            <i class="fas fa-user"></i>
+          <i class="fas fa-user"></i>
             <input class="input__form" type="text" placeholder="Correo Electrónico" id="signin-email" autocomplete="off" />
           </div>
           <span class="error-input" id="email-in-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" placeholder="Contraseña" id="signin-password" minlength="6" maxlength="6"/>
+            <input class="input__form" type="password" placeholder="Contraseña" id="signin-password" minlength="8" maxlength="12"/>
             <i class="far fa-eye" id="unmaskify"></i>
             <i class="far fa-eye-slash" id="maskify" style ="display:none"></i>
           </div>
@@ -40,7 +38,7 @@ export const viewForms = () => {
           <h2 class="title">Crea una cuenta</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input class="input__form" type="text" id='user-name' placeholder="Usuario" autocomplete="off" minlength="4" maxlength="20"/>
+            <input class="input__form" type="text" id='user-name' placeholder="Usuario" autocomplete="off" minlength="4" maxlength="20" />
           </div>
           <span class="error-input" id="user-error"></span>
           <div class="input-field">
@@ -50,7 +48,7 @@ export const viewForms = () => {
           <span class="error-input" id="email-error"></span>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input class="input__form" type="password" id="user-password" placeholder="Contraseña"  minlength="6" maxlength="6"/>
+            <input class="input__form" type="password" id="user-password" placeholder="Contraseña"  minlength="8" maxlength="12"/>
             <i class="far fa-eye" id="unmaskify2"></i>
             <i class="far fa-eye-slash" id="maskify2" style ="display:none"></i>
           </div>
@@ -70,7 +68,6 @@ export const viewForms = () => {
     </div>
     <div class="panels-container">
       <div class="panel left-panel">
-   
         <div class="content">
         <img src="./images/logo.png" class="image" style="border-radius:20%">
           <h3>Punto Pyme</h3>
@@ -81,11 +78,8 @@ export const viewForms = () => {
             Registrate
           </button>
         </div>
-      <!--LOGO PYME-->
       </div>
       <div class="panel right-panel">
-
-     
         <div class="content">
         <img src="./images/logo.png" class="image" style="border-radius:20%">  
           <h3>Bienvenid@s!</h3>
@@ -96,7 +90,6 @@ export const viewForms = () => {
             Iniciar Sesión
           </button>
         </div>
-        <!--LOGO PYME-->
       </div>
     </div>
   </div>`;
@@ -123,7 +116,7 @@ export const viewForms = () => {
     inputSigninPassword.type = 'password';
     btnUnmaskify.style.display = 'block';
     btnMaskify.style.display = 'none';
-  }
+    }
 
   // -------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
 
@@ -163,7 +156,7 @@ export const viewForms = () => {
 
   // expresiones regulares para validar input
   const expression = {
-    userName: new RegExp(/^\w+$/g), // Letras, numeros, guion y guion_bajo
+    userName: new RegExp(/^\w+$/g), // Letras, numeros, guion y guion_bajo.
     email: new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   };
 
@@ -172,7 +165,7 @@ export const viewForms = () => {
     const userError = containerFormTemplate.querySelector('#user-error');
     let valid = false;
     if (userNameSignUp === '' || userNameSignUp === null) {
-      userError.innerHTML = '*Campo obligatorio.';
+      userError.innerHTML = '*Campo obligatorio. El usuario tiene que ser de 4 a 20 carácteres y solo puede contener números, letras y guión bajo';
       userError.style.display = 'block';
     }
     if (!expression.userName.test(userNameSignUp) || (userNameSignUp.length < 4 || userNameSignUp.length > 20)) {
@@ -202,11 +195,15 @@ export const viewForms = () => {
   const passwordValidate = (userPasswordSignUp) => {
     const passwordError = containerFormTemplate.querySelector('#password-error');
     let valid = false;
-    if ((userPasswordSignUp === '' || userPasswordSignUp === null) || (userPasswordSignUp.length !== 6)) {
-      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
+    if (userPasswordSignUp === '' || userPasswordSignUp === null) {
+      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
       passwordError.style.display = 'block';
     }
-    if (userPasswordSignUp.length === 6) {
+    if (userPasswordSignUp.length < 8 || userPasswordSignUp.length > 12) {
+      passwordError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
+      passwordError.style.display = 'block';
+    }
+    if (userPasswordSignUp.length >= 8 && userPasswordSignUp.length <= 12) {
       passwordError.innerHTML = '';
       passwordError.style.display = 'none';
       valid = true;
@@ -231,11 +228,9 @@ export const viewForms = () => {
   const emailInValidate = (userEmailSignIn) => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
-    if (userEmailSignIn === '' || userEmailSignIn === null) {
-      emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
-    }
     if (!expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '*Campo obligatorio. Correo no válido';
+      emailInError.style.display = 'block';
     }
     if (expression.email.test(userEmailSignIn)) {
       emailInError.innerHTML = '';
@@ -247,10 +242,15 @@ export const viewForms = () => {
   const passwordInValidate = (userPasswordSignIn) => {
     const passwordInError = containerFormTemplate.querySelector('#password-in-error');
     let valid = false;
-    if ((userPasswordSignIn === '' || userPasswordSignIn === null) || (userPasswordSignIn.length !== 6)) {
-      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 6 carácteres.';
+    if (userPasswordSignIn === '' || userPasswordSignIn === null) {
+      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
+      passwordInError.style.display = 'block';
     }
-    if (userPasswordSignIn.length === 6) {
+    if (userPasswordSignIn.length < 8 || userPasswordSignIn.length > 12) {
+      passwordInError.innerHTML = '*Campo obligatorio. La contraseña debe tener 8 a 12 carácteres.';
+      passwordInError.style.display = 'block';
+    }
+    if (userPasswordSignIn.length >= 8 && userPasswordSignIn.length <= 12) {
       passwordInError.innerHTML = '';
       passwordInError.style.display = 'none';
       valid = true;
@@ -270,10 +270,10 @@ export const viewForms = () => {
   // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const userNameSignUp = containerFormTemplate.querySelector('#user-name').value;
-    const userEmailSignUp = containerFormTemplate.querySelector('#user-email').value;
-    const userPasswordSignUp = containerFormTemplate.querySelector('#user-password').value;
-
+    const userNameSignUp = inputUserNameSignUp.value;
+    const userEmailSignUp = inputUserEmailSignUp.value;
+    const userPasswordSignUp = inputUserPasswordSignUp.value;
+    
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
@@ -309,10 +309,10 @@ export const viewForms = () => {
 
   // inicio de sesion Facebook
   const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
-  facebookLoginBtn.addEventListener('click', () => FacebookLogin());
+  facebookLoginBtn.addEventListener('click', () => facebookLogin());
 
   const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
-  facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
+  facebookLoginBtn2.addEventListener('click', () => facebookLogin());
 
   return containerFormTemplate;
 };

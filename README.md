@@ -35,7 +35,36 @@ Punto Pyme es una aplicación web gratuita, esta plataforma permite a toda Pyme 
 
 Respondiendo a esa invisibilidad y desventaja frente a las grandes compañias, es un gran apoyo para asi aprovecharse de las grandes ventajas que puede ocupar pertener a una Red Social como Punto Pyme, en donde juega un papel fundamental para darse a conocer al crear imagen de marca. Permiten atender más rápido y a más clientes a través de promociones efectivas, las cuales tendran un impacto e importancia en la venta. 
 ## 3. Perfil de usuarios
-Tipos de Pymes y usuarios/clientes
+Punto Pyme va dirigido a todas las Pymes y usuarios que quieran fomentar la economía local, creando una comunidad en base a la sinergía y la unión de fuerzas, apoyandose en el poder de las Redes Sociales, con el objetivo de dar a conocer la marca, promocionar la compra/venta de servicios y/o productos a través de esta plataforma. Por lo tanto, entre los perfiles de usuario, destacan:
+- Pymes: * 
+  - Microempresa (<10 trabajadores).
+  - Pequeña (<50 trabajadores).
+  - Mediana (<250 trabajadores).
+- Clientes.
+*(Clasificación según el Ministerios de Economía Fomento y Turismo de Chile).
+
+Una vez identificados dichos perfiles de usuarios, se procedio a realizar una encuesta como técnica de investigación con el objetivo de apreciar la experiencia y consideraciones de los mismos para determinar la necesidad de una Red Social centrada en las Pymes, a través de la encuesta se determino, que:
+
+* El 39.1% se identifica como Pymes de tipo Microempresa, seguido por un 32.6% de Pymes Pequeñas y un 28.3% de Usuarios.
+* Los rubros o áreas comerciales a las que pertenecen las Pymes o a las cuales los usuarios suelen comprar, predominan:
+   - 21.7% Comercio al Por Mayor y al Por Menor.
+   - 15.2% Otras actividades de Servicios.
+   - 10.9% Transporte y Almacenamiento.
+   - 10.9% Actividades de Alojamientos y de Servicios de Comidas. 
+   - 8.7% Actividades Artísticas, de Entretenimiento y Recreativas.
+   - 8.7% Industrias Manufactureras.
+   
+* El 97.8% han utilizado alguna Red Social para vender o comprar.
+* 100%  conincide que publica con mayor frecuencia en su perfil al vender contenido de tipo texto con imágen.
+* 100% como usuario valora en un perfil de compra/venta contenido de tipo texto con imágen.
+* El 43.5% frecuentemente y un 30.4% muy frecuentemente vende por Redes Sociales. 
+* El 45.7% frecuentemente y un 39.1% muy frecuentemente busca y compra productos por Redes Sociales.
+* La recomendaciones son la interacción más valorada con un 47.8%, al momento de decidir una compra, seguida por los comentarios respondidos (45.7%), número de publicaciones (45.7%) y por último el número de likes (37%).
+* El 50% le gusta comprar de forma on-line.
+* Un 65.2% le suele comprar a Pymes o pequeños comerciantes.
+* El 100% cree que las Pymes necesitan más áreas o espacios para darse a conocer.
+
+
 ## 4. Historias de usuarios
 Historia de usuario 1: "yo, como pyme nueva quiero registrarme y crear una cuenta de forma sencilla para mostrar mis productos en una plataforma que sea amigable."
 
@@ -43,9 +72,7 @@ Criterios de aceptación:
 - El usuario puede registrarse de forma sencilla y precisa.
 - El usuario puede ingresar el nombre de la Pyme o usuario, email y contraseña.
 - El usuario tendrá la opción de registrarse a través de su cuenta Google o Facebook en caso de tenerla, dichas cuentas deben ser válidas.
-- Se guiará al usuario a una creación de contraseña de inicio de sesión que sea segura.
-- El usuario puede determinar el rubro al que pertenece.
-- El usuario recibirá un email de verificación de registro de cuenta.ELIMINAR
+- El usuario recibirá un email de verificación de registro de cuenta.
 - Se le garantizará al usuario su seguridad y privacidad a través de la aceptación de términos y condiciones legales.
 - El usuario podrá iniciar sesión ingresando su email y contraseña creada.
 - El usuario solamente puede iniciar sesión cuando sus credenciales (email y contraseña) son válidas.
@@ -63,7 +90,6 @@ Definición de terminado:
 * [X] Validación de contraseña, que cumpla criterios mínimos de seguridad.
 * [X] Enmascarar contraseña.
 * [X] Botón que permita hacer visible la contraseña.
-* [X] Despliegue de opciones que determinen el rubro de la pyme, a través del elemento select.
 * [X] Botones con iconos representativos de Facebook y Google para poder registrarse a través de las cuentas de esta plataforma.
 * [X] Crear mensaje descriptivo emergete con instrucciones claras, en caso de que los datos no cumplan con la validación de los mismos.
 * [X] Botón "Registrarte" para crear cuenta y acceder a la Social Network.
@@ -85,9 +111,33 @@ Definición de terminado:
 Historia de usuario 2: "yo, como pyme establecida, quiero dar a conocer mis productos y servicios para aumentar mis ventas."
 
 Criterios de aceptación:
+- El usuario puede acceder a través de un menú a la opción de publicar un post.
+- El usuario al acceder a la opción de publicar un post, accede a una plantilla que tendrá opciones para personalizar.
+- El usuario en la plantilla del post tiene la opción de publicar Imágen, una breve descripción y/o rubro.
+- El usuario puede dar por publicado el post a través de un botón de publicar.
+- El usuario al visualizar el post publicado puede observar en la plantilla las siguientes descripciones: imágen, nombre de Pyme/Usuario, rubro, y/o breve descripción, likes, sección de comentarios.
+- El usuario puede observar en su perfil los post publicados.
+- El usuario puede editar los post publicados y preservar los cambios.
+- El usuario puede eliminar los posts.
+- El usuario puede confirmar si está seguro de eliminar o no un post a través de un mensaje de confirmación.
+- El usuario puede interactuar con otros posts dandole like y comentando.
+- El usuario puede quitar el like.
 
 Definición de terminado:
-
+* [X] Crear prototipo de baja fidelidad de la vista perfil y plantilla de publicación, para determinar la distribución de los elementos, siguiendo los fundamentos de mobile first.
+* [X] Crear prototipo de alta fidelidad de la vista perfil y plantilla de publicación, para determinar diseño interactivo y amigable, siguiendo los fundamentos de mobile first.
+* [X] Crear barra de navegación que contenga nombre de aplicación y menú con opción para publicar, acceder al perfil, acceder al muro y cerrar sesión.
+* [X] La barra de navegación debe ser responsive siguiendo los fundamentos de mobile first.
+* [X] Crear plantilla de publicación con la siguiente distribución: sección de imágen, nombre de Pyme/Usuario, breve descripción, likes(número de likes), sección de comentarios, botón de publicar, y botón de opción de editar y eliminar.
+* [X] Publicar: cargar imágen en publicación y/o breve descripción y guardar.
+* [X] Botón con opción de Editar y Eliminar publicación.
+* [X] Al dar click para editar un post, debe cambiar el texto por un input que permita editar el texto y preservar los cambios.
+* [X] Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada(botón guardar).
+* [X] Eliminar posts, con mensaje de confirmación para ejecutar dicha acción.
+* [X] Poder dar y quitar like a una publicación. Máximo uno por usuario.
+* [X] Mostrar en publicación número interactivo real de likes.
+* [X] Poder comentar publicaciones. 
+* [X] Mostrar post en perfil.
 
 Historia de usuario 3: "yo, como pyme grande quiero buscar otras pymes que vendan insumos y materia prima de mi interés para potenciarnos mutuamente."
 
