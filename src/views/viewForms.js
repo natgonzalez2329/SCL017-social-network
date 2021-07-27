@@ -1,4 +1,6 @@
-import { googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin } from '../lib/firebase.js';
+import {
+  googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin,
+} from '../lib/firebase.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -68,10 +70,9 @@ export const viewForms = () => {
     </div>
     <div class="panels-container">
       <div class="panel left-panel">
-      <div class="divLogoImage>
-      <img class="logoImage" src="./images/logo.png"/>
-    </div>
+   
         <div class="content">
+        <img src="./images/logo.png" class="image" style="border-radius:20%">
           <h3>Punto Pyme</h3>
           <p>
             La forma más sencilla de hacer crecer tu emprendimiento!
@@ -83,10 +84,10 @@ export const viewForms = () => {
       <!--LOGO PYME-->
       </div>
       <div class="panel right-panel">
-      <div class="divLogoImage>
-      <img class="logoImage2" src="./images/logo.png"/>
-    </div>
+
+     
         <div class="content">
+        <img src="./images/logo.png" class="image" style="border-radius:20%">  
           <h3>Bienvenid@s!</h3>
           <p>
             Únete a nuestra comunidad y potencia tu emprendimiento. Aquí encontrarás lo que necesitas!
@@ -102,54 +103,50 @@ export const viewForms = () => {
 
   containerFormTemplate.innerHTML = formTemplate;
 
-  //-------------------- Ocultar/mostrar contraseñas en input de password-signin--------------//
+  // -------------------- Ocultar/mostrar contraseñas en input de password-signin--------------//
   const inputSigninPassword = containerFormTemplate.querySelector('#signin-password');
   const btnUnmaskify = containerFormTemplate.querySelector('#unmaskify');
   const btnMaskify = containerFormTemplate.querySelector('#maskify');
- 
 
   btnUnmaskify.addEventListener('click', () => {
-      inputSigninPassword.type="text";
-      btnUnmaskify.style.display = "none";
-      btnMaskify.style.display = "block";
-     setTimeout(maskify, 2000);
+    inputSigninPassword.type = 'text';
+    btnUnmaskify.style.display = 'none';
+    btnMaskify.style.display = 'block';
+    setTimeout(maskify, 2000);
   });
 
   btnMaskify.addEventListener('click', () => {
-               maskify()
+    maskify();
   });
 
-  function maskify(){
-    inputSigninPassword.type="password";
-    btnUnmaskify.style.display = "block";
-    btnMaskify.style.display = "none";
-    }
+  function maskify() {
+    inputSigninPassword.type = 'password';
+    btnUnmaskify.style.display = 'block';
+    btnMaskify.style.display = 'none';
+  }
 
- //-------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
+  // -------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
 
- const inputPassword = containerFormTemplate.querySelector('#user-password');
- const btnUnmaskify2 = containerFormTemplate.querySelector('#unmaskify2');
- const btnMaskify2 = containerFormTemplate.querySelector('#maskify2');
+  const inputPassword = containerFormTemplate.querySelector('#user-password');
+  const btnUnmaskify2 = containerFormTemplate.querySelector('#unmaskify2');
+  const btnMaskify2 = containerFormTemplate.querySelector('#maskify2');
 
-
- btnUnmaskify2.addEventListener('click', () => {
-     inputPassword.type="text";
-     btnUnmaskify2.style.display = "none";
-     btnMaskify2.style.display = "block";
+  btnUnmaskify2.addEventListener('click', () => {
+    inputPassword.type = 'text';
+    btnUnmaskify2.style.display = 'none';
+    btnMaskify2.style.display = 'block';
     setTimeout(maskify2, 2000);
- });
+  });
 
- btnMaskify2.addEventListener('click', () => {
-              maskify2()
- });
+  btnMaskify2.addEventListener('click', () => {
+    maskify2();
+  });
 
- function maskify2(){
-   inputPassword.type="password";
-   btnUnmaskify2.style.display = "block";
-   btnMaskify2.style.display = "none";
-   }
-
-
+  function maskify2() {
+    inputPassword.type = 'password';
+    btnUnmaskify2.style.display = 'block';
+    btnMaskify2.style.display = 'none';
+  }
 
   // switch panel formularios
   const signInPanelBtn = containerFormTemplate.querySelector('#sign-in-btn');
@@ -170,7 +167,7 @@ export const viewForms = () => {
     email: new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   };
 
-//validación inputs sign up
+  // validación inputs sign up
   const userValidate = (userNameSignUp) => {
     const userError = containerFormTemplate.querySelector('#user-error');
     let valid = false;
@@ -230,7 +227,7 @@ export const viewForms = () => {
     passwordValidate(e.target.value);
   });
 
-  //validación inputs sign in
+  // validación inputs sign in
   const emailInValidate = (userEmailSignIn) => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
@@ -270,18 +267,18 @@ export const viewForms = () => {
     passwordInValidate(e.target.value);
   });
 
-//registro de cuenta, email y contraseña-event
+  // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const userNameSignUp = containerFormTemplate.querySelector('#user-name').value;
     const userEmailSignUp = containerFormTemplate.querySelector('#user-email').value;
     const userPasswordSignUp = containerFormTemplate.querySelector('#user-password').value;
-    
+
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
 
-  if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
+    if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
       firebaseSignUp({
         userEmailSignUp,
         userPasswordSignUp,
@@ -290,7 +287,7 @@ export const viewForms = () => {
     }
   });
 
-  //inicio de sesión email y contraseña-event
+  // inicio de sesión email y contraseña-event
   signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const userEmailSignIn = containerFormTemplate.querySelector('#signin-email').value;
@@ -302,24 +299,20 @@ export const viewForms = () => {
     if (emailInValidate(userEmailSignIn) && passwordInValidate(userPasswordSignIn)) {
       firebaseLogIn({ userEmailSignIn, userPasswordSignIn });
     }
-
   });
 
-  //inicio de sesión google-event
+  // inicio de sesión google-event
   const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
   googleLoginBtn.addEventListener('click', () => googleLogin());
   const googleLoginBtn2 = containerFormTemplate.querySelector('#googleLoginBtn2');
   googleLoginBtn2.addEventListener('click', () => googleLogin());
 
-    
-  //inicio de sesion Facebook
-const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
-facebookLoginBtn.addEventListener('click', () => FacebookLogin());
+  // inicio de sesion Facebook
+  const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
+  facebookLoginBtn.addEventListener('click', () => FacebookLogin());
 
-const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
-facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
+  const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
+  facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
 
   return containerFormTemplate;
-
 };
-
