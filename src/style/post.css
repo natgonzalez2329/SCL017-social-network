@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* The Modal (background) */
+.container__modal-post {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.content__modal-post {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: none;
+  /*border: 1px solid #888;*/
+  border-radius: 4px;
+  width: 30%;/*resize mobile*/
+}
+
+/* The Close Button */
+.close__modal-post {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close__modal-post:hover,
+.close__modal-post:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal__footer {
+  text-align: right;
+}
+.btn__modal-post {
+  width: 100px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.btn__modal-post:hover {
+  background-color: #4d84e2;
+}

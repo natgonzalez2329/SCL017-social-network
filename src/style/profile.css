@@ -1,0 +1,167 @@
+.container__profile-template {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: #f6f5f7;
+  margin: auto;
+}
+.content__profile {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.container__posts-profile {
+    list-style-type: none;
+    padding: 0;
+    max-width: 960px;
+}
+
+
+.form__select {
+  background-color: #f0f0f0;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #aaa;
+  cursor: pointer;
+  border-radius: 55px;
+}
+	
+
+.container_post-profile {
+  border: 1px solid rgb(201, 201, 201);
+  padding: 5px;
+  border-radius: 4px;
+  width: 50%;
+  margin: 10px;
+}
+/*menu Edit Delete*/
+.dropbtn-post {
+  background-color: white;
+  color:black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn-post:hover, .dropbtn:focus {
+  background-color: rgb(201, 201, 201);
+}
+.dropdown-post {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content-post {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content-post button {
+  min-width: 160px;
+  border: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-post button:hover {background-color: #ddd;}
+.show {display: block;}
+/* The Modal Delete Message (background) */
+.container__modal-delete {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.content__modal-delete {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  width: 50%;/*resize mobile*/
+}
+.content__modal-delete h1 {
+  font-size: 1.1rem;
+}
+/* The Close Button */
+.close__modal-delete {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close__modal-delete:hover,
+.close__modal-delete:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal__footer {
+  font-family: "Montserrat", sans-serif;
+  text-align: right;
+}
+.btn__modal-delete {
+  width: 80px;
+  height: 20px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.btn__modal-delete:hover {
+  background-color: #4d84e2;
+}
+
+@media only screen and (min-width: 768px) {
+  .content__modal-delete {
+    width: 40%;
+  }
+  .content__modal-delete h1 {
+    font-size: 1.3rem;
+  }
+  .btn__modal-delete {
+    width: 80px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .content__modal-delete {
+    width: 30%;
+  }
+  .content__modal-delete h1 {
+    font-size: 1.9rem;
+  }
+  .btn__modal-delete {
+    width: 100px;
+    height: 49px;
+    font-size: 1rem;
+  }
+
+}
+

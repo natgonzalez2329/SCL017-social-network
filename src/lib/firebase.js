@@ -12,11 +12,16 @@ const firebaseInit = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
-//registro con email y contraseña
+// registro con email y contraseña
 const firebaseSignUp = async (userData) => {
   try {
     // eslint-disable-next-line max-len
-    await firebase.auth().createUserWithEmailAndPassword(userData.userEmailSignUp, userData.userPasswordSignUp);
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(
+        userData.userEmailSignUp,
+        userData.userPasswordSignUp
+      );
     await firebase.auth().currentUser.updateProfile({
       displayName: userData.userNameSignUp,
     });
@@ -29,16 +34,7 @@ const firebaseSignUp = async (userData) => {
   }
 };
 
-const verifyEmailAddress = () => {
-  firebase.auth().currentUser.sendEmailVerification()
-  .then(() => {
-      console.log("Enviando correo...");
-    // Email verification sent!
-    // ...
-  });
-}
-
-//observador de usuario activo
+// observador de usuario activo
 const isLogged = () => {
   const user = firebase.auth().currentUser;
   if (user) {
@@ -47,18 +43,25 @@ const isLogged = () => {
   return false;
 };
 
-//inicio de sesión con email y contraseña
+// inicio de sesión con email y contraseña
 const firebaseLogIn = async (userData) => {
   try {
     const userCredential = await firebase
-    .auth().signInWithEmailAndPassword(userData.userEmailSignIn, userData.userPasswordSignIn);
+      .auth()
+      .signInWithEmailAndPassword(
+        userData.userEmailSignIn,
+        userData.userPasswordSignIn
+      );
     console.log(userCredential);
-    window.localStorage.setItem('puntopyme-name', userCredential.user.displayName);
+    window.localStorage.setItem(
+      'puntopyme-name',
+      userCredential.user.displayName
+    );
     // Signed in
     window.location.hash = '#/feed';
-  } catch(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
     console.log(error);
   }
 };
@@ -77,7 +80,7 @@ const googleLogin = async () => {
     const user = result.user;
     console.log('user', user);
     window.location.hash = '#/feed';
-  } catch(error) {
+  } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -86,40 +89,42 @@ const googleLogin = async () => {
     // The firebase.auth.AuthCredential type that was used.
     const credential = error.credential;
     console.log('error', errorMessage);
-  };
+  }
 };
 
-//Inicio de sesion con facebook 
+// Inicio de sesion con facebook
 
-const FacebookLogin = () => {
+const facebookLogin = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
- firebase.auth()
-.signInWithPopup(provider).then((result) => {
-   /* @type {firebase.auth.OAuthCredential} */
-   var credential = result.credential;
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      /* @type {firebase.auth.OAuthCredential} */
+      const credential = result.credential;
 
-   // The signed-in user info.
-   var user = result.user;
+      // The signed-in user info.
+      const user = result.user;
 
-   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-   var accessToken = credential.accessToken;
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const accessToken = credential.accessToken;
 
-   window.location.hash = '#/feed';
- })
- .catch((error) => {
-   // Handle Errors here.
-   var errorCode = error.code;
-   var errorMessage = error.message;
-   // The email of the user's account used.
-   var email = error.email;
-   // The firebase.auth.AuthCredential type that was used.
-   var credential = error.credential;
+      window.location.hash = '#/feed';
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
 
-   // ...
- });
-}
+      // ...
+    });
+};
 
-//cierre de sesión
+// cierre de sesión
 const logOut = async () => {
   try {
     await firebase.auth().signOut();
@@ -129,7 +134,17 @@ const logOut = async () => {
   } catch (error) {
     // An error happened.
     console.log(error);
-  };
+  }
+};
+
+// View Feed & Profile Posts
+const fetchPosts = async (fs) => {
+  const posts = await fs.firestore().collection('pyme-posts').get();
+  const result = posts.docs.map((doc) => {
+    const res = { data: doc.data(), id: doc.id };
+    return res;
+  });
+  return result;
 };
 
 export {
@@ -139,5 +154,6 @@ export {
   googleLogin,
   firebaseLogIn,
   logOut,
-  FacebookLogin,
+  facebookLogin,
+  fetchPosts,
 };

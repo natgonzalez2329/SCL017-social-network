@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
   margin: 0;
@@ -17,7 +17,7 @@
 }
 .background__forms,
 .input__form {
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 .container__forms {
   border-radius: 10px;
@@ -27,9 +27,9 @@
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
-  width: 768px;
+  width: 850px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 600px;
 }
 .forms-container {
   position: absolute;
@@ -54,7 +54,7 @@ form {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0rem 5rem;
+  padding: 0rem 3rem;
   transition: all 0.2s 0.7s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -71,7 +71,7 @@ form.sign-in-form {
   height: 3%;
 }
 .title {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   color: #444;
   margin-bottom: 10px;
 }
@@ -82,6 +82,7 @@ form.sign-in-form {
   margin: 10px 0;
   height: 55px;
   border-radius: 55px;
+  border: 1px solid #f0f0f0;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   padding: 0 0.4rem;
@@ -100,19 +101,8 @@ form.sign-in-form {
   border: none;
   line-height: 1;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #333;
-}
-.form__select {
-  background-color: #f0f0f0;
-  outline: none;
-  border: none;
-  line-height: 1;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #aaa;
-  cursor: pointer;
-  border-radius: 55px;
 }
 .input-field input::placeholder {
   color: #aaa;
@@ -222,10 +212,10 @@ form.sign-in-form {
 .panel h3 {
   font-weight: 600;
   line-height: 1;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .panel p {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   padding: 0.7rem 0;
 }
 .btn__form.transparent {
@@ -281,10 +271,12 @@ form.sign-in-form {
     box-shadow: none;
     width: 100%;
     max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .signin-signup {
     width: 100%;
-    top: 95%;
+    top: 85%;
     transform: translate(-50%, -100%);
     transition: 1s 0.8s ease-in-out;
   }
@@ -320,10 +312,10 @@ form.sign-in-form {
     transition-delay: 0.8s;
   }
   .panel h3 {
-    font-size: 1.2rem;
+    font-size: 2.3rem;
   }
   .panel p {
-    font-size: 0.7rem;
+    font-size: 1rem;
     padding: 0.5rem 0;
   }
   .btn__form.transparent {
@@ -333,10 +325,10 @@ form.sign-in-form {
   }
   .container__forms:before {
     width: 1500px;
-    height: 1500px;
+    height: 1000px;
     transform: translateX(-50%);
     left: 30%;
-    bottom: 68%;
+    bottom: 75%;
     right: initial;
     top: initial;
     transition: 2s ease-in-out;
@@ -388,7 +380,9 @@ form.sign-in-form {
   }
 }
 .error-input {
+  text-align: left;
   color: red;
+  font-size: 0.85rem;
 }
 
 footer {
