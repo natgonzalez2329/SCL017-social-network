@@ -18,3 +18,4 @@ export const viewProfile = () => {
 
 /*const area = containerFormTemplate.querySelector('#area__pyme');
     const userAreaSignUp = area.options[area.selectedIndex].text;*/
+ 

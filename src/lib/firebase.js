@@ -57,8 +57,9 @@ const firebaseLogIn = async (userData) => {
     // Signed in
     window.location.hash = '#/feed';
   } catch(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // eslint-disable-next-line no-console
     console.log(error);
   }
 };

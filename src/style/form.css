@@ -270,6 +270,11 @@ form.sign-in-form {
   pointer-events: all;
 }
 
+/*-------------------------Inicio de botones de menú------------------------------------*/
+
+/*---------------------------------------------------------------------------------------*/
+
+
 @media (max-width: 870px) {
   .container__forms {
     min-height: 800px;
