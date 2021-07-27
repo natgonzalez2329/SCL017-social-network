@@ -1,4 +1,4 @@
-import { googleLogin, firebaseSignUp, firebaseLogIn, FacebookLogin } from '../lib/firebase.js';
+import { googleLogin, firebaseSignUp, firebaseLogIn, facebookLogin } from '../lib/firebase.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -168,7 +168,7 @@ export const viewForms = () => {
     email: new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   };
 
-//validación inputs sign up
+  // validación inputs sign up
   const userValidate = (userNameSignUp) => {
     const userError = containerFormTemplate.querySelector('#user-error');
     let valid = false;
@@ -232,7 +232,7 @@ export const viewForms = () => {
     passwordValidate(e.target.value);
   });
 
-  //validación inputs sign in
+  // validación inputs sign in
   const emailInValidate = (userEmailSignIn) => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
@@ -275,7 +275,6 @@ export const viewForms = () => {
     passwordInValidate(e.target.value);
   });
 
-
   // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -296,7 +295,7 @@ export const viewForms = () => {
     }
   });
 
-  //inicio de sesión email y contraseña-event
+  // inicio de sesión email y contraseña-event
   signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const userEmailSignIn = containerFormTemplate.querySelector('#signin-email').value;
@@ -310,19 +309,18 @@ export const viewForms = () => {
     }
   });
 
-  //inicio de sesión google-event
+  // inicio de sesión google-event
   const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
   googleLoginBtn.addEventListener('click', () => googleLogin());
   const googleLoginBtn2 = containerFormTemplate.querySelector('#googleLoginBtn2');
   googleLoginBtn2.addEventListener('click', () => googleLogin());
 
-    
-  //inicio de sesion Facebook
-const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
-facebookLoginBtn.addEventListener('click', () => FacebookLogin());
+  // inicio de sesion Facebook
+  const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
+  facebookLoginBtn.addEventListener('click', () => facebookLogin());
 
-const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
-facebookLoginBtn2.addEventListener('click', () => FacebookLogin());
+  const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
+  facebookLoginBtn2.addEventListener('click', () => facebookLogin());
 
   return containerFormTemplate;
 };
