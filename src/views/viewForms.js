@@ -68,10 +68,9 @@ export const viewForms = () => {
     </div>
     <div class="panels-container">
       <div class="panel left-panel">
-      <div class="divLogoImage>
-      <img class="logoImage" src="./images/logo.png"/>
-    </div>
+   
         <div class="content">
+        <img src="./images/logo.png" class="image" style="border-radius:20%">
           <h3>Punto Pyme</h3>
           <p>
             La forma más sencilla de hacer crecer tu emprendimiento!
@@ -83,10 +82,10 @@ export const viewForms = () => {
       <!--LOGO PYME-->
       </div>
       <div class="panel right-panel">
-      <div class="divLogoImage>
-      <img class="logoImage2" src="./images/logo.png"/>
-    </div>
+
+     
         <div class="content">
+        <img src="./images/logo.png" class="image" style="border-radius:20%">  
           <h3>Bienvenid@s!</h3>
           <p>
             Únete a nuestra comunidad y potencia tu emprendimiento. Aquí encontrarás lo que necesitas!
@@ -102,21 +101,20 @@ export const viewForms = () => {
 
   containerFormTemplate.innerHTML = formTemplate;
 
-  //-------------------- Ocultar/mostrar contraseñas en input de password-signin--------------//
+  // -------------------- Ocultar/mostrar contraseñas en input de password-signin--------------//
   const inputSigninPassword = containerFormTemplate.querySelector('#signin-password');
   const btnUnmaskify = containerFormTemplate.querySelector('#unmaskify');
   const btnMaskify = containerFormTemplate.querySelector('#maskify');
- 
 
   btnUnmaskify.addEventListener('click', () => {
-      inputSigninPassword.type = 'text';
-      btnUnmaskify.style.display = 'none';
-      btnMaskify.style.display = 'block';
-     setTimeout(maskify, 2000);
+    inputSigninPassword.type = 'text';
+    btnUnmaskify.style.display = 'none';
+    btnMaskify.style.display = 'block';
+    setTimeout(maskify, 2000);
   });
 
   btnMaskify.addEventListener('click', () => {
-               maskify();
+    maskify();
   });
 
   function maskify() {
@@ -125,29 +123,28 @@ export const viewForms = () => {
     btnMaskify.style.display = 'none';
     }
 
- //-------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
+  // -------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
 
- const inputPassword = containerFormTemplate.querySelector('#user-password');
- const btnUnmaskify2 = containerFormTemplate.querySelector('#unmaskify2');
- const btnMaskify2 = containerFormTemplate.querySelector('#maskify2');
+  const inputPassword = containerFormTemplate.querySelector('#user-password');
+  const btnUnmaskify2 = containerFormTemplate.querySelector('#unmaskify2');
+  const btnMaskify2 = containerFormTemplate.querySelector('#maskify2');
 
-
- btnUnmaskify2.addEventListener('click', () => {
-     inputPassword.type = 'text';
-     btnUnmaskify2.style.display = 'none';
-     btnMaskify2.style.display = 'block';
+  btnUnmaskify2.addEventListener('click', () => {
+    inputPassword.type = 'text';
+    btnUnmaskify2.style.display = 'none';
+    btnMaskify2.style.display = 'block';
     setTimeout(maskify2, 2000);
- });
+  });
 
- btnMaskify2.addEventListener('click', () => {
-              maskify2()
- });
+  btnMaskify2.addEventListener('click', () => {
+    maskify2();
+  });
 
- function maskify2() {
-   inputPassword.type = 'password';
-   btnUnmaskify2.style.display = 'block';
-   btnMaskify2.style.display = 'none';
-   }
+  function maskify2() {
+    inputPassword.type = 'password';
+    btnUnmaskify2.style.display = 'block';
+    btnMaskify2.style.display = 'none';
+  }
 
   // switch panel formularios
   const signInPanelBtn = containerFormTemplate.querySelector('#sign-in-btn');
@@ -281,7 +278,7 @@ export const viewForms = () => {
     const userNameSignUp = inputUserNameSignUp.value;
     const userEmailSignUp = inputUserEmailSignUp.value;
     const userPasswordSignUp = inputUserPasswordSignUp.value;
-
+    
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
