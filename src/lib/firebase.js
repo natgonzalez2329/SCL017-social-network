@@ -15,12 +15,12 @@ const firebaseInit = () => {
 //registro con email y contraseña
 const firebaseSignUp = async (userData) => {
   try {
-    await firebase.auth().createUserWithEmailAndPassword(userData.userEmail, userData.userPassword);
+    // eslint-disable-next-line max-len
+    await firebase.auth().createUserWithEmailAndPassword(userData.userEmailSignUp, userData.userPasswordSignUp);
     await firebase.auth().currentUser.updateProfile({
-      displayName: userData.userName,
-      phoneNumber: userData.userArea,
+      displayName: userData.userNameSignUp,
     });
-    window.localStorage.setItem('puntopyme-name', userData.userName);
+    window.localStorage.setItem('puntopyme-name', userData.userNameSignUp);
     window.location.hash = '#/feed';
   } catch (error) {
     const errorCode = error.code;
@@ -28,6 +28,15 @@ const firebaseSignUp = async (userData) => {
     console.log(error);
   }
 };
+
+const verifyEmailAddress = () => {
+  firebase.auth().currentUser.sendEmailVerification()
+  .then(() => {
+      console.log("Enviando correo...");
+    // Email verification sent!
+    // ...
+  });
+}
 
 //observador de usuario activo
 const isLogged = () => {
@@ -42,7 +51,7 @@ const isLogged = () => {
 const firebaseLogIn = async (userData) => {
   try {
     const userCredential = await firebase
-    .auth().signInWithEmailAndPassword(userData.userEmail, userData.userPassword);
+    .auth().signInWithEmailAndPassword(userData.userEmailSignIn, userData.userPasswordSignIn);
     console.log(userCredential);
     window.localStorage.setItem('puntopyme-name', userCredential.user.displayName);
     // Signed in
@@ -67,7 +76,7 @@ const googleLogin = async () => {
     // The signed-in user info.
     const user = result.user;
     console.log('user', user);
-    // ...
+    window.location.hash = '#/feed';
   } catch(error) {
     // Handle Errors here.
     const errorCode = error.code;
@@ -95,7 +104,7 @@ const FacebookLogin = () => {
    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
    var accessToken = credential.accessToken;
 
-   // ...
+   window.location.hash = '#/feed';
  })
  .catch((error) => {
    // Handle Errors here.
