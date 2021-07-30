@@ -26,7 +26,7 @@ const firebaseSignUp = async (userData) => {
       displayName: userData.userNameSignUp,
     });
     window.localStorage.setItem('puntopyme-name', userData.userNameSignUp);
-    window.location.hash = '#/feed';
+    window.location.hash = '#feed';
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -58,7 +58,7 @@ const firebaseLogIn = async (userData) => {
       userCredential.user.displayName
     );
     // Signed in
-    window.location.hash = '#/feed';
+    window.location.hash = '#feed';
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -79,7 +79,7 @@ const googleLogin = async () => {
     // The signed-in user info.
     const user = result.user;
     console.log('user', user);
-    window.location.hash = '#/feed';
+    window.location.hash = '#feed';
   } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
@@ -109,7 +109,7 @@ const facebookLogin = () => {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const accessToken = credential.accessToken;
 
-      window.location.hash = '#/feed';
+      window.location.hash = '#feed';
     })
     .catch((error) => {
       // Handle Errors here.
@@ -129,6 +129,7 @@ const logOut = async () => {
   try {
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
+    window.location.href = '/';
     // Sign-out successful.
     // console.log('Sign-out successful.');
   } catch (error) {

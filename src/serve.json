@@ -1,0 +1,8 @@
+{
+    "redirects": [
+      { "source": "#feed", "destination": "/feed" },
+      { "source": "#profile", "destination": "/profile" },
+      { "source": "#post", "destination": "/post" }
+    ]
+  }
+  

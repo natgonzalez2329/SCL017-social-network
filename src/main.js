@@ -5,4 +5,5 @@ import { init } from './lib/init.js';
 
 firebaseInit();
 myFunction();
+// init();
 window.addEventListener('load', init);
