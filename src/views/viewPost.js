@@ -12,9 +12,26 @@ export const viewPost = () => {
         <h2>Nombre Pyme/Usuario</h2>
         <form id="post-form">
             <div class="content__form">
-              <input type="text" id="post-image" class="content__form-input" name="photo" placeholder="image" autocomplete="off" required/>
-            </div>
-            <div class="content__form">
+              <div class="image-preview" id="container__image-post">
+              <img class="image-preview" id="image-post"/>
+              <span class="image-preview__text">Imagen</span>
+              </div>
+              <div class="file">
+              <label for="post-image">Selecciona Imagen</label>
+              <input type="file" id="post-image" class="content__form-input"/>
+              <button id="btn__upload-image"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewbox="0 0 16 16">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+            </svg></button>
+              </div>
+              <!-- <video id="post-video" width="400" height="400" autoplay controls autoplay>
+              <span id="errorMsg"></span>
+              <button id="snap">Capture</button>
+              <canvas id="canvas" width="640" height="480"></canvas>
+              <button id="btn__image-camera">take pic</button> -->
+              </div>
+              <div class="content__form">
+              <input type="text" id="post-photo" class="content__form-input" name="photo" placeholder="image" autocomplete="off"/>
               <input type="text" id="post-description" class="content__form-input" name="description" placeholder="Breve descripción..." autocomplete="off" required/>
             </div>
             <div class="modal__footer">
@@ -34,7 +51,8 @@ export const viewPost = () => {
   const btnModalPost = containerPostTemplate.querySelector('#btn__modal-post');
 
   // Get the <span> element that closes the modal
-  const closeModalPost = containerPostTemplate.querySelector('.close__modal-post');
+  const closeModalPost =
+    containerPostTemplate.querySelector('.close__modal-post');
 
   // When the user clicks the button, open the modal
   btnModalPost.addEventListener('click', () => {
@@ -53,26 +71,107 @@ export const viewPost = () => {
     }
   };
 
+  // Upload Image
+  const btnUploadImage = containerPostTemplate.querySelector('#btn__upload-image');
+  btnUploadImage.addEventListener('click', () => {
+    const ref = firebase.storage().ref();
+    const file = containerPostTemplate.querySelector('#post-image').files[0];
+    if (file) {
+      const nameFile = `${new Date()}-${file.name}`;
+      const metadata = {
+        contentType: file.type,
+      };
+      const task = ref.child(nameFile).put(file, metadata);
+      task
+        .then((snapshot) => {
+          console.log(snapshot.ref.getDownloadURL());
+          return snapshot.ref.getDownloadURL();
+        })
+        .then((url) => {
+          console.log(url);
+          const imagePost = containerPostTemplate.querySelector('#image-post');
+          imagePost.src = url;
+        })
+        .catch(console.error);
+    } else {
+      console.log('no existe ningun archivo');
+    }
+  });
+
+  // Webcam code
+  /*const videoPost = containerPostTemplate.querySelector('#post-video');
+  const canvas = containerPostTemplate.querySelector('#canvas');
+  const snap = containerPostTemplate.querySelector('#snap');
+
+  const constraints = {
+    audio: false,
+    video: {
+      width: 400, height: 400,
+    },
+  };
+  // Success to access webcam
+  const handleSuccess = (stream) => {
+    window.stream = stream;
+    videoPost.srcObject = stream;
+  };
+  // Access webcam
+  const initCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      handleSuccess(stream);
+    } catch (e) {
+      const errorMsgElement = containerPostTemplate.querySelector('#errorMsg');
+      errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+    }
+  };
+
+  // Load init
+  initCamera();
+
+  // Draw image
+  const contextCanvas = canvas.getContext('2d');
+  snap.addEventListener('click', () => {
+    contextCanvas.drawImage(videoPost, 0, 0, 640, 480);
+    const imageCameraPost = new Image();
+    imageCameraPost.id = 'pic';
+    imageCameraPost.src = canvas.toDataURL();
+    console.log(imageCameraPost.src);
+    const buttonTakePic = containerPostTemplate.querySelector('#btn__image-camera');
+
+    buttonTakePic.addEventListener('click', () => {
+      console.log(buttonTakePic)
+      const ref = firebase.storage().ref();
+      ref.child(`${new Date()}-base64`).putString(imageCameraPost.src, 'data_url')
+      .then((snapshot) => {
+        console.log('Uploaded a data_url string!');
+        alert("Image Uploaded")
+      });
+    });
+  });*/
+
   const postForm = containerPostTemplate.querySelector('#post-form');
   // Saving data
   postForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const { displayName, email, uid } = firebase.auth().currentUser;
-    const getPostPhoto = containerPostTemplate.querySelector('#post-image').value;
+    const getPostPhoto = containerPostTemplate.querySelector('#post-photo').value;
     const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
-    firebase.firestore().collection('pyme-posts').add({
-      photo: getPostPhoto,
-      description: getPostInfo,
-      user: {
-        name: displayName,
-        email,
-        uid,
-      },
-    });
+    firebase
+      .firestore()
+      .collection('pyme-posts')
+      .add({
+        photo: getPostPhoto,
+        description: getPostInfo,
+        user: {
+          name: displayName,
+          email,
+          uid,
+        },
+      });
 
     modalPost.style.display = 'none';
-    containerPostTemplate.querySelector('#post-image').value = '';
-    containerPostTemplate.querySelector('#post-description').value = '';
+    containerPostTemplate.querySelector('#image-post').src = '';
+    containerPostTemplate.querySelector('#post-form').reset();
     console.log('Data Saved');
   });
 

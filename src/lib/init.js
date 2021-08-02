@@ -18,27 +18,27 @@ export const init = () => {
   
 };
 
-/*const currentPath = window.location.pathname;
+const currentPath = window.location.hash;
 switch (currentPath) {
-  case '/feed':
+  case '#feed':
     // document.getElementById('root').appendChild(standardTemplate());
     document.getElementById('root').appendChild(viewFeed()); // ruta muro posts
     
     break;
-    case '/profile':
+    case '#profile':
       document.getElementById('root').innerHTML = '';
       document.getElementById('root').appendChild(viewProfile()); // ruta perfil
       break;
-      case '/post':
+      case '#post':
         document.getElementById('root').innerHTML = '';
         document.getElementById('root').appendChild(viewPost()); // ruta post
         break;
         default:
           document.getElementById('root').innerHTML = 'Error 404';
           break;
-        }*/
+        }
 
-       window.onpopstate = async () => {
+       /*window.onpopstate = async () => {
         const currentPath = window.location.hash;
            switch (currentPath) {
            case '#feed':
@@ -59,4 +59,4 @@ switch (currentPath) {
               containerViews.innerHTML = 'Error 404';
               break;
           }
-        };
+        };*/
