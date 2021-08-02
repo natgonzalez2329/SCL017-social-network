@@ -14,7 +14,7 @@ export const viewPost = () => {
             <div class="content__form">
               <div class="image-preview" id="container__image-post">
               <img class="image-preview" id="image-post"/>
-              <span class="image-preview"></span>
+              <span class="image-preview__text">Imagen</span>
               </div>
               <div class="file">
               <label for="post-image">Selecciona Imagen</label>
