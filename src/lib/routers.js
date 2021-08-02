@@ -51,18 +51,18 @@ export const router = async (route) => {
       case '#':
       case '#feed':
         containerViews.innerHTML = '';
-        containerViews.appendChild(standardTemplate());
-       window.history.replaceState({}, 'feed', '/feed');
+        //containerViews.appendChild(standardTemplate());
+        //window.history.replaceState({}, 'feed', '/feed'); 
         containerViews.appendChild(await viewFeed()); // ruta muro posts
         break;
       case '#profile':
         document.getElementById('root').innerHTML = '';
-       window.history.replaceState({}, 'profile', '/profile');
+        //window.history.replaceState({}, 'profile', '/profile');
         containerViews.appendChild(await viewProfile()); // ruta perfil
         break;
       case '#post':
         document.getElementById('root').innerHTML = '';
-       window.history.replaceState({}, 'post', '/post');
+      // window.history.replaceState({}, 'post', '/post');
         containerViews.appendChild(viewPost()); // ruta post
         break;
       default:
@@ -76,7 +76,38 @@ export const router = async (route) => {
     const noHashURL = window.location.href.replace(/#.*$/, '');
     window.history.replaceState({}, 'home', window.location.origin);
   }
+ 
 };
+
+
+
+/*const currentPathView = async (currentPath) => {
+  switch (currentPath) {
+  case '/':
+    containerViews.appendChild(viewForms()); // ruta home page vista formularios-sign-in/up
+    break;
+  
+  case '/feed':
+    containerViews.innerHTML = '';
+    containerViews.appendChild(await viewFeed()); // ruta muro posts
+  break;
+  case '/profile':
+   
+      containerViews.appendChild(await viewProfile()); // ruta perfil
+    } else { window.location.pathname = '/home'; }
+    break;
+  case '/post':
+    if (isLogged()) {
+      containerViews.appendChild(viewPost()); // ruta post
+    } else { window.location.pathname = '/home'; }
+    break;
+  default:
+    containerViews.innerHTML = 'Error 404';
+    break;
+}
+}; */
+
+
 
 // containerViews.appendChild(viewForms()); // ruta home page vista formularios-sign-in/up
 // containerViews.appendChild(viewForms()); // ruta home page vista formularios-sign-in/up

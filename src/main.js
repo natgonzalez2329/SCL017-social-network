@@ -7,3 +7,4 @@ firebaseInit();
 myFunction();
 // init();
 window.addEventListener('load', init);
+

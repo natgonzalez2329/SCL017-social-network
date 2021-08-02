@@ -10,8 +10,12 @@ export const init = () => {
   document.getElementById('root').innerHTML = '';
   document.getElementById('root').appendChild(viewForms());
   window.addEventListener('hashchange', () => {
+    document.getElementById('root').innerHTML = '';
     router(window.location.hash);
+    
+    
   });
+  
 };
 
 /*const currentPath = window.location.pathname;
@@ -34,23 +38,20 @@ switch (currentPath) {
           break;
         }*/
 
-
-
-        window.onpopstate = async () => {
-          containerViews.innerHTML = '';
-          const currentPath = window.location.pathname;
-          switch (currentPath) {
-           case '/feed':
+       window.onpopstate = async () => {
+        const currentPath = window.location.hash;
+           switch (currentPath) {
+           case '#feed':
             containerViews.innerHTML = '';
                 // containerViews.appendChild(standardTemplate());
                 containerViews.appendChild(await viewFeed()); // ruta muro posts
               
               break;
-            case '/profile':
+            case '#profile':
               containerViews.innerHTML = '';
               containerViews.appendChild(await viewProfile()); // ruta perfil
               break;
-            case '/post':
+            case '#post':
               containerViews.innerHTML = '';
              containerViews.appendChild(viewPost()); // ruta post
              break;
