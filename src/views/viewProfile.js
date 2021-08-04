@@ -134,5 +134,5 @@ toggle between hiding and showing the dropdown content */
   return containerProfileTemplate;
 };
 
-/*const area = containerFormTemplate.querySelector('#area__pyme');
-    const userAreaSignUp = area.options[area.selectedIndex].text;*/
+/* const area = containerFormTemplate.querySelector('#area__pyme');
+    const userAreaSignUp = area.options[area.selectedIndex].text; */
