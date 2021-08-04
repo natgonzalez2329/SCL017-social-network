@@ -7,10 +7,10 @@ import { viewPost } from '../views/viewPost.js';
 const containerViews = document.querySelector('#root');
 
 export const init = () => {
-  document.getElementById('root').innerHTML = '';
-  document.getElementById('root').appendChild(viewForms());
+  containerViews.innerHTML = '';
+  containerViews.appendChild(viewForms());
   window.addEventListener('hashchange', () => {
-    document.getElementById('root').innerHTML = '';
+    containerViews.innerHTML = '';
     router(window.location.hash);
     
     
@@ -18,27 +18,27 @@ export const init = () => {
   
 };
 
-/*const currentPath = window.location.pathname;
+const currentPath = window.location.hash;
 switch (currentPath) {
-  case '/feed':
+  case '#feed':
     // document.getElementById('root').appendChild(standardTemplate());
-    document.getElementById('root').appendChild(viewFeed()); // ruta muro posts
+    containerViews.appendChild(viewFeed()); // ruta muro posts
     
     break;
-    case '/profile':
-      document.getElementById('root').innerHTML = '';
-      document.getElementById('root').appendChild(viewProfile()); // ruta perfil
+    case '#profile':
+      containerViews.innerHTML = '';
+      containerViews.appendChild(viewProfile()); // ruta perfil
       break;
-      case '/post':
-        document.getElementById('root').innerHTML = '';
-        document.getElementById('root').appendChild(viewPost()); // ruta post
+      case '#post':
+        containerViews.innerHTML = '';
+        containerViews.appendChild(viewPost()); // ruta post
         break;
         default:
-          document.getElementById('root').innerHTML = 'Error 404';
+          containerViews.innerHTML = 'Error 404';
           break;
-        }*/
+        }
 
-       window.onpopstate = async () => {
+       /*window.onpopstate = async () => {
         const currentPath = window.location.hash;
            switch (currentPath) {
            case '#feed':
@@ -59,4 +59,4 @@ switch (currentPath) {
               containerViews.innerHTML = 'Error 404';
               break;
           }
-        };
+        };*/

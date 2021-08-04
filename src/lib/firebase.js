@@ -20,7 +20,7 @@ const firebaseSignUp = async (userData) => {
       .auth()
       .createUserWithEmailAndPassword(
         userData.userEmailSignUp,
-        userData.userPasswordSignUp
+        userData.userPasswordSignUp,
       );
     await firebase.auth().currentUser.updateProfile({
       displayName: userData.userNameSignUp,
@@ -127,9 +127,9 @@ const facebookLogin = () => {
 // cierre de sesión
 const logOut = async () => {
   try {
+    console.log('cerrando sesion');
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
-    window.location.href = '/';
     // Sign-out successful.
     // console.log('Sign-out successful.');
   } catch (error) {

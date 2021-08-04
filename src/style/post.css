@@ -23,7 +23,7 @@
   border: none;
   /*border: 1px solid #888;*/
   border-radius: 4px;
-  width: 30%;/*resize mobile*/
+  width: 50%;/*resize mobile*/
 }
 
 /* The Close Button */
@@ -57,4 +57,15 @@
 }
 .btn__modal-post:hover {
   background-color: #4d84e2;
+}
+.content__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.file input {
+  display: none;
+}
+.file label {
+  background-color: #5995fd;
 }
