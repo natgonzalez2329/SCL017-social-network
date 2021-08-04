@@ -35,8 +35,9 @@
   border: 1px solid rgb(201, 201, 201);
   padding: 5px;
   border-radius: 4px;
-  width: 50%;
   margin: 10px;
+  width: 320px;
+  height: 450px;
 }
 /*menu Edit Delete*/
 .dropbtn-post {

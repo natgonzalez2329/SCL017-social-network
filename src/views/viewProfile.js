@@ -168,6 +168,10 @@ toggle between hiding and showing the dropdown content */
     };
 
     const btnDelete = containerProfileTemplate.querySelector('#btn-delete');
+    const btnCancel = containerProfileTemplate.querySelector('#btn-cancel');
+    btnCancel.addEventListener('click', () => {
+      modalDelete.style.display = 'none';
+    });
 
     btnDelete.addEventListener('click', async (e) => {
       e.stopPropagation();

@@ -1,22 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto:300');
-html
-{
-  background: #ecf0f1;
-}
-
-body
-{
-  margin:0;
-  padding:0;
-}
-h1
-{
-  font-family: 'Roboto';
-  font-weight:100;
-  position:absolute;
-  top:35%;
-  left:48%;
-}
 
 .material-icons {
   font-family: 'Material Icons';
