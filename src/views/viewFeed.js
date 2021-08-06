@@ -71,9 +71,9 @@ const menuContainer =`<div class="headerContainer">
       <p>${post.data.description}</p>
     
       <div class="container-btn-like">
-  <button class="like__btn">
+  <button class="like__btn" data-id='${post.id}'>
     <span id="icon"><i class="far fa-heart"></i></span>
-    <span id="count">0</span> Me gusta
+    <span id="count">0</span> Likes
   </button>
 </div>
 
@@ -89,25 +89,29 @@ const menuContainer =`<div class="headerContainer">
     containerPostFeed = '<li>Se el primero en publicar</li>';
   }
 
-  const likeBtn = containerFeedTemplate.querySelector('.like__btn');
+  const likeBtn = containerFeedTemplate.querySelectorAll('.like__btn');
   const likeIcon = containerFeedTemplate.querySelector('#icon');
   let count = containerFeedTemplate.querySelector('#count');
   let clicked = false;
   
-  likeBtn.addEventListener('click', () =>{
-if (!clicked){
-  clicked =true;
-  likeIcon.innerHTML =`<i class="fas fa-heart"></i>`;
-likeIcon.style.color='red';
-  count.textContent ++;
-}else{
-  clicked =false;
-  likeIcon.innerHTML =`<i class="far fa-heart"></i>`;
-  count.textContent --;
-
-}
-
-  });
+likeBtn.forEach(btn => {
+  btn.addEventListener('click', (e) =>{
+    if (!clicked){
+      clicked =true;
+      likeIcon.innerHTML =`<i class="fas fa-heart"></i>`;
+      likeIcon.style.color='red';
+      count.textContent ++;
+      console.log(e.target)
+    }else{
+      clicked =false;
+      likeIcon.innerHTML =`<i class="far fa-heart"></i>`;
+      count.textContent --;
+    
+    }
+    
+      });
+});
+  
 
 
   return containerFeedTemplate;
