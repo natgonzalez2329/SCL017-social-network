@@ -1,4 +1,5 @@
 import { logOut } from './firebase.js';
+
 // aqui exportaras las funciones que necesites
 const myFunction = () => {
   // aqui tu codigo

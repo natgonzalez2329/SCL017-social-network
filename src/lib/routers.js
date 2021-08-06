@@ -31,6 +31,7 @@ export const router = async (route) => {
         //window.history.replaceState({}, 'post', '/post');
         containerViews.appendChild(viewPost()); // ruta post
         break;
+        
       default:
         containerViews.innerHTML = 'Error 404';
         break;
