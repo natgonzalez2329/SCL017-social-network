@@ -121,7 +121,7 @@ const profileTemplate = `
     /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
     const dropBtnMenuPost = containerProfileTemplate.querySelector('#dropbtn-menupost');
-    dropBtnMenuPost.addEventListener('click', () => {
+    dropBtnMenuPost.addEventListener('click', (e) => {
       containerProfileTemplate
         .querySelector('#dropcontent-post')
         .classList.toggle('show');

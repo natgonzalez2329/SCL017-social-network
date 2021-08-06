@@ -13,22 +13,22 @@ export const router = async (route) => {
   if (isLogged() || logged) {
     containerViews.innerHTML = '';
     switch (route) {
-      //case '':
-      //case '#':
+      // case '':
+      // case '#':
       case '#feed':
         containerViews.innerHTML = '';
-        //containerViews.appendChild(standardTemplate());
-        //window.history.replaceState({}, 'feed', '/feed'); 
+        // containerViews.appendChild(standardTemplate());
+        // window.history.replaceState({}, 'feed', '/feed'); 
         containerViews.appendChild(await viewFeed()); // ruta muro posts
         break;
       case '#profile':
         document.getElementById('root').innerHTML = '';
-        //window.history.replaceState({}, 'profile', '/profile');
+        // window.history.replaceState({}, 'profile', '/profile');
         containerViews.appendChild(await viewProfile()); // ruta perfil
         break;
       case '#post':
         document.getElementById('root').innerHTML = '';
-        //window.history.replaceState({}, 'post', '/post');
+        // window.history.replaceState({}, 'post', '/post');
         containerViews.appendChild(viewPost()); // ruta post
         break;
       default:
@@ -39,7 +39,7 @@ export const router = async (route) => {
     console.log('no tengo sesion');
     containerViews.innerHTML = '';
     containerViews.appendChild(viewForms());
-    //const noHashURL = window.location.href.replace(/#.*$/, '');
+    // const noHashURL = window.location.href.replace(/#.*$/, '');
    // window.history.replaceState({}, 'home', window.location.origin);
   }
  
