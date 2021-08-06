@@ -69,6 +69,14 @@ const menuContainer =`<div class="headerContainer">
       <li class="container_post-feed">
       <h5>${post.data.photo}</h5>
       <p>${post.data.description}</p>
+    
+      <div class="container-btn-like">
+  <button class="like__btn">
+    <span id="icon"><i class="far fa-heart"></i></span>
+    <span id="count">0</span> Me gusta
+  </button>
+</div>
+
       </li>
       `;
     });
@@ -80,6 +88,27 @@ const menuContainer =`<div class="headerContainer">
   } else {
     containerPostFeed = '<li>Se el primero en publicar</li>';
   }
+
+  const likeBtn = containerFeedTemplate.querySelector('.like__btn');
+  const likeIcon = containerFeedTemplate.querySelector('#icon');
+  let count = containerFeedTemplate.querySelector('#count');
+  let clicked = false;
+  
+  likeBtn.addEventListener('click', () =>{
+if (!clicked){
+  clicked =true;
+  likeIcon.innerHTML =`<i class="fas fa-heart"></i>`;
+likeIcon.style.color='red';
+  count.textContent ++;
+}else{
+  clicked =false;
+  likeIcon.innerHTML =`<i class="far fa-heart"></i>`;
+  count.textContent --;
+
+}
+
+  });
+
 
   return containerFeedTemplate;
 };

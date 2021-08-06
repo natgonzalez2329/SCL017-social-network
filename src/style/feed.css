@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 .container_post-feed {
   border: 1px solid rgb(201, 201, 201);
@@ -6,4 +7,17 @@
   width: 320px;
   height: 450px;
   margin: 10px;
+}
+
+.like__btn{
+  padding: 0.5em 1em;
+  background:#fff;
+  font-size:1em;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  border:none;
+  color:#000;
+  cursor: pointer;
+  outline:none;
+  position: absolute;
 }

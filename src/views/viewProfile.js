@@ -86,7 +86,7 @@ const profileTemplate = `
       containerPostProfile += `
       <li class="container_post-profile">
       <div class='dropdown-post'>
-          <button id='dropbtn-menupost' class='dropbtn-post'>
+          <button id='dropbtn-menupost' data-id='${post.id}' class='dropbtn-post'>
             <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-three-dots-vertical' viewbox='0 0 16 16'>
               <path d='M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/>
             </svg>
@@ -110,6 +110,7 @@ const profileTemplate = `
       </div>
       <h5>${post.data.photo}</h5>
       <p>${post.data.description}</p>
+      Holaaa
       </li>
       `;
     });
@@ -120,12 +121,25 @@ const profileTemplate = `
     // menu Edit Delete
     /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-    const dropBtnMenuPost = containerProfileTemplate.querySelector('#dropbtn-menupost');
+
+  /*  const dropBtnMenuPost = containerProfileTemplate.querySelector('#dropbtn-menupost');
     dropBtnMenuPost.addEventListener('click', (e) => {
+      containerProfileTemplate */
+
+  const dropBtnMenuPost = containerProfileTemplate.querySelectorAll('.dropbtn-post');
+    dropBtnMenuPost.forEach(btns => {
+      btns.addEventListener('click',() =>{
+        containerProfileTemplate
+
+        .querySelector('#dropcontent-post')
+        .classList.toggle('show');
+        });
+    });
+    /*dropBtnMenuPost.addEventListener('click', () => {
       containerProfileTemplate
         .querySelector('#dropcontent-post')
         .classList.toggle('show');
-    });
+    });*/
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = (e) => {
