@@ -43,7 +43,7 @@
 .modal__footer {
   text-align: right;
 }
-.btn__modal-post {
+#btn__modal-post {
   width: 100px;
   background-color: #5995fd;
   border: none;
@@ -54,8 +54,9 @@
   font-weight: 600;
   margin: 10px 0;
   cursor: pointer;
+  margin-left:7%;
 }
-.btn__modal-post:hover {
+#btn__modal-post:hover {
   background-color: #4d84e2;
 }
 .content__form {

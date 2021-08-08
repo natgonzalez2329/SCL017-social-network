@@ -91,7 +91,7 @@ const menuContainer =`<div class="headerContainer">
       <p>${post.data.description}</p>
     
       <div class="container-btn-like">
-  <button class="like__btn" data-id='${post.id}'>
+  <button class="like__btn">
     <span id="icon"><i class="far fa-heart"></i></span>
     <span id="count">0</span> Me Gusta
   </button>
@@ -117,11 +117,11 @@ const menuContainer =`<div class="headerContainer">
   likeBtn.addEventListener('click', () =>{
 if (!clicked){
   clicked =true;
-  likeIcon.innerHTML =`<i class="fas fa-thumbs-up"></i>`
+  likeIcon.innerHTML =`<i class="fas fa-heart"></i>`
   count.textContent ++;
 }else{
   clicked =false;
-  likeIcon.innerHTML =`<i class="far fa-thumbs-up"></i>`
+  likeIcon.innerHTML =`<i class="far heart"></i>`
   count.textContent --;
 
 }
