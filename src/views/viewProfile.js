@@ -71,7 +71,7 @@ const menuContainer =`<div class="headerContainer">
 containerProfileTemplate.innerHTML = menuContainer;
 
    const logOutBtn = containerProfileTemplate.querySelector('.logout-btn');
-   logOutBtn.addEventListener('click', () => logOut());
+   logOutBtn.addEventListener('click', () => firebaseLogout());
 
 const profileTemplate = `
   <div class='view__profile'>Profile</div>
@@ -207,7 +207,7 @@ toggle between hiding and showing the dropdown content */
   } else {
     containerPostProfile += '<li>Publica tu primer post</li>';
   }
-  
+
 containerProfileTemplate.appendChild(mobileMenuComponent());
   return containerProfileTemplate;
 };
