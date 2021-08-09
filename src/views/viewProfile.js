@@ -212,5 +212,5 @@ containerProfileTemplate.appendChild(mobileMenuComponent());
   return containerProfileTemplate;
 };
 
-/*const area = containerFormTemplate.querySelector('#area__pyme');
-    const userAreaSignUp = area.options[area.selectedIndex].text;*/
+/* const area = containerFormTemplate.querySelector('#area__pyme');
+    const userAreaSignUp = area.options[area.selectedIndex].text; */
