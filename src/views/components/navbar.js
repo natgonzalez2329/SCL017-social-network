@@ -24,27 +24,17 @@ export const topMenuComponent = () => {
         </a>                          
       </span>
       <span class="second_item2">
-     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
       <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
       </svg>
-     </span>
-      <span class="third_item2">
-      <a href='#feed' style='color:white;'>
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewbox="0 0 16 16">
-      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-    </svg>
-  </a>
-  </span>
+      </span>
+      
   <span class="fourth_item2" id="usuario2">
   <a href='#profile' style='color:white;'>
   <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" id="persona1" class="bi bi-person" viewbox="0 0 16 16">
       <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
     </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" id="persona2" display="none" class="bi bi-person-fill" viewBox="0 0 16 16">
-    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-  </svg>
-    </a>
+  </a>
     </span>
 
 
@@ -59,15 +49,14 @@ export const topMenuComponent = () => {
   </div>
 
 
-   </div> `
+   </div> `;
 
 
   containerTopMenu.innerHTML = topMenu;
   const btnModalPost = containerTopMenu.querySelector('.second_item2');
-  containerTopMenu.appendChild(viewPost());
-  const modalPost = containerTopMenu.querySelector('.container__modal-post');
-  btnModalPost.addEventListener('click', () => {
-    modalPost.style.display = 'block';
+  console.log(btnModalPost);
+  btnModalPost.addEventListener('click',()=>{
+    alert('Hola hili');
   });
   return containerTopMenu;
 
