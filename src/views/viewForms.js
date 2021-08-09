@@ -92,7 +92,19 @@ export const viewForms = () => {
         </div>
       </div>
     </div>
-  </div>`;
+  </div>
+  <div id="container__modal-verify" class="container__modal-verify">
+  <div class="content__modal-verify">
+    <span class="close__modal-verify" id="close__modal-verify">&times;</span>
+    <div>
+      <h1>Valida tu cuenta antes de Iniciar Sesión</h1>
+      <p>Busca el correo electrónico de verificación en la bandeja de entrada y haz click en el vínculo que se muestra en el mensaje.</p>
+    </div> 
+    <div class="modal__footer">
+      <button class="btn__modal-verify" id="btn-verify">Verifica e Inicia Sesión</button>
+    </div>
+  </div>
+</div>`;
 
   containerFormTemplate.innerHTML = formTemplate;
 
@@ -266,6 +278,26 @@ export const viewForms = () => {
   inputUserPasswordSignIn.addEventListener('keyup', (e) => {
     passwordInValidate(e.target.value);
   });
+  
+  const btnSignUpModal = containerFormTemplate.querySelector('#btn-signup');
+  const modalVerify = containerFormTemplate.querySelector('#container__modal-verify');
+  const closeModalVerify = containerFormTemplate.querySelector('#close__modal-verify');
+  const btnVerify = containerFormTemplate.querySelector('#btn-verify');
+
+  btnSignUpModal.onclick = () => {
+    modalVerify.style.display = 'block';
+  };
+  closeModalVerify.addEventListener('click', () => {
+    modalVerify.style.display = 'none';
+  });
+  btnVerify.addEventListener('click', () => {
+    modalVerify.style.display = 'none';
+  });
+  window.onclick = (e) => {
+    if (e.target === modalVerify) {
+      modalVerify.style.display = 'none';
+    }
+  };
 
   // registro de cuenta, email y contraseña-event
   signUpForm.addEventListener('submit', (e) => {
@@ -273,7 +305,7 @@ export const viewForms = () => {
     const userNameSignUp = inputUserNameSignUp.value;
     const userEmailSignUp = inputUserEmailSignUp.value;
     const userPasswordSignUp = inputUserPasswordSignUp.value;
-    
+
     userValidate(userNameSignUp);
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
@@ -284,6 +316,8 @@ export const viewForms = () => {
         userPasswordSignUp,
         userNameSignUp,
       });
+      signUpForm.reset();
+      //userPasswordSignUp.blur(); quitar el focus en el input de password 
     }
   });
 

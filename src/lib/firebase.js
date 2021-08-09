@@ -1,5 +1,4 @@
 const firebaseInit = () => {
-  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: 'AIzaSyA-7wjgyCL8NqhOvM0D_tlfirof1p-k5l0',
     authDomain: 'punto-pyme.firebaseapp.com',
@@ -8,14 +7,21 @@ const firebaseInit = () => {
     messagingSenderId: '332879123428',
     appId: '1:332879123428:web:bd43ea94ed68952721edf1',
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+};
+
+//  Email de Verificacion
+const verificationEmail = () => {
+  firebase.auth().currentUser.sendEmailVerification().then(() => {
+    alert('Verification Sent');
+  }).catch((error) => {
+    alert(error);
+  });
 };
 
 // registro con email y contraseña
 const firebaseSignUp = async (userData) => {
   try {
-    // eslint-disable-next-line max-len
     await firebase
       .auth()
       .createUserWithEmailAndPassword(
@@ -25,8 +31,10 @@ const firebaseSignUp = async (userData) => {
     await firebase.auth().currentUser.updateProfile({
       displayName: userData.userNameSignUp,
     });
-    window.localStorage.setItem('puntopyme-name', userData.userNameSignUp);
-    window.location.hash = '#feed';
+    const user = firebase.auth().currentUser;
+    verificationEmail();
+    console.log(user.displayName);
+    return null;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -53,12 +61,18 @@ const firebaseLogIn = async (userData) => {
         userData.userPasswordSignIn
       );
     console.log(userCredential);
-    window.localStorage.setItem(
-      'puntopyme-name',
-      userCredential.user.displayName
-    );
-    // Signed in
-    window.location.hash = '#feed';
+    const user = firebase.auth().currentUser;
+    if (user != null && user.emailVerified) {
+      window.localStorage.setItem(
+        'puntopyme-name',
+        user.displayName,
+      );
+      // Signed in
+      window.location.hash = '#feed';
+      return user;
+    }
+    console.log('usuario no verificado');
+    return null;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -125,15 +139,11 @@ const facebookLogin = () => {
 };
 
 // cierre de sesión
-const logOut = async () => {
+const firebaseLogout = async () => {
   try {
-    console.log('cerrando sesion');
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
-    // Sign-out successful.
-    // console.log('Sign-out successful.');
   } catch (error) {
-    // An error happened.
     console.log(error);
   }
 };
@@ -154,7 +164,7 @@ export {
   isLogged,
   googleLogin,
   firebaseLogIn,
-  logOut,
+  firebaseLogout,
   facebookLogin,
   fetchPosts,
 };
