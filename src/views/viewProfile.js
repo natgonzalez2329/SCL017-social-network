@@ -1,3 +1,4 @@
+import { mobileMenuComponent } from './components/navbar.js';
 import { fetchPosts } from '../lib/firebase.js';
 
 // eslint-disable-next-line no-var
@@ -32,19 +33,19 @@ const menuContainer =`<div class="headerContainer">
 </a>                          
 </span>
 <span class="second_item2">
-<a href='#post' style='color:white;'>
+<a href='#' style='color:white;'>
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
   <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
 </svg>
 </a>
 </span>
-<span class="third_item2">
+<!--<span class="third_item2">
 <a href='#feed' style='color:white;'>
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewbox="0 0 16 16">
   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 </svg>
 </a>
-</span>
+</span>-->
 <span class="fourth_item2" id="usuario2">
 <a href='#profile' style='color:white;'>
 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" id="persona2" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -52,11 +53,25 @@ const menuContainer =`<div class="headerContainer">
 </svg>
 </a>
 </span>
+
+<span class='logout-btn'>
+    <a href='' style='color:white;'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+  </svg> 
+    </a>
+    </span>
+
+
+
 </div>
 </div> `
 //-------------------------------------------------------------------------------------//
 containerProfileTemplate.innerHTML = menuContainer;
 
+   const logOutBtn = containerProfileTemplate.querySelector('.logout-btn');
+   logOutBtn.addEventListener('click', () => logOut());
 
 const profileTemplate = `
   <div class='view__profile'>Profile</div>
@@ -86,7 +101,7 @@ const profileTemplate = `
       containerPostProfile += `
       <li class="container_post-profile">
       <div class='dropdown-post'>
-          <button id='dropbtn-menupost' class='dropbtn-post'>
+          <button id='dropbtn-menupost' data-id='${post.id}' class='dropbtn-post'>
             <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-three-dots-vertical' viewbox='0 0 16 16'>
               <path d='M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/>
             </svg>
@@ -110,6 +125,7 @@ const profileTemplate = `
       </div>
       <h5>${post.data.photo}</h5>
       <p>${post.data.description}</p>
+      Holaaa
       </li>
       `;
     });
@@ -120,12 +136,19 @@ const profileTemplate = `
     // menu Edit Delete
     /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-    const dropBtnMenuPost = containerProfileTemplate.querySelector('#dropbtn-menupost');
-    dropBtnMenuPost.addEventListener('click', () => {
+    const dropBtnMenuPost = containerProfileTemplate.querySelectorAll('.dropbtn-post');
+    dropBtnMenuPost.forEach(btns => {
+      btns.addEventListener('click',() =>{
+        containerProfileTemplate
+        .querySelector('#dropcontent-post')
+        .classList.toggle('show');
+        });
+    });
+    /*dropBtnMenuPost.addEventListener('click', () => {
       containerProfileTemplate
         .querySelector('#dropcontent-post')
         .classList.toggle('show');
-    });
+    });*/
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = (e) => {
@@ -184,7 +207,8 @@ toggle between hiding and showing the dropdown content */
   } else {
     containerPostProfile += '<li>Publica tu primer post</li>';
   }
-
+  
+containerProfileTemplate.appendChild(mobileMenuComponent());
   return containerProfileTemplate;
 };
 
