@@ -2,8 +2,9 @@ export const viewPost = () => {
   const containerPostTemplate = document.createElement('div');
   containerPostTemplate.className = 'container__post-template';
 
-//---------------Inicio menú--------------------------------//
-const menuContainer =`<div class="headerContainer">
+  // ---------------Inicio menú--------------------------------//
+  const menuContainer = `
+  <div class="headerContainer">
     <div class="nameApp">PUNTO PYME</div>
 
     <div class="search">
@@ -56,14 +57,13 @@ const menuContainer =`<div class="headerContainer">
     </a>
     </span>
   </div>
-   </div> `
-   //----------------------------------------------------------//
-   containerPostTemplate.innerHTML = menuContainer;
-   const logOutBtn = containerPostTemplate.querySelector('.logout-btn');
-   logOutBtn.addEventListener('click', () => logOut());
+   </div> `;
+  // ----------------------------------------------------------//
+  containerPostTemplate.innerHTML = menuContainer;
+  const logOutBtn = containerPostTemplate.querySelector('.logout-btn');
+  logOutBtn.addEventListener('click', () => logOut());
 
-   
-   const postTemplate = `  
+  const postTemplate = `  
   <button id="btn__modal-post">Post</button>
   <div id="container__modal-post" class="container__modal-post">
     <div class="content__modal-post">
@@ -102,7 +102,7 @@ const menuContainer =`<div class="headerContainer">
     </div>
   </div>
   </div>`;
-  
+
   containerPostTemplate.innerHTML += postTemplate;
 
   // Get the modal
@@ -112,8 +112,7 @@ const menuContainer =`<div class="headerContainer">
   const btnModalPost = containerPostTemplate.querySelector('#btn__modal-post');
 
   // Get the <span> element that closes the modal
-  const closeModalPost =
-    containerPostTemplate.querySelector('.close__modal-post');
+  const closeModalPost = containerPostTemplate.querySelector('.close__modal-post');
 
   // When the user clicks the button, open the modal
   btnModalPost.addEventListener('click', () => {
@@ -159,57 +158,6 @@ const menuContainer =`<div class="headerContainer">
     }
   });
 
-  // Webcam code
-  /*const videoPost = containerPostTemplate.querySelector('#post-video');
-  const canvas = containerPostTemplate.querySelector('#canvas');
-  const snap = containerPostTemplate.querySelector('#snap');
-
-  const constraints = {
-    audio: false,
-    video: {
-      width: 400, height: 400,
-    },
-  };
-  // Success to access webcam
-  const handleSuccess = (stream) => {
-    window.stream = stream;
-    videoPost.srcObject = stream;
-  };
-  // Access webcam
-  const initCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      handleSuccess(stream);
-    } catch (e) {
-      const errorMsgElement = containerPostTemplate.querySelector('#errorMsg');
-      errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
-    }
-  };
-
-  // Load init
-  initCamera();
-
-  // Draw image
-  const contextCanvas = canvas.getContext('2d');
-  snap.addEventListener('click', () => {
-    contextCanvas.drawImage(videoPost, 0, 0, 640, 480);
-    const imageCameraPost = new Image();
-    imageCameraPost.id = 'pic';
-    imageCameraPost.src = canvas.toDataURL();
-    console.log(imageCameraPost.src);
-    const buttonTakePic = containerPostTemplate.querySelector('#btn__image-camera');
-
-    buttonTakePic.addEventListener('click', () => {
-      console.log(buttonTakePic)
-      const ref = firebase.storage().ref();
-      ref.child(`${new Date()}-base64`).putString(imageCameraPost.src, 'data_url')
-      .then((snapshot) => {
-        console.log('Uploaded a data_url string!');
-        alert("Image Uploaded")
-      });
-    });
-  });*/
-
   const postForm = containerPostTemplate.querySelector('#post-form');
   // Saving data
   postForm.addEventListener('submit', (e) => {
@@ -235,8 +183,8 @@ const menuContainer =`<div class="headerContainer">
     containerPostTemplate.querySelector('#post-form').reset();
     console.log('Data Saved');
   });
-//-----------------------------Mobile menu---------------------------------------//
-const mobileMenu =`<div class="menuMobileContainer">
+  // -----------------------------Mobile menu---------------------------------------//
+  const mobileMenu = `<div class="menuMobileContainer">
 <div class="auxiliarContainer">
 <div class="menu-icons-mobile">
 <span class="first_item" id="home2">
@@ -271,7 +219,7 @@ const mobileMenu =`<div class="menuMobileContainer">
 </span>
 </div>
 </div> 
-</div>`
-containerPostTemplate.innerHTML += mobileMenu;
+</div>`;
+  containerPostTemplate.innerHTML += mobileMenu;
   return containerPostTemplate;
 };
