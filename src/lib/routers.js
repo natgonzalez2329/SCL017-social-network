@@ -1,9 +1,9 @@
 import { viewForms } from '../views/viewForms.js';
 import { viewFeed } from '../views/viewFeed.js';
 import { viewProfile } from '../views/viewProfile.js';
-import { viewPost } from '../views/viewPost.js';
+// import { viewPost } from '../views/viewPost.js';
 import { isLogged } from './firebase.js';
-import { standardTemplate } from '../views/standard.js';
+
 
 const containerViews = document.querySelector('#root');
 
@@ -26,11 +26,12 @@ export const router = async (route) => {
         //window.history.replaceState({}, 'profile', '/profile');
         containerViews.appendChild(await viewProfile()); // ruta perfil
         break;
-      case '#post':
+      /*case '#post':
         document.getElementById('root').innerHTML = '';
         //window.history.replaceState({}, 'post', '/post');
         containerViews.appendChild(viewPost()); // ruta post
-        break;
+        break;*/
+        
       default:
         containerViews.innerHTML = 'Error 404';
         break;
