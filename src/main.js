@@ -6,4 +6,3 @@ import { init } from './lib/init.js';
 firebaseInit();
 myFunction();
 window.addEventListener('load', init);
-

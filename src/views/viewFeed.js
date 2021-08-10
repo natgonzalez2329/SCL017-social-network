@@ -4,12 +4,12 @@ import { fetchPosts } from '../lib/firebase.js';
 var containerViews = document.querySelector('#root');
 
 export const viewFeed = async () => {
-containerViews.innerHTML = '';
+  containerViews.innerHTML = '';
 
   const containerFeedTemplate = document.createElement('div');
   containerFeedTemplate.className = 'container__feed-template';
-//---------------Inicio menú--------------------------------//
-const menuContainer =`<div class="headerContainer">
+  // ---------------Inicio menú--------------------------------//
+  const menuContainer = `<div class="headerContainer">
     <div class="nameApp">PUNTO PYME</div>
 
     <div class="search">
@@ -54,13 +54,11 @@ const menuContainer =`<div class="headerContainer">
     </a>
     </span>
   </div>
-   </div> `
-   //-------------------------------------------------------------------------------------//
+    </div> `;
+  // -------------------------------------------------------------------------------------//
 
+  containerFeedTemplate.innerHTML = menuContainer;
 
-
-   containerFeedTemplate.innerHTML = menuContainer;
- 
   let containerPostFeed = '';
   const posts = await fetchPosts(firebase);
   if (posts.length > 0) {

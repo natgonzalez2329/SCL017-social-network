@@ -74,6 +74,7 @@
 }
 .dropdown-post button:hover {background-color: #ddd;}
 .show {display: block;}
+
 /* The Modal Delete Message (background) */
 .container__modal-delete {
   display: none; /* Hidden by default */
@@ -134,6 +135,69 @@
   cursor: pointer;
 }
 .btn__modal-delete:hover {
+  background-color: #4d84e2;
+}
+
+/* The Modal Update Message (background) */
+.container__modal-edit {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.content__modal-edit {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  width: 50%;/*resize mobile*/
+}
+.content__modal-edit h1 {
+  font-size: 1.1rem;
+}
+/* The Close Button */
+.close__modal-edit {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close__modal-edit:hover,
+.close__modal-edit:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal__footer {
+  font-family: "Montserrat", sans-serif;
+  text-align: right;
+}
+.btn__modal-edit {
+  width: 80px;
+  height: 20px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.btn__modal-edit:hover {
   background-color: #4d84e2;
 }
 
