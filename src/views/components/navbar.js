@@ -1,4 +1,5 @@
 import { viewPost } from '../viewPost.js';
+import { firebaseLogout } from '../../lib/firebase.js';
 //-------menu superior
 export const topMenuComponent = () => {
     const containerTopMenu = document.createElement('div');
@@ -23,7 +24,7 @@ export const topMenuComponent = () => {
         </svg> 
         </a>                          
       </span>
-      <span class="second_item2">
+      <span id="addPost" class="second_item2">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
       <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
       </svg>
@@ -51,17 +52,26 @@ export const topMenuComponent = () => {
 
    </div> `;
 
+   containerTopMenu.innerHTML = topMenu;
+   /*const btnModalPost = containerTopMenu.querySelector('#addPost');
+   //containerTopMenu.appendChild(viewPost());
+   //const modalPost = containerTopMenu.querySelector('.container__modal-post');
+   btnModalPost.addEventListener('click', () => {
+    // modalPost.style.display = 'block';
+    alert("Hola");
+   });*/
+   
+   const logOutBtn = containerTopMenu.querySelector('.logout-btn');
+   logOutBtn.addEventListener('click', () => {
+       alert("chao!");
+       firebaseLogout();
+    });
 
-  containerTopMenu.innerHTML = topMenu;
-  const btnModalPost = containerTopMenu.querySelector('.second_item2');
-  console.log(btnModalPost);
-  btnModalPost.addEventListener('click',()=>{
-    alert('Hola hili');
-  });
-  return containerTopMenu;
 
-}
-//------------------------
+
+   return containerTopMenu;
+};
+ 
 
 export const mobileMenuComponent = () => {
   const containerMobileMenu = document.createElement('div');
@@ -110,6 +120,13 @@ export const mobileMenuComponent = () => {
   btnModalPost.addEventListener('click', () => {
     modalPost.style.display = 'block';
   });
+
+  const logOutBtn = containerMobileMenu.querySelector('.logout-btn');
+  logOutBtn.addEventListener('click', () => {
+      alert("chao!");
+      firebaseLogout();}
+  );
+
   return containerMobileMenu;
 };
 

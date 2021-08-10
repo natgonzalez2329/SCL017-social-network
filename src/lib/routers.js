@@ -3,7 +3,7 @@ import { viewFeed } from '../views/viewFeed.js';
 import { viewProfile } from '../views/viewProfile.js';
 // import { viewPost } from '../views/viewPost.js';
 import { isLogged } from './firebase.js';
-import { standardTemplate } from '../views/standard.js';
+
 
 const containerViews = document.querySelector('#root');
 

@@ -1,7 +1,7 @@
-import { mobileMenuComponent } from './components/navbar.js';
-import { topMenuComponent } from './components/navbar.js';
+import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
+//import { topMenuComponent } from './components/navbar.js';
 import { fetchPosts } from '../lib/firebase.js';
-import { firebaseLogout } from '../lib/firebase.js';
+//import { firebaseLogout } from '../lib/firebase.js';
 // eslint-disable-next-line no-var
 var containerViews = document.querySelector('#root');
 
