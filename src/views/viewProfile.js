@@ -13,8 +13,7 @@ export const viewProfile = async () => {
  
   containerProfileTemplate.appendChild(topMenuComponent());
 
-
-const profileTemplate = `
+  const profileTemplate = `
   <div class='view__profile'>Profile</div>
   <div class="content__profile">
   <div class='image__profile-user'>IMAGEN PERFIL</div>
@@ -36,7 +35,7 @@ const profileTemplate = `
   containerProfileTemplate.innerHTML += profileTemplate;
 
   let containerPostProfile = '';
-  const posts = await fetchPosts(firebase);
+  const posts = await fetchPosts(firebase, firebase.auth().currentUser.uid);
   if (posts.length > 0) {
     posts.forEach((post) => {
       containerPostProfile += `
@@ -48,7 +47,17 @@ const profileTemplate = `
             </svg>
           </button>
           <div id='dropcontent-post' class='dropdown-content-post'>
-            <button>Editar</button>
+            <button id='btn__edit'>Editar</button>
+            <div id='container__modal-edit' class='container__modal-edit'>
+          <div class='content__modal-edit'>
+              <span class='close__modal-edit' id='close-edit'>&times;</span>
+              <h1>lo que se va a editar: ${post.data.photo}</h1>
+              <p><input type='text' id='editText' value='${post.data.description}' /></p>
+            <div class='modal__footer'>
+              <button type='button' class='btn__modal-edit' id='btn-edit' pid='${post.id}'>Publicar</button>
+              </div>
+              </div>
+            </div>
             <button id='btn__modal-delete'>Eliminar</button>
         <div id='container__modal-delete' class='container__modal-delete'>
           <div class='content__modal-delete'>
@@ -57,7 +66,7 @@ const profileTemplate = `
               <p>La publicación se eliminará permanentemente.</p>
             <div class='modal__footer'>
               <button class='btn__modal-delete' id='btn-cancel'>Cancelar</button>
-              <button noid='${post.id}' class='btn__modal-delete' id='btn-delete'>Eliminar</button>
+              <button pid='${post.id}' class='btn__modal-delete' id='btn-delete'>Eliminar</button>
                 </div>
               </div>
             </div>
@@ -70,8 +79,7 @@ const profileTemplate = `
       </li>
       `;
     });
-    const profilePostTemplate = `
-    <ul id='posts' class="container__posts-profile">${containerPostProfile}</ul>`;
+    const profilePostTemplate = `<ul id='posts' class="container__posts-profile">${containerPostProfile}</ul>`;
     containerProfileTemplate.innerHTML += profilePostTemplate;
 
     // menu Edit Delete
@@ -85,12 +93,7 @@ toggle between hiding and showing the dropdown content */
         .classList.toggle('show');
         });
     });
-    /*dropBtnMenuPost.addEventListener('click', () => {
-      containerProfileTemplate
-        .querySelector('#dropcontent-post')
-        .classList.toggle('show');
-    });*/
-
+    
     // Close the dropdown if the user clicks outside of it
     window.onclick = (e) => {
       if (!e.target.matches('.dropbtn-post')) {
@@ -139,11 +142,54 @@ toggle between hiding and showing the dropdown content */
 
     btnDelete.addEventListener('click', async (e) => {
       e.stopPropagation();
-      const id = e.target.getAttribute('noid');
+      const id = e.target.getAttribute('pid');
       await firebase.firestore().collection('pyme-posts').doc(id).delete();
       console.log('Post Deleted');
       modalDelete.style.display = 'none';
       containerViews.appendChild(await viewProfile()); // ruta muro posts
+    });
+
+    // update modal
+    const modalEdit = containerProfileTemplate.querySelector('#container__modal-edit');
+
+    // Get the button that opens the modal
+    const btnModalEdit = containerProfileTemplate.querySelector('#btn__edit');
+
+    // Get the <span> element that closes the modal
+    const closeModalEdit = containerProfileTemplate.querySelector('#close-edit');
+
+    // When the user clicks the button, open the modal
+    btnModalEdit.addEventListener('click', () => {
+      modalEdit.style.display = 'block';
+    });
+
+    // When the user clicks on <span> (x), close the modal
+    closeModalEdit.addEventListener('click', () => {
+      modalEdit.style.display = 'none';
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = (e) => {
+      if (e.target === modalEdit) {
+        modalEdit.style.display = 'none';
+      }
+    };
+
+    // Update post
+    const editDescription = containerProfileTemplate.querySelector('#btn-edit');
+    editDescription.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const id = e.target.getAttribute('pid');
+      const newDescription = containerProfileTemplate.querySelector('#editText');
+      try {
+        const dataRef = await firebase.firestore().collection('pyme-posts').doc(id);
+        await dataRef.update({ description: newDescription.value });
+        console.log("Document successfully updated!");
+        modalEdit.style.display = 'none';
+        containerViews.appendChild(await viewProfile()); // ruta muro posts
+      } catch (error) {
+        console.error("Error updating document: ", error);
+      }
     });
   } else {
     containerPostProfile += '<li>Publica tu primer post</li>';

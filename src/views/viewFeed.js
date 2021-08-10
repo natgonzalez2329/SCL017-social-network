@@ -6,19 +6,13 @@ import { fetchPosts } from '../lib/firebase.js';
 var containerViews = document.querySelector('#root');
 
 export const viewFeed = async () => {
-containerViews.innerHTML = '';
+  containerViews.innerHTML = '';
 
   const containerFeedTemplate = document.createElement('div');
   containerFeedTemplate.className = 'container__feed-template';
+  
   containerFeedTemplate.appendChild(topMenuComponent());
 
-
-   /*const logOutBtn = containerFeedTemplate.querySelector('.logout-btn');
-   logOutBtn.addEventListener('click', () => logOut());*/
-
-
-
- 
   let containerPostFeed = '';
   const posts = await fetchPosts(firebase);
   if (posts.length > 0) {
