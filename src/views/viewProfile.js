@@ -9,7 +9,7 @@ export const viewProfile = async () => {
   const containerProfileTemplate = document.createElement('div');
   containerProfileTemplate.className = 'container__profile-template';
 
-  //---------------Inicio menú--------------------------------//
+  // ---------------Inicio menú--------------------------------//
   const menuContainer = `<div class="headerContainer">
 <div class="nameApp">PUNTO PYME</div>
 
