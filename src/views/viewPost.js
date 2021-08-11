@@ -174,3 +174,4 @@ export const viewPost = () => {
 
   return containerPostTemplate;
 };
+//imagen.src = URL.createObjectURL(file); preview image
