@@ -91,8 +91,9 @@ export const viewFeed = async () => {
 
     const feedPostTemplate = `<ul id='posts'>${containerPostFeed}</ul>`;
     containerFeedTemplate.innerHTML += feedPostTemplate;
-
+//likes
     const likeBtn = containerFeedTemplate.querySelectorAll('#like');
+    console.log(likeBtn);
 
     likeBtn.forEach((btn, i) => {
       const likeIcon = containerFeedTemplate.querySelector(`#icon${i}`);
