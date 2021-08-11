@@ -65,6 +65,9 @@ export const viewFeed = async () => {
     posts.forEach((post) => {
       containerPostFeed += `
       <li class="container_post-feed">
+      <div class="container__image" id="container__image-post">
+        <img src='${post.data.imageURL}' class="image-post" id="image-post"/>
+      </div>
       <h5>${post.data.photo}</h5>
       <p>${post.data.description}</p>
       </li>

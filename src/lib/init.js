@@ -12,10 +12,7 @@ export const init = () => {
   window.addEventListener('hashchange', () => {
     containerViews.innerHTML = '';
     router(window.location.hash);
-    
-    
   });
-  
 };
 
 const currentPath = window.location.hash;

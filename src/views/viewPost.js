@@ -75,11 +75,6 @@ export const viewPost = () => {
               <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
             </svg></button>
               </div>
-              <!-- <video id="post-video" width="400" height="400" autoplay controls autoplay>
-              <span id="errorMsg"></span>
-              <button id="snap">Capture</button>
-              <canvas id="canvas" width="640" height="480"></canvas>
-              <button id="btn__image-camera">take pic</button> -->
               </div>
               <div class="content__form">
               <input type="text" id="post-photo" class="content__form-input" name="photo" placeholder="image" autocomplete="off"/>
@@ -120,6 +115,35 @@ export const viewPost = () => {
     }
   };
 
+  const postForm = containerPostTemplate.querySelector('#post-form');
+  // Saving data
+  const savePost = (imageURL) => {
+    postForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const { displayName, email, uid } = firebase.auth().currentUser;
+      const getPostPhoto = containerPostTemplate.querySelector('#post-photo').value;
+      const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
+      firebase
+        .firestore()
+        .collection('pyme-posts')
+        .add({
+          imageURL,
+          photo: getPostPhoto,
+          description: getPostInfo,
+          user: {
+            name: displayName,
+            email,
+            uid,
+          },
+        });
+
+      modalPost.style.display = 'none';
+      containerPostTemplate.querySelector('#image-post').src = '';
+      containerPostTemplate.querySelector('#post-form').reset();
+      console.log('Data Saved');
+    });
+  };
+
   // Upload Image
   const btnUploadImage = containerPostTemplate.querySelector('#btn__upload-image');
   btnUploadImage.addEventListener('click', () => {
@@ -140,37 +164,12 @@ export const viewPost = () => {
           console.log(url);
           const imagePost = containerPostTemplate.querySelector('#image-post');
           imagePost.src = url;
+          savePost(url);
         })
         .catch(console.error);
     } else {
       console.log('no existe ningun archivo');
     }
-  });
-
-  const postForm = containerPostTemplate.querySelector('#post-form');
-  // Saving data
-  postForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const { displayName, email, uid } = firebase.auth().currentUser;
-    const getPostPhoto = containerPostTemplate.querySelector('#post-photo').value;
-    const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
-    firebase
-      .firestore()
-      .collection('pyme-posts')
-      .add({
-        photo: getPostPhoto,
-        description: getPostInfo,
-        user: {
-          name: displayName,
-          email,
-          uid,
-        },
-      });
-
-    modalPost.style.display = 'none';
-    containerPostTemplate.querySelector('#image-post').src = '';
-    containerPostTemplate.querySelector('#post-form').reset();
-    console.log('Data Saved');
   });
 
   return containerPostTemplate;
