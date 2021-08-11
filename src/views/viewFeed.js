@@ -1,5 +1,6 @@
-import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
-//import { topMenuComponent } from './components/navbar.js';
+import { mobileMenuComponent } from './components/navbar.js';
+import { topMenuComponent } from './components/navbarTop.js';
+
 import { fetchPosts } from '../lib/firebase.js';
 //import { firebaseLogout } from '../lib/firebase.js';
 // eslint-disable-next-line no-var
@@ -12,6 +13,7 @@ export const viewFeed = async () => {
   containerFeedTemplate.className = 'container__feed-template';
   
   containerFeedTemplate.appendChild(topMenuComponent());
+  
 
   let containerPostFeed = '';
   const posts = await fetchPosts(firebase);
@@ -40,7 +42,7 @@ export const viewFeed = async () => {
   } else {
     containerPostFeed = '<li>Se el primero en publicar</li>';
   }
-
+  
   const likeBtn = containerFeedTemplate.querySelector('.like__btn');
   const likeIcon = containerFeedTemplate.querySelector('#icon');
   let count = containerFeedTemplate.querySelector('#count');
@@ -61,5 +63,11 @@ if (!clicked){
   });
   
   containerFeedTemplate.appendChild(mobileMenuComponent());
+  console.log(containerFeedTemplate);
+  const btnPlus = containerFeedTemplate.querySelector('#addPost');
+  btnPlus.addEventListener('click', () => {
+    alert("Hola!");
+   });
+   
   return containerFeedTemplate;
 };
