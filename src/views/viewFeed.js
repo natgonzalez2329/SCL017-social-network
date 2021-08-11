@@ -1,8 +1,9 @@
-import { mobileMenuComponent } from './components/navbar.js';
-import { topMenuComponent } from './components/navbarTop.js';
+import { topMenuComponent,mobileMenuComponent } from './components/navbar.js';
+import { viewPost } from './viewPost.js';
+//import { topMenuComponent } from './components/navbarTop.js';
 
 import { fetchPosts } from '../lib/firebase.js';
-//import { firebaseLogout } from '../lib/firebase.js';
+import { firebaseLogout } from '../lib/firebase.js';
 // eslint-disable-next-line no-var
 var containerViews = document.querySelector('#root');
 
@@ -13,7 +14,7 @@ export const viewFeed = async () => {
   containerFeedTemplate.className = 'container__feed-template';
   
   containerFeedTemplate.appendChild(topMenuComponent());
-  
+ 
 
   let containerPostFeed = '';
   const posts = await fetchPosts(firebase);
@@ -63,11 +64,19 @@ if (!clicked){
   });
   
   containerFeedTemplate.appendChild(mobileMenuComponent());
-  console.log(containerFeedTemplate);
-  const btnPlus = containerFeedTemplate.querySelector('#addPost');
+   containerFeedTemplate.appendChild(viewPost());
+   const btnPlus = containerFeedTemplate.querySelector('.second_item');
+  const modalPost = containerFeedTemplate.querySelector('.container__modal-post');
   btnPlus.addEventListener('click', () => {
-    alert("Hola!");
-   });
+    modalPost.style.display = 'block';
+  });
+
+  const logOutBtn = containerFeedTemplate.querySelector('.logout-btn');
+  logOutBtn.addEventListener('click', () => {
+      alert("chao!");
+      firebaseLogout();
+  });
+  
    
   return containerFeedTemplate;
 };

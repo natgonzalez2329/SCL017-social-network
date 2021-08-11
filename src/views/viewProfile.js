@@ -1,5 +1,7 @@
-import { mobileMenuComponent } from './components/navbar.js';
-import { topMenuComponent } from './components/navbarTop.js';
+import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
+import { firebaseLogout } from '../lib/firebase.js';
+import { viewPost } from './viewPost.js';
+//import { topMenuComponent } from './components/navbarTop.js';
 import { fetchPosts } from '../lib/firebase.js';
 
 // eslint-disable-next-line no-var
@@ -193,6 +195,20 @@ toggle between hiding and showing the dropdown content */
     containerPostProfile += '<li>Publica tu primer post</li>';
   }
   containerProfileTemplate.appendChild(mobileMenuComponent());
+  containerProfileTemplate.appendChild(viewPost());
+  const btnPlus = containerProfileTemplate.querySelector('.second_item');
+  const modalPost = containerProfileTemplate.querySelector('.container__modal-post');
+  btnPlus.addEventListener('click', () => {
+    modalPost.style.display = 'block';
+  });
+
+  const logOutBtn = containerProfileTemplate.querySelector('.logout-btn');
+  logOutBtn.addEventListener('click', () => {
+      alert("chao!");
+      firebaseLogout();
+  });
+
+
   return containerProfileTemplate;
 };
 
