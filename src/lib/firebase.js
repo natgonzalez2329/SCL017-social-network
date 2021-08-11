@@ -155,6 +155,7 @@ const firebaseLogout = async () => {
   try {
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
+    alert("se ejecutó logout");
   } catch (error) {
     console.log(error);
   }
