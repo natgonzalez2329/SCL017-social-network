@@ -1,7 +1,8 @@
-import { mobileMenuComponent } from './components/navbar.js';
-import { topMenuComponent } from './components/navbar.js';
-import { fetchPosts } from '../lib/firebase.js';
-import { firebaseLogout } from '../lib/firebase.js';
+import { mobileMenuComponent, topMenuComponent } from './components/navbar.js';
+
+// eslint-disable-next-line no-unused-vars
+import { fetchPosts, firebaseLogout } from '../lib/firebase.js';
+
 // eslint-disable-next-line no-var
 var containerViews = document.querySelector('#root');
 
@@ -12,58 +13,70 @@ export const viewFeed = async () => {
   containerFeedTemplate.className = 'container__feed-template';
   containerFeedTemplate.appendChild(topMenuComponent());
 
+  /* const logOutBtn = containerFeedTemplate.querySelector('.logout-btn');
+   logOutBtn.addEventListener('click', () => logOut()); */
 
-   /*const logOutBtn = containerFeedTemplate.querySelector('.logout-btn');
-   logOutBtn.addEventListener('click', () => logOut());*/
+  
 
-
-
-  let containerPostFeed = '';
+  const containerPostFeed = '';
+  const feedCont = document.createElement('div');
   const posts = await fetchPosts(firebase);
   if (posts.length > 0) {
-    posts.forEach((post) => {
-      containerPostFeed += `
+    posts.forEach((post, i) => {
+      const postTemplateFeed = `
       <li class="container_post-feed">
       <h5>${post.data.photo}</h5>
       <p>${post.data.description}</p>
       </li>
          
       <div class="container-btn-like">
-  <button class="like__btn">
-    <span id="icon"><i class="far fa-heart"></i></span>
-    <span id="count">0</span> Me Gusta
-  </button>
+  <button class="like__btn" id='like${i}'>
+    <span id="icon${i}"><i id="iconUp${i}" class="far fa-thumbs-up"></i></span>
+    <span id="count${i}">0</span> Me Gusta
+  </button> <button id='count2${i}' class="recommended__btn">
+  <span id="icon2"${i}><i class="bi bi-check-circle"></i></span>
+ Recomendado
+</button>
 </div>
       `;
+      feedCont.innerHTML = postTemplateFeed;
+      containerFeedTemplate.appendChild(feedCont);
+
+      const likeBtn = feedCont.querySelectorAll(`#like${i}`);
+      const likeIcon = containerFeedTemplate.querySelector(`#icon${i}`);
+      const count = containerFeedTemplate.querySelector(`#count${i}`);
+
+      let clicked = false;
+
+      likeBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (!clicked) {
+            clicked = true;
+            likeIcon.innerHTML = `<i id="iconUp2${i}" class="fas fa-thumbs-up"></i>`;
+            // eslint-disable-next-line no-plusplus
+            count.textContent++;
+          } else {
+            clicked = false;
+            likeIcon.innerHTML = `<i id="iconUp${i}" class="far fa-thumbs-up"></i>`;
+            // eslint-disable-next-line no-plusplus
+            count.textContent--;
+          }
+        });
+      });
     });
-    const feedTemplate = `
-    <div>tu nombre: <span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
-    <div class='view__feed'>Feed</div>
-    <ul id='posts'>${containerPostFeed}</ul>`;
-    containerFeedTemplate.innerHTML += feedTemplate;
-  } else {
-    containerPostFeed = '<li>Se el primero en publicar</li>';
   }
-  const likeBtn = containerFeedTemplate.querySelector('.like__btn');
-  const likeIcon = containerFeedTemplate.querySelector('#icon');
-  let count = containerFeedTemplate.querySelector('#count');
-  let clicked = false;
+ 
 
-  likeBtn.addEventListener('click', () => {
-    if (!clicked) {
-      clicked = true;
-      likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`
-      count.textContent++;
-      console.log('click')
-    } else {
-      clicked = false;
-      likeIcon.innerHTML = `<i class="far fa-thumbs-up"></i>`
-      count.textContent--;
+ /* }else{
+     containerPostFeed = '<li>Se el primero en publicar</li>';
+   }*/
 
-    }
+   const feedTemplate = `
+   <div>tu nombre: <span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
+   <div class='view__feed'>Feed</div>
+   <ul id='posts'>${containerPostFeed}</ul>`;
+ containerFeedTemplate.innerHTML += feedTemplate;
 
-  });
-  
   containerFeedTemplate.appendChild(mobileMenuComponent());
   return containerFeedTemplate;
 };

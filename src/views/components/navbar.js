@@ -1,10 +1,10 @@
 import { viewPost } from '../viewPost.js';
-//-------menu superior
+// -------menu superior
 export const topMenuComponent = () => {
-    const containerTopMenu = document.createElement('div');
-    containerTopMenu.className = 'container__top-menu';
+  const containerTopMenu = document.createElement('div');
+  containerTopMenu.className = 'container__top-menu';
 
-    const topMenu =`<div class="headerContainer">
+  const topMenu = `<div class="headerContainer">
     <div class="nameApp">PUNTO PYME</div>
 
     <div class="search">
@@ -48,19 +48,18 @@ export const topMenuComponent = () => {
   </span>
   </div>
 
-
    </div> `;
-
 
   containerTopMenu.innerHTML = topMenu;
   const btnModalPost = containerTopMenu.querySelector('.second_item2');
+  // eslint-disable-next-line no-console
   console.log(btnModalPost);
-  btnModalPost.addEventListener('click',()=>{
+  btnModalPost.addEventListener('click', () => {
+    // eslint-disable-next-line no-alert
     alert('Hola hili');
   });
   return containerTopMenu;
-
-}
+};
 //------------------------
 
 export const mobileMenuComponent = () => {
@@ -110,7 +109,14 @@ export const mobileMenuComponent = () => {
   btnModalPost.addEventListener('click', () => {
     modalPost.style.display = 'block';
   });
+
+  const logOutBtn = containerMobileMenu.querySelector('.logout-btn');
+  logOutBtn.addEventListener('click', () => {
+    // eslint-disable-next-line no-alert
+    alert('chao!');
+    // eslint-disable-next-line no-undef
+    firebaseLogout();
+  });
+
   return containerMobileMenu;
 };
-
-
