@@ -24,20 +24,25 @@ export const viewFeed = async () => {
   if (posts.length > 0) {
     posts.forEach((post, i) => {
       const postTemplateFeed = `
+
       <li class="container_post-feed">
+      <div class="container-btn-like">
+      <button class="like__btn" id='like${i}'>
+        <span id="icon${i}"><i id="iconUp${i}" class="far fa-thumbs-up"></i></span>
+        <span id="count${i}">0</span> Me Gusta
+        <div class="container-btn-recommended">
+        </button> <button id='count2${i}' class="recommended__btn">
+      <span id="icon2"${i}><i class="bi bi-check-circle"></i></span>
+     Recomendado
+    </button>
+    </div>
+    </div>
       <h5>${post.data.photo}</h5>
       <p>${post.data.description}</p>
+     
       </li>
          
-      <div class="container-btn-like">
-  <button class="like__btn" id='like${i}'>
-    <span id="icon${i}"><i id="iconUp${i}" class="far fa-thumbs-up"></i></span>
-    <span id="count${i}">0</span> Me Gusta
-  </button> <button id='count2${i}' class="recommended__btn">
-  <span id="icon2"${i}><i class="bi bi-check-circle"></i></span>
- Recomendado
-</button>
-</div>
+    
       `;
       feedCont.innerHTML = postTemplateFeed;
       containerFeedTemplate.appendChild(feedCont);
@@ -48,7 +53,7 @@ export const viewFeed = async () => {
 
       let clicked = false;
 
-      likeBtn.forEach((btn) => {
+      likeBtn.forEach((btn,i) => {
         btn.addEventListener('click', () => {
           if (!clicked) {
             clicked = true;
