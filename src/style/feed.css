@@ -1,35 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 .container_post-feed {
   border: 1px solid rgb(201, 201, 201);
   padding: 5px;
   border-radius: 4px;
-  width: 320px;
-  height: 450px;
   margin: 10px;
+  width:85%;
+  height: 250px;
+  margin-left:5%;
+  display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    float: left;
+    justify-content: flex-end;
 }
-
+.container-btn-like {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: inline-flex;
+    align-content: space-between;
+    float: left;
+}
 .like__btn, .recommend__btn{
-  padding: 0.5em 1em;
-  background-color: none;
-  font-size:1em;
-  font-family: 'Montserrat', sans-serif;
-  border-radius: 5px;
-  border:none;
-  color:#0052d4;
-  cursor: pointer;
-  outline:none;
+  padding: 1.5em 1em;
+  font-size: .8em;
+    flex-direction: row;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    border:none;
+    color:#0052d4;
+    cursor: pointer;
+    outline:none;
+    margin-left:1%;
+  
+  
 } 
 .recommend__btn{
-color: green;
+  color: green;
 }
 
-@media (max-width: 375px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .container_post-feed {
     border: 1px solid rgb(201, 201, 201);
     padding: 5px;
-    border-radius: 4px;
-    width: 80%;
-    height: 250px;
-    margin-left:8%;
+    width:  600px;
+    height: 300px;
+    margin-left: 15%;
   }
 }
+
+@media only screen and (min-width: 1024px) {
+  .container_post-feed {
+    border: 1px solid rgb(201, 201, 201);
+    padding: 5px;
+    width:  750px;
+    height: 350px;
+    margin-left: 20%;
+  }
+}
+
+

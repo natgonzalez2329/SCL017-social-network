@@ -18,7 +18,7 @@ const verificationEmail = () => {
     alert(error);
   });
 };
-const createUserCollection = async(uid) => {
+const createUserCollection = async () => {
   const user = firebase.auth().currentUser;
   await firebase.firestore().collection('users').doc(user.uid).set({
     name: user.email,
@@ -155,6 +155,7 @@ const firebaseLogout = async () => {
   try {
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
+    alert("se ejecutó logout");
   } catch (error) {
     console.log(error);
   }
