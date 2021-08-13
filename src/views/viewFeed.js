@@ -1,8 +1,6 @@
-import { topMenuComponent,mobileMenuComponent } from './components/navbar.js';
+import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
 import { viewPost } from './viewPost.js';
 import { fetchPosts, firebaseLogout } from '../lib/firebase.js';
-
-
 // eslint-disable-next-line no-var
 var containerViews = document.querySelector('#root');
 
@@ -33,22 +31,22 @@ export const viewFeed = async () => {
         </div>
         <div class='container-btn-like' pid='${post.id}'>
         <button class='like__btn' id='like'>
-          <span id='icon${i}'><i id='iconUp${post.data.likes.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.likes.includes(firebase.auth().currentUser.uid) ? 'fas fa-thumbs-up' : 'far fa-thumbs-up'}'></i></span>
-          <span id='count${i}'>${post.data.likes.length  > 0 ? post.data.likes.length : ''}</span> Me Gusta
-        </button> <button id='count2${i}' class='recommended__btn'>
-        <span id='icon2${i}'><i class='bi bi-check-circle'></i></span>
-          Recomendado
+          <span id='iconLike${i}'><i id='iconUp${post.data.likes.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.likes.includes(firebase.auth().currentUser.uid) ? 'fas fa-thumbs-up' : 'far fa-thumbs-up'}'></i></span>
+          <span id='countLike${i}'>${post.data.likes.length > 0 ? post.data.likes.length : ''}</span> Me Gusta
+        </button> 
+        <button class='recommend__btn' id='recommend'>
+        <span id='iconRecommend${i}'><i id='iconCheck${post.data.recommend.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.recommend.includes(firebase.auth().currentUser.uid) ? 'fas fa-check-circle' : 'far fa-check-circle'}'></i></span>
+        <span id='countRecommend${i}'>${post.data.recommend.length > 0 ? post.data.recommend.length : ''}</span> Recomendado
         </button>
       </div>
         <h5>${post.data.photo}</h5>
         <p>${post.data.description}</p>
-       
       </li>`;
     });
 
     const feedPostTemplate = `<ul id='posts'>${containerPostFeed}</ul>`;
     containerFeedTemplate.innerHTML += feedPostTemplate;
-    //likes
+    // likes
     const likeBtn = containerFeedTemplate.querySelectorAll('#like');
 
    likeBtn.forEach(async (btn, i) => {
@@ -56,8 +54,8 @@ export const viewFeed = async () => {
       const postLikes = post[i].data.likes;
       console.log(postLikes);
       const idCurrentUser = firebase.auth().currentUser.uid;
-      const likeIcon = containerFeedTemplate.querySelector(`#icon${i}`);
-      const count = containerFeedTemplate.querySelector(`#count${i}`);
+      const likeIcon = containerFeedTemplate.querySelector(`#iconLike${i}`);
+      const countLike = containerFeedTemplate.querySelector(`#countLike${i}`);
       let clicked = false;
       btn.addEventListener('click', async (e) => {
         const id = e.target.parentElement.getAttribute('pid');
@@ -68,7 +66,7 @@ export const viewFeed = async () => {
           likeIcon.innerHTML = `<i id='iconUp2${i}' class="fas fa-thumbs-up"></i>`;
           postLikes.push(idCurrentUser);
           dataRef.update({ likes: postLikes });
-          count.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
+          countLike.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
         } else {
           clicked = false;
           likeIcon.innerHTML = `<i id='iconUp${i}' class="far fa-thumbs-up"></i>`;
@@ -76,12 +74,42 @@ export const viewFeed = async () => {
           postLikes.splice(index, 1);
           // const newPostLike = postLikes.filter((like) => like !== idCurrentUser);
           dataRef.update({ likes: postLikes });
-          count.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
-          console.log(`postlike: ${postLikes.includes(idCurrentUser)}`);
+          countLike.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
         }
       });
     });
-    ;
+
+       // recommend
+       const recommendBtn = containerFeedTemplate.querySelectorAll('#recommend');
+
+       recommendBtn.forEach(async (btn, i) => {
+          const post = await fetchPosts(firebase);
+          const postRecommend = post[i].data.recommend;
+          console.log(postRecommend);
+          const idCurrentUser = firebase.auth().currentUser.uid;
+          const recommendIcon = containerFeedTemplate.querySelector(`#iconRecommend${i}`);
+          const countRecommend = containerFeedTemplate.querySelector(`#countRecommend${i}`);
+          let clicked = false;
+          btn.addEventListener('click', async (e) => {
+            const id = e.target.parentElement.getAttribute('pid');
+            console.log(id);
+            const dataRef = await firebase.firestore().collection('pyme-posts').doc(id);
+            if (!postRecommend.includes(idCurrentUser) && !clicked) {
+              clicked = true;
+              recommendIcon.innerHTML = `<i id='iconCheck2${i}' class="fas fa-check-circle"></i>`;
+              postRecommend.push(idCurrentUser);
+              dataRef.update({ recommend: postRecommend });
+              countRecommend.innerHTML = `${postRecommend.length > 0 ? postRecommend.length : ''}`;
+            } else {
+              clicked = false;
+              recommendIcon.innerHTML = `<i id='iconCheck${i}' class="far fa-check-circle"></i>`;
+              const index = postRecommend.indexOf(idCurrentUser);
+              postRecommend.splice(index, 1);
+              dataRef.update({ recommend: postRecommend });
+              countRecommend.innerHTML = `${postRecommend.length > 0 ? postRecommend.length : ''}`;
+            }
+          });
+        });
   } else {
     containerPostFeed = '<li>Se el primero en publicar</li>';
   }

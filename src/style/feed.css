@@ -14,15 +14,19 @@
     float: left;
     justify-content: flex-end;
 }
+<<<<<<< HEAD
 .container-btn-like{
+=======
+.container-btn-like {
+>>>>>>> af6d5a3ecadca7007e7fdea8711cb2a37a52b94d
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     display: inline-flex;
     align-content: space-between;
-   float: left;
+    float: left;
 }
-.like__btn, .recommended__btn{
+.like__btn, .recommend__btn{
   padding: 1.5em 1em;
   font-size: .8em;
     flex-direction: row;
@@ -36,7 +40,7 @@
   
   
 } 
-.recommended__btn{
+.recommend__btn{
   color: green;
 }
 
@@ -48,7 +52,6 @@
     height: 300px;
     margin-left: 15%;
   }
-
 }
 
 @media only screen and (min-width: 1024px) {

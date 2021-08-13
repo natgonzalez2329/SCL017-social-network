@@ -1,9 +1,7 @@
 import { viewForms } from '../views/viewForms.js';
 import { viewFeed } from '../views/viewFeed.js';
 import { viewProfile } from '../views/viewProfile.js';
-// import { viewPost } from '../views/viewPost.js';
 import { isLogged } from './firebase.js';
-
 
 const containerViews = document.querySelector('#root');
 
