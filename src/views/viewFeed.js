@@ -16,8 +16,10 @@ export const viewFeed = async () => {
 
 
   const feedTemplate = `
-    <div>tu nombre: <span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
-    <div class='view__feed'>Feed</div>`;
+    <div class='view__feed'>
+    <img src='images/UserImage.png' class='image__user-feed' id='image__user-feed'/>
+    <div><span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
+    </div>`;
   containerFeedTemplate.innerHTML += feedTemplate;
 
   let containerPostFeed = '';
