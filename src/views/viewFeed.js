@@ -121,7 +121,6 @@ export const viewFeed = async () => {
           count.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
           console.log(`postlike: ${postLikes.includes(idCurrentUser)}`);
         }
-        console.log(`cliked: ${clicked}`)
       });
     });
     ;
