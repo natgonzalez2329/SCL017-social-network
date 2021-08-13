@@ -23,7 +23,7 @@
     float: left;
 }
 .like__btn, .recommend__btn{
-  padding: 1.5em 1em;
+  padding: 1em;
   font-size: .8em;
     flex-direction: row;
     font-family: 'Montserrat', sans-serif;

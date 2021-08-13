@@ -8,7 +8,7 @@
   box-sizing: border-box;
   list-style: none;
   clear: both;
-  
+  font-family: "Montserrat", sans-serif;
 }
 .container__form-template {
   background: #f6f5f7;
@@ -16,7 +16,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "Montserrat", sans-serif;
   height: 100vh;
   margin: -20px 0 50px;
 }
@@ -284,9 +283,6 @@ form.sign-in-form {
   height: 1.5em;
 }
 
-.form__p{
- 
-}
 /*------------------*/
 @media (max-width: 870px) {
   .container__forms {
