@@ -23,8 +23,8 @@
    float: left;
 }
 .like__btn, .recommended__btn{
-    padding: 0.5em 1em;
-    font-size:0.6em;
+  padding: 1.5em 1em;
+  font-size: .8em;
     flex-direction: row;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
@@ -46,7 +46,7 @@
     padding: 5px;
     width:  600px;
     height: 300px;
-    margin: 15%;
+    margin-left: 15%;
   }
 
 }
@@ -56,7 +56,7 @@
     border: 1px solid rgb(201, 201, 201);
     padding: 5px;
     width:  750px;
-    height: 250px;
+    height: 350px;
     margin-left: 20%;
   }
 }

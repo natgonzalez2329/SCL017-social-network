@@ -33,7 +33,11 @@
   font-size: 28px;
   font-weight: bold;
 }
-
+.image-post{
+  max-height:150px;
+  max-width: auto;
+  margin-left: 2%;
+}
 .close__modal-post:hover,
 .close__modal-post:focus {
   color: #000;
@@ -70,3 +74,22 @@
 .file label {
   background-color: #5995fd;
 }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .image-post{
+    max-height:180px;
+    max-width: auto;
+    margin-left: 16%;
+    margin-top: -8%;
+  }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .image-post{
+    max-height:250px;
+    max-width: auto;
+    margin-left: 20%;
+    margin-top: -8%;
+  }
+}
+

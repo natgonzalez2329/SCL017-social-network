@@ -32,17 +32,18 @@ export const viewFeed = async () => {
         <div class='container__image' id='container__image-post'>
           <img src='${post.data.imageURL}' class='image-post' id='image-post'/>
         </div>
+        <div class='container-btn-like' pid='${post.id}'>
+        <button class='like__btn' id='like'>
+          <span id='icon${i}'><i id='iconUp${post.data.likes.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.likes.includes(firebase.auth().currentUser.uid) ? 'fas fa-thumbs-up' : 'far fa-thumbs-up'}'></i></span>
+          <span id='count${i}'>${post.data.likes.length  > 0 ? post.data.likes.length : ''}</span> Me Gusta
+        </button> <button id='count2${i}' class='recommended__btn'>
+        <span id='icon2${i}'><i class='bi bi-check-circle'></i></span>
+          Recomendado
+        </button>
+      </div>
         <h5>${post.data.photo}</h5>
         <p>${post.data.description}</p>
-        <div class='container-btn-like' pid='${post.id}'>
-          <button class='like__btn' id='like'>
-            <span id='icon${i}'><i id='iconUp${post.data.likes.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.likes.includes(firebase.auth().currentUser.uid) ? 'fas fa-thumbs-up' : 'far fa-thumbs-up'}'></i></span>
-            <span id='count${i}'>${post.data.likes.length  > 0 ? post.data.likes.length : ''}</span> Me Gusta
-          </button> <button id='count2${i}' class='recommended__btn'>
-          <span id='icon2${i}'><i class='bi bi-check-circle'></i></span>
-            Recomendado
-          </button>
-        </div>
+       
       </li>`;
     });
 
