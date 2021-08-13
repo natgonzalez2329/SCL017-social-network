@@ -7,19 +7,17 @@
   height: 450px;
   margin: 10px;
 }
-.like__btn, .recommended__btn{
-  padding: 0.5em 1em;
-  background-color: none;
-  font-size:1em;
-  font-family: 'Montserrat', sans-serif;
-  border-radius: 5px;
-  border:none;
-  color:#0052d4;
-  cursor: pointer;
-  outline:none;
-} 
-.recommended__btn{
-color: green;
+
+.like__btn{
+    padding: 0.5em 1em;
+    background: #0052d4;
+    font-size:1em;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    border:none;
+    color:#e8efff;
+    cursor: pointer;
+    outline:none;
 }
 
 @media (max-width: 375px) {
@@ -30,5 +28,5 @@ color: green;
     width: 80%;
     height: 250px;
     margin-left:8%;
-  }
+    }
 }

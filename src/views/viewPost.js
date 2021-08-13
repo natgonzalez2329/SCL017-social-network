@@ -3,8 +3,7 @@ export const viewPost = () => {
   containerPostTemplate.className = 'container__post-template';
  
   const postTemplate = `  
-  <button id="btn__modal-post">Post</button>
-  <div id="container__modal-post" class="container__modal-post">
+ <div id="container__modal-post" class="container__modal-post">
     <div class="content__modal-post">
       <span class="close__modal-post">&times;</span>
       <div>
