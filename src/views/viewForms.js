@@ -1,4 +1,5 @@
 import { googleLogin, firebaseSignUp, firebaseLogIn, facebookLogin } from '../lib/firebase.js';
+import { footerComponent } from './components/footer.js';
 
 export const viewForms = () => {
   const containerFormTemplate = document.createElement('div');
@@ -346,6 +347,6 @@ export const viewForms = () => {
 
   const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
   facebookLoginBtn2.addEventListener('click', () => facebookLogin());
-
+  containerFormTemplate.appendChild(footerComponent());
   return containerFormTemplate;
 };

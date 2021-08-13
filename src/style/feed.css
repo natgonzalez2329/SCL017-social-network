@@ -14,11 +14,7 @@
     float: left;
     justify-content: flex-end;
 }
-<<<<<<< HEAD
-.container-btn-like{
-=======
 .container-btn-like {
->>>>>>> af6d5a3ecadca7007e7fdea8711cb2a37a52b94d
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

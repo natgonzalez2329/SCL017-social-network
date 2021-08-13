@@ -1,6 +1,7 @@
 import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
 import { viewPost } from './viewPost.js';
 import { fetchPosts, firebaseLogout } from '../lib/firebase.js';
+
 // eslint-disable-next-line no-var
 var containerViews = document.querySelector('#root');
 
@@ -127,8 +128,5 @@ export const viewFeed = async () => {
       alert("chao!");
       firebaseLogout();
   });
-  
-   
-
   return containerFeedTemplate;
 };
