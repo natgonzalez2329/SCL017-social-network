@@ -2,6 +2,7 @@ import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
 import { firebaseLogout } from '../lib/firebase.js';
 import { viewPost } from './viewPost.js';
 //import { topMenuComponent } from './components/navbarTop.js';
+
 import { fetchPosts } from '../lib/firebase.js';
 
 // eslint-disable-next-line no-var
@@ -11,12 +12,14 @@ export const viewProfile = async () => {
   containerViews.innerHTML = '';
 
   const containerProfileTemplate = document.createElement('div');
+
   containerProfileTemplate.className = 'container__profile-template';
  
   containerProfileTemplate.appendChild(topMenuComponent());
 
 
   const profileTemplate = `
+
   <div class='view__profile'>Profile</div>
   <div class="content__profile">
   <div class='image__profile-user'>IMAGEN PERFIL</div>
@@ -35,6 +38,7 @@ export const viewProfile = async () => {
     </div>
     <button class='btn__edit-profile'>BOTON EDITAR PERFIL</button>
           </div>`;
+    
   containerProfileTemplate.innerHTML += profileTemplate;
 
   let containerPostProfile = '';
@@ -88,6 +92,7 @@ export const viewProfile = async () => {
     containerProfileTemplate.innerHTML += profilePostTemplate;
 
     // menu Edit Delete
+
     /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
     const dropBtnMenuPost = containerProfileTemplate.querySelectorAll('#dropbtn-menupost');
     dropBtnMenuPost.forEach((dropbtnmenu, i) => {
@@ -177,6 +182,7 @@ export const viewProfile = async () => {
           console.error("Error updating document: ", error);
         }
       });
+
     });
 
    /*  window.onclick = (e) => {

@@ -13,17 +13,26 @@ export const router = async (route) => {
   if (isLogged() || logged) {
     containerViews.innerHTML = '';
     switch (route) {
-      //case '':
-      //case '#':
+      // case '':
+      // case '#':
       case '#feed':
         containerViews.innerHTML = '';
+
         containerViews.appendChild(await viewFeed()); // ruta muro posts
         break;
       case '#profile':
         document.getElementById('root').innerHTML = '';
+
+        
+        containerViews.appendChild(await viewProfile()); // ruta perfil
+        break;
+      
+        
+      default:
         containerViews.appendChild(await viewProfile()); // ruta perfil
         break;
         default:
+
         containerViews.innerHTML = 'Error 404';
         break;
     }
@@ -31,7 +40,7 @@ export const router = async (route) => {
     console.log('no tengo sesion');
     containerViews.innerHTML = '';
     containerViews.appendChild(viewForms());
-    
+
   }
  
 };

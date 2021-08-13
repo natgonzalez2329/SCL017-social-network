@@ -1,7 +1,7 @@
 export const viewPost = () => {
   const containerPostTemplate = document.createElement('div');
   containerPostTemplate.className = 'container__post-template';
- 
+
   const postTemplate = `  
  <div id="container__modal-post" class="container__modal-post">
     <div class="content__modal-post">
@@ -41,15 +41,15 @@ export const viewPost = () => {
   const modalPost = containerPostTemplate.querySelector('#container__modal-post');
 
   // Get the button that opens the modal
-  //const btnModalPost = containerPostTemplate.querySelector('#btn__modal-post');
+  // const btnModalPost = containerPostTemplate.querySelector('#btn__modal-post');
 
   // Get the <span> element that closes the modal
   const closeModalPost = containerPostTemplate.querySelector('.close__modal-post');
 
   // When the user clicks the button, open the modal
-  /*btnModalPost.addEventListener('click', () => {
+  /* btnModalPost.addEventListener('click', () => {
     modalPost.style.display = 'block';
-  });*/
+  }); */
 
   // When the user clicks on <span> (x), close the modal
   closeModalPost.addEventListener('click', () => {
@@ -108,6 +108,7 @@ export const viewPost = () => {
       const task = ref.child(nameFile).put(file, metadata);
       task
         .then((snapshot) => {
+          // eslint-disable-next-line no-console
           console.log(snapshot.ref.getDownloadURL());
           return snapshot.ref.getDownloadURL();
         })
@@ -122,6 +123,7 @@ export const viewPost = () => {
       console.log('no existe ningun archivo');
     }
   });
+
 
   return containerPostTemplate;
 };

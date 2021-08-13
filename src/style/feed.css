@@ -1,32 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 .container_post-feed {
   border: 1px solid rgb(201, 201, 201);
   padding: 5px;
   border-radius: 4px;
-  width: 320px;
-  height: 450px;
   margin: 10px;
+  width:85%;
+  height: 250px;
+  margin-left:5%;
+  display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    float: left;
+    justify-content: flex-end;
 }
-
-.like__btn{
+.container-btn-like, .container-btn-recommended{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: inline-flex;
+    align-content: space-between;
+   float: left;
+}
+.like__btn, .recommended__btn{
     padding: 0.5em 1em;
-    background: #0052d4;
-    font-size:1em;
+    font-size:0.6em;
+    flex-direction: row;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
     border:none;
-    color:#e8efff;
+    color:#0052d4;
     cursor: pointer;
     outline:none;
+    margin-left:1%;
+  
+  
+} 
+.recommended__btn{
+  color: green;
 }
 
-@media (max-width: 375px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .container_post-feed {
     border: 1px solid rgb(201, 201, 201);
     padding: 5px;
-    border-radius: 4px;
-    width: 80%;
-    height: 250px;
-    margin-left:8%;
-    }
+    width:  600px;
+    height: 300px;
+    margin: 15%;
+  }
+
 }
+
+@media only screen and (min-width: 1024px) {
+  .container_post-feed {
+    border: 1px solid rgb(201, 201, 201);
+    padding: 5px;
+    width:  750px;
+    height: 250px;
+    margin-left: 20%;
+  }
+}
+
+
