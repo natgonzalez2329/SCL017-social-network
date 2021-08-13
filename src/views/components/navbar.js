@@ -1,5 +1,10 @@
 import { viewPost } from '../viewPost.js';
-// -------menu superior
+import { firebaseLogout } from '../../lib/firebase.js';
+//-------menu superior
+
+
+//-------menu superior
+
 export const topMenuComponent = () => {
   const containerTopMenu = document.createElement('div');
   containerTopMenu.className = 'container__top-menu';
@@ -20,7 +25,7 @@ export const topMenuComponent = () => {
         </svg> 
         </a>                          
       </span>
-      <span class="second_item2">
+      <span class="second_item">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
       <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
       </svg>
@@ -48,13 +53,7 @@ export const topMenuComponent = () => {
    </div> `;
 
   containerTopMenu.innerHTML = topMenu;
-  const btnModalPost = containerTopMenu.querySelector('.second_item2');
-  // eslint-disable-next-line no-console
-  console.log(btnModalPost);
-  btnModalPost.addEventListener('click', () => {
-    // eslint-disable-next-line no-alert
-    alert('Hola hili');
-  });
+
   return containerTopMenu;
 };
 //------------------------
@@ -100,6 +99,7 @@ export const mobileMenuComponent = () => {
 </div> 
 </div>`;
   containerMobileMenu.innerHTML = mobileMenu;
+
   const btnModalPost = containerMobileMenu.querySelector('.second_item2');
   containerMobileMenu.appendChild(viewPost());
   const modalPost = containerMobileMenu.querySelector('.container__modal-post');
@@ -109,10 +109,9 @@ export const mobileMenuComponent = () => {
 
   const logOutBtn = containerMobileMenu.querySelector('.logout-btn');
   logOutBtn.addEventListener('click', () => {
-    // eslint-disable-next-line no-alert
-    alert('chao!');
-    // eslint-disable-next-line no-undef
-    firebaseLogout();
+       alert("chao!");
+      firebaseLogout();
+
   });
 
   return containerMobileMenu;

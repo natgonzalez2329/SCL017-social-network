@@ -317,7 +317,6 @@ export const viewForms = () => {
         userNameSignUp,
       });
       signUpForm.reset();
-      //userPasswordSignUp.blur(); quitar el focus en el input de password 
     }
   });
 

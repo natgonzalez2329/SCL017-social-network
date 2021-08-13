@@ -18,7 +18,15 @@ const verificationEmail = () => {
     alert(error);
   });
 };
-
+const createUserCollection = async(uid) => {
+  const user = firebase.auth().currentUser;
+  await firebase.firestore().collection('users').doc(user.uid).set({
+    name: user.email,
+    email: user.displayName,
+    description: null,
+    area: null,
+  });
+} 
 // registro con email y contraseña
 const firebaseSignUp = async (userData) => {
   try {
@@ -28,6 +36,7 @@ const firebaseSignUp = async (userData) => {
         userData.userEmailSignUp,
         userData.userPasswordSignUp,
       );
+    createUserCollection();
     await firebase.auth().currentUser.updateProfile({
       displayName: userData.userNameSignUp,
     });
@@ -85,6 +94,8 @@ const googleLogin = async () => {
   try {
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await firebase.auth().signInWithPopup(provider);
+    createUserCollection();
+    verificationEmail();
     /** @type {firebase.auth.OAuthCredential} */
     const credential = result.credential;
 
@@ -116,7 +127,8 @@ const facebookLogin = () => {
     .then((result) => {
       /* @type {firebase.auth.OAuthCredential} */
       const credential = result.credential;
-
+      createUserCollection();
+      verificationEmail();
       // The signed-in user info.
       const user = result.user;
 
@@ -143,14 +155,20 @@ const firebaseLogout = async () => {
   try {
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
+    alert("se ejecutó logout");
   } catch (error) {
     console.log(error);
   }
 };
 
 // View Feed & Profile Posts
-const fetchPosts = async (fs) => {
-  const posts = await fs.firestore().collection('pyme-posts').get();
+const fetchPosts = async (fs, uid) => {
+  let posts;
+  if (uid) {
+    posts = await fs.firestore().collection('pyme-posts').where('user.uid', '==', uid).get();
+  } else {
+    posts = await fs.firestore().collection('pyme-posts').get();
+  }
   const result = posts.docs.map((doc) => {
     const res = { data: doc.data(), id: doc.id };
     return res;
