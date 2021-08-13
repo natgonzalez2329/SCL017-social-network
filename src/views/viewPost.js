@@ -138,6 +138,7 @@ export const viewPost = () => {
             uid,
           },
           likes: [],
+          recommend: [],
         });
 
       modalPost.style.display = 'none';
