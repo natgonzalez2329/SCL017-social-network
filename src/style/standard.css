@@ -21,17 +21,16 @@
 }
 
 .inputSearch {
-  width: 55%;
   height: auto;
-  width: 60%;
+  width: 80%;
   margin: 10px;
   padding: 1% 5%;
+  background: #0052d4;
   border-radius: 32px;
   outline: none;
   border: 2px solid #fff;
   margin-top: 1%;
 }
-
 .menu-icons2 {
   display: none;
 }
@@ -130,7 +129,7 @@ footer {
   .inputSearch {
     background: #0052d4;
     height: auto;
-    width: 60%;
+    width: 150%;
     margin: 10px;
     padding: 1% 5%;
     border-radius: 32px;
