@@ -26,13 +26,7 @@ export const router = async (route) => {
         
         containerViews.appendChild(await viewProfile()); // ruta perfil
         break;
-      
-        
       default:
-        containerViews.appendChild(await viewProfile()); // ruta perfil
-        break;
-        default:
-
         containerViews.innerHTML = 'Error 404';
         break;
     }
