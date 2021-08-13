@@ -18,7 +18,7 @@ const verificationEmail = () => {
     alert(error);
   });
 };
-const createUserCollection = async(uid) => {
+const createUserCollection = async () => {
   const user = firebase.auth().currentUser;
   await firebase.firestore().collection('users').doc(user.uid).set({
     name: user.email,
