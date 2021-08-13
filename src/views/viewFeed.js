@@ -8,7 +8,7 @@ export const viewFeed = async () => {
 
   const containerFeedTemplate = document.createElement('div');
   containerFeedTemplate.className = 'container__feed-template';
-  
+
   // ---------------Inicio menú--------------------------------//
   const menuContainer = `<div class="headerContainer">
     <div class="nameApp">PUNTO PYME</div>
@@ -71,48 +71,60 @@ export const viewFeed = async () => {
     posts.forEach((post, i) => {
       containerPostFeed += `
       <li class='container_post-feed'>
-      <div class='container__image' id='container__image-post'>
-        <img src='${post.data.imageURL}' class='image-post' id='image-post'/>
-      </div>
-      <h5>${post.data.photo}</h5>
-      <p>${post.data.description}</p>
-      <div class='container-btn-like'>
-  <button class='like__btn' id='like'>
-    <span id='icon${i}'><i id='iconUp${i}' class='far fa-thumbs-up'></i></span>
-    <span id='count${i}'>0</span> Me Gusta
-  </button> <button id='count2${i}' class='recommended__btn'>
-  <span id='icon2${i}'><i class='bi bi-check-circle'></i></span>
- Recomendado
-</button>
-</div>
-      </li>
-      `;
+        <div class='container__image' id='container__image-post'>
+          <img src='${post.data.imageURL}' class='image-post' id='image-post'/>
+        </div>
+        <h5>${post.data.photo}</h5>
+        <p>${post.data.description}</p>
+        <div class='container-btn-like' pid='${post.id}'>
+          <button class='like__btn' id='like'>
+            <span id='icon${i}'><i id='iconUp${post.data.likes.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.likes.includes(firebase.auth().currentUser.uid) ? 'fas fa-thumbs-up' : 'far fa-thumbs-up'}'></i></span>
+            <span id='count${i}'>${post.data.likes.length  > 0 ? post.data.likes.length : ''}</span> Me Gusta
+          </button> <button id='count2${i}' class='recommended__btn'>
+          <span id='icon2${i}'><i class='bi bi-check-circle'></i></span>
+            Recomendado
+          </button>
+        </div>
+      </li>`;
     });
 
     const feedPostTemplate = `<ul id='posts'>${containerPostFeed}</ul>`;
     containerFeedTemplate.innerHTML += feedPostTemplate;
-//likes
+    //likes
     const likeBtn = containerFeedTemplate.querySelectorAll('#like');
-    console.log(likeBtn);
 
-    likeBtn.forEach((btn, i) => {
+   likeBtn.forEach(async (btn, i) => {
+      const post = await fetchPosts(firebase);
+      const postLikes = post[i].data.likes;
+      console.log(postLikes);
+      const idCurrentUser = firebase.auth().currentUser.uid;
       const likeIcon = containerFeedTemplate.querySelector(`#icon${i}`);
       const count = containerFeedTemplate.querySelector(`#count${i}`);
       let clicked = false;
-      btn.addEventListener('click', () => {
-        if (!clicked) {
+      btn.addEventListener('click', async (e) => {
+        const id = e.target.parentElement.getAttribute('pid');
+        console.log(id)
+        const dataRef = await firebase.firestore().collection('pyme-posts').doc(id);
+        if (!postLikes.includes(idCurrentUser) && !clicked) {
           clicked = true;
           likeIcon.innerHTML = `<i id='iconUp2${i}' class="fas fa-thumbs-up"></i>`;
-          // eslint-disable-next-line no-plusplus
-          count.textContent++;
+          postLikes.push(idCurrentUser);
+          dataRef.update({ likes: postLikes });
+          count.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
         } else {
           clicked = false;
           likeIcon.innerHTML = `<i id='iconUp${i}' class="far fa-thumbs-up"></i>`;
-          // eslint-disable-next-line no-plusplus
-          count.textContent--;
+          const index = postLikes.indexOf(idCurrentUser);
+          postLikes.splice(index, 1);
+          // const newPostLike = postLikes.filter((like) => like !== idCurrentUser);
+          dataRef.update({ likes: postLikes });
+          count.innerHTML = `${postLikes.length > 0 ? postLikes.length : ''}`;
+          console.log(`postlike: ${postLikes.includes(idCurrentUser)}`);
         }
+        console.log(`cliked: ${clicked}`)
       });
     });
+    ;
   } else {
     containerPostFeed = '<li>Se el primero en publicar</li>';
   }

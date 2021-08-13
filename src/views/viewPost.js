@@ -106,6 +106,8 @@ export const viewPost = () => {
   // When the user clicks on <span> (x), close the modal
   closeModalPost.addEventListener('click', () => {
     modalPost.style.display = 'none';
+    containerPostTemplate.querySelector('#image-post').src = '';
+    containerPostTemplate.querySelector('#post-form').reset();
   });
 
   // When the user clicks anywhere outside of the modal, close it
@@ -135,6 +137,7 @@ export const viewPost = () => {
             email,
             uid,
           },
+          likes: [],
         });
 
       modalPost.style.display = 'none';
