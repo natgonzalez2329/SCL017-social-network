@@ -1,7 +1,5 @@
 import { viewPost } from '../viewPost.js';
 import { firebaseLogout } from '../../lib/firebase.js';
-//-------menu superior
-
 
 //-------menu superior
 
