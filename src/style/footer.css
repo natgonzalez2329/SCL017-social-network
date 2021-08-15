@@ -1,0 +1,33 @@
+.containerFooter {
+  width: 100%;
+  height: 50px;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  z-index: 999;
+}
+.form__p{
+  margin: 1em 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .containerFooter {
+    height: 40px;
+
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .containerFooter {
+    font-size: 18px;
+  }
+  .form__p{
+    margin: 0.5em 0;
+  }
+}

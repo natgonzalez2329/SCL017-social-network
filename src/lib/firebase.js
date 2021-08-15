@@ -95,7 +95,6 @@ const googleLogin = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await firebase.auth().signInWithPopup(provider);
     createUserCollection();
-    verificationEmail();
     /** @type {firebase.auth.OAuthCredential} */
     const credential = result.credential;
 
@@ -128,7 +127,6 @@ const facebookLogin = () => {
       /* @type {firebase.auth.OAuthCredential} */
       const credential = result.credential;
       createUserCollection();
-      verificationEmail();
       // The signed-in user info.
       const user = result.user;
 

@@ -6,15 +6,30 @@
   background: #f6f5f7;
   margin: auto;
 }
+/*sección perfil*/
 .content__profile {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
-.container__posts-profile {
-    list-style-type: none;
-    padding: 0;
-    max-width: 960px;
+.profile-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5em;
+  padding-right: 3em;
+}
+.image__user-profile{
+  width: 150px;
+  height: auto;
+  border-radius: 50px;
+}
+.info-user {
+  flex-direction: column;
+}
+#username-profile {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 1em;
 }
 
 
@@ -30,7 +45,12 @@
   border-radius: 55px;
 }
 	
-
+/*sección post*/
+.container__posts-profile {
+  list-style-type: none;
+  padding: 0;
+  max-width: 960px;
+}
 .container_post-profile {
   border: 1px solid rgb(201, 201, 201);
   padding: 5px;
@@ -39,6 +59,28 @@
   width:80%;
   height: 300px;
   margin-left:8%;
+}
+.user__postProfile {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+.user__post-infoProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.image__user-post {
+  width: 50px;
+  height: auto;
+  border-radius: 50px;
+}
+.username-post {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 1em;
 }
 /*menu Edit Delete*/
 .dropbtn-post {
@@ -65,7 +107,7 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-.dropdown-content-post button {
+.btn__menudd {
   min-width: 160px;
   border: none;
   color: black;
@@ -73,7 +115,7 @@
   text-decoration: none;
   display: block;
 }
-.dropdown-post button:hover {background-color: #ddd;}
+.dropdown-post button:hover {background-color: #4d84e2;}
 .show {display: block;}
 
 /* The Modal Delete Message (background) */
@@ -94,14 +136,11 @@
 .content__modal-delete {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 5px 20px;
   border: none;
   font-family: "Montserrat", sans-serif;
   border-radius: 4px;
-  width: 50%;/*resize mobile*/
-}
-.content__modal-delete h1 {
-  font-size: 1.1rem;
+  width: 250px;
 }
 /* The Close Button */
 .close__modal-delete {
@@ -110,7 +149,6 @@
   font-size: 28px;
   font-weight: bold;
 }
-
 .close__modal-delete:hover,
 .close__modal-delete:focus {
   color: #000;
@@ -123,20 +161,27 @@
 }
 .btn__modal-delete {
   width: 80px;
-  height: 20px;
+  height: 30px;
   background-color: #5995fd;
   border: none;
   outline: none;
-  height: 49px;
   border-radius: 49px;
   color: #fff;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.7em;
   margin: 10px 0;
   cursor: pointer;
 }
 .btn__modal-delete:hover {
   background-color: #4d84e2;
+}
+#title-modalDelete {
+  font-size: 1em;
+  text-align: center;
+}
+#text-modalDelete {
+  font-size: 0.9em;
+  text-align: center;
 }
 
 /* The Modal Update Message (background) */
@@ -157,14 +202,11 @@
 .content__modal-edit {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 5px 20px;
   border: none;
   font-family: "Montserrat", sans-serif;
   border-radius: 4px;
-  width: 50%;/*resize mobile*/
-}
-.content__modal-edit h1 {
-  font-size: 1.1rem;
+  width: 250px;
 }
 /* The Close Button */
 .close__modal-edit {
@@ -186,48 +228,127 @@
 }
 .btn__modal-edit {
   width: 80px;
-  height: 20px;
+  height: 30px;
   background-color: #5995fd;
   border: none;
   outline: none;
-  height: 49px;
   border-radius: 49px;
   color: #fff;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.8em;
   margin: 10px 0;
   cursor: pointer;
 }
 .btn__modal-edit:hover {
   background-color: #4d84e2;
 }
+#title-modalEdit {
+  font-size: 1em;
+  text-align:center;
+  color: #444;
+}
+#text-modalEdit {
+  font-size: 0.7em;
+  text-align: justify;
+}
+.wrapper__input {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  padding: 0 0.4rem;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.wrapper__input i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+.wrapper__input input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .content__modal-delete {
-    width: 40%;
+    width: 450px;
   }
-  .content__modal-delete h1 {
-    font-size: 1.3rem;
+  #title-modalDelete {
+    font-size: 1.5em;
+  }
+  #text-modalDelete {
+    font-size: 1em;
   }
   .btn__modal-delete {
-    width: 80px;
+    width: 90px;
     height: 35px;
-    font-size: 1rem;
+    font-size: 1em;
+  }
+  .content__modal-edit {
+    width: 400px;
+  }
+  #title-modalEdit {
+    font-size: 1.3em;
+    text-align:center;
+  }
+  #text-modalEdit {
+    font-size: 1em;
+    text-align: left;
+  }
+  .btn__modal-edit {
+    width: 90px;
+    height: 35px;
+    font-size: 1em;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .content__modal-delete {
-    width: 30%;
+    width: 500px;
+    padding: 20px;
   }
-  .content__modal-delete h1 {
-    font-size: 1.9rem;
+  #title-modalDelete {
+    font-size: 1.7rem;
+  }
+  #text-modalDelete {
+    font-size: 1.1rem;
   }
   .btn__modal-delete {
     width: 100px;
     height: 49px;
     font-size: 1rem;
   }
-
+  .content__modal-edit {
+    width: 500px;
+    padding: 20px;
+  }
+  #title-modalEdit {
+    font-size: 1.7rem;
+    text-align:center;
+  }
+  #text-modalEdit {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+  .btn__modal-edit {
+    width: 100px;
+    height: 49px;
+    font-size: 1em;
+  }
 }
 

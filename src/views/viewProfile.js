@@ -1,9 +1,6 @@
 import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
-import { firebaseLogout } from '../lib/firebase.js';
+import { firebaseLogout, fetchPosts } from '../lib/firebase.js';
 import { viewPost } from './viewPost.js';
-//import { topMenuComponent } from './components/navbarTop.js';
-
-import { fetchPosts } from '../lib/firebase.js';
 
 // eslint-disable-next-line no-var
 var containerViews = document.querySelector('#root');
@@ -19,12 +16,13 @@ export const viewProfile = async () => {
 
 
   const profileTemplate = `
-
-  <div class='view__profile'>Profile</div>
   <div class="content__profile">
-  <div class='image__profile-user'>IMAGEN PERFIL</div>
     <div class="profile-info">
-    Your Name: <span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span>
+    <div class='image__profile-user'>
+        <img src='images/UserImage.svg' class='image__user-profile' id='image__user-profile'/>
+    </div>
+    <div class="info-user">
+    <span id='username-profile'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span>
     <div class='select-inputfield'>
             <i class='fas fa-lock'></i>
             <select class='form__select' name='area' id='area__pyme'>
@@ -35,8 +33,9 @@ export const viewProfile = async () => {
               </select>  
           </div>
           BREVE DESCRIPCIÓN
+          </div>
     </div>
-    <button class='btn__edit-profile'>BOTON EDITAR PERFIL</button>
+    <button class='btn__edit-profile'>Editar Perfil</button>
           </div>`;
     
   containerProfileTemplate.innerHTML += profileTemplate;
@@ -47,6 +46,11 @@ export const viewProfile = async () => {
     posts.forEach((post, i) => {
       containerPostProfile += `
       <li class="container_post-profile">
+      <div class="user__postProfile">
+      <div class='user__post-infoProfile'>
+          <img src='images/UserImage.svg' class='image__user-post' id='image__user-postProfile'/>
+          <div><span class='username-post'>${post.data.user.name}</span></div>
+      </div>
       <div class='dropdown-post'>
           <button id='dropbtn-menupost' class='dropbtn-post'>
             <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-three-dots-vertical' id='bi-three-dots-vertical${i}' viewbox='0 0 16 16'>
@@ -54,23 +58,30 @@ export const viewProfile = async () => {
             </svg>
           </button>
           <div id='dropcontent-post${i}' class='dropdown-content-post'>
-            <button id='btn__edit${i}'>Editar</button>
+            <button class="btn__menudd" id='btn__edit${i}'>Editar</button>
             <div id='container__modal-edit${i}' class='container__modal-edit'>
           <div class='content__modal-edit'>
               <span class='close__modal-edit' id='close-edit${i}'>&times;</span>
-              <h1>lo que se va a editar: ${post.data.photo}</h1>
-              <p><input type='text' id='editText${i}' value='${post.data.description}' /></p>
+              <div>
+              <span id="title-modalEdit">Editar descripción:</span>
+              <div class="wrapper__input">
+              <i class="fas fa-edit"></i>
+              <p id="text-modalEdit"><input type='text' class="wrapper__input-text" id='editText${i}' value='${post.data.description}' /></p>
+              </div>
+              </div>
             <div class='modal__footer'>
               <button type='button' class='btn__modal-edit' id='btn-edit${i}' pid='${post.id}'>Publicar</button>
               </div>
               </div>
             </div>
-            <button id='btn__modal-delete${i}'>Eliminar</button>
+            <button class="btn__menudd" id='btn__modal-delete${i}'>Eliminar</button>
         <div id='container__modal-delete${i}' class='container__modal-delete'>
           <div class='content__modal-delete'>
               <span class='close__modal-delete' id='close-delete${i}'>&times;</span>
-              <h1>¿Eliminar Publicación?</h1>
-              <p>La publicación se eliminará permanentemente.</p>
+              <div>
+              <h1 id="title-modalDelete">¿Eliminar Publicación?</h1>
+              <p id="text-modalDelete">La publicación se eliminará permanentemente.</p>
+              </div>
             <div class='modal__footer'>
               <button class='btn__modal-delete' id='btn-cancel${i}'>Cancelar</button>
               <button pid='${post.id}' class='btn__modal-delete' id='btn-delete${i}'>Eliminar</button>
@@ -80,11 +91,11 @@ export const viewProfile = async () => {
           </div>
         </div> 
       </div>
+      </div>
       <div class="container__image" id="container__image-post">
           <img src='${post.data.imageURL}' class="image-post" id="image-post"/>
       </div>
-      <h5>${post.data.photo}</h5>
-      <p>${post.data.description}</p>
+      <span class='username-post'>${post.data.user.name}  </span><p class="text-post">${post.data.description}</p>
       </li>
       `;
     });

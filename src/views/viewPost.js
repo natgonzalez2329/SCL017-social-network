@@ -1,4 +1,8 @@
+//import { viewFeed } from './viewFeed.js';
+
 export const viewPost = () => {
+  // eslint-disable-next-line no-var
+  //const containerViews = document.querySelector('#root');
   const containerPostTemplate = document.createElement('div');
   containerPostTemplate.className = 'container__post-template';
 
@@ -7,29 +11,27 @@ export const viewPost = () => {
     <div class="content__modal-post">
       <span class="close__modal-post">&times;</span>
       <div>
-        <span>imagen perfil</span>
-        <h2>Nombre Pyme/Usuario</h2>
         <form id="post-form">
             <div class="content__form">
-              <div class="image-preview" id="container__image-post">
-              <img class="image-preview" id="image-post"/>
-              <span class="image-preview__text">Imagen</span>
+              <div class="container__image-preview" id="container__image-post">
+                      <img  src="" class="image-preview" id="image-post" alt="Image Preview"/>
+                      <span class="image-preview__text">Vista Previa</span>
               </div>
               <div class="file">
-              <label for="post-image">Selecciona Imagen</label>
-              <input type="file" id="post-image" class="content__form-input"/>
-              <button id="btn__upload-image"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewbox="0 0 16 16">
-              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-              <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
-            </svg></button>
+              <label for="post-image__input">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="iconImagePost" class="bi bi-card-image" viewBox="0 0 16 16">
+              <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+              <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+              </svg>
+            </label>
+              <input type="file" id="post-image__input" class="content__form-input"/>
               </div>
               </div>
               <div class="content__form">
-              <input type="text" id="post-photo" class="content__form-input" name="photo" placeholder="image" autocomplete="off"/>
-              <input type="text" id="post-description" class="content__form-input" name="description" placeholder="Breve descripción..." autocomplete="off" required/>
+              <textarea type="text" id="post-description" class="content__form-input" name="description" rows="4" cols="50" maxlength="50" placeholder="Breve descripción..." autocomplete="off" required></textarea>
             </div>
             <div class="modal__footer">
-              <button class="btn__modal-post" id="btn-save">Guardar</button>
+              <button class="btn__modal-post" id="btn-save">Publicar</button>
             </div>
           </form>
     </div>
@@ -40,16 +42,8 @@ export const viewPost = () => {
   // Get the modal
   const modalPost = containerPostTemplate.querySelector('#container__modal-post');
 
-  // Get the button that opens the modal
-  // const btnModalPost = containerPostTemplate.querySelector('#btn__modal-post');
-
   // Get the <span> element that closes the modal
   const closeModalPost = containerPostTemplate.querySelector('.close__modal-post');
-
-  // When the user clicks the button, open the modal
-  /* btnModalPost.addEventListener('click', () => {
-    modalPost.style.display = 'block';
-  }); */
 
   // When the user clicks on <span> (x), close the modal
   closeModalPost.addEventListener('click', () => {
@@ -58,7 +52,7 @@ export const viewPost = () => {
     containerPostTemplate.querySelector('#post-form').reset();
   });
 
-  // When the user clicks anywhere outside of the modal, close it
+  // When the user clicks anywhere outside of the modal, close it//NO ESTA FUNCIONANDO
   window.onclick = (e) => {
     if (e.target === modalPost) {
       modalPost.style.display = 'none';
@@ -67,18 +61,34 @@ export const viewPost = () => {
 
   const postForm = containerPostTemplate.querySelector('#post-form');
   // Saving data
-  const savePost = (imageURL) => {
-    postForm.addEventListener('submit', (e) => {
+  const uploadImage = async () => {
+    const ref = firebase.storage().ref();
+    const file = containerPostTemplate.querySelector('#post-image__input').files[0];
+    let url;
+    if (file) {
+      const nameFile = `${new Date()}-${file.name}`;
+      const metadata = {
+        contentType: file.type,
+      };
+      const task = await ref.child(nameFile).put(file, metadata);
+        console.log(task.ref.getDownloadURL());
+        url = task.ref.getDownloadURL();
+    } else {
+      console.log('no existe ningun archivo');
+    }
+    return url;
+  };
+
+    postForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const imageURL = await uploadImage();
       const { displayName, email, uid } = firebase.auth().currentUser;
-      const getPostPhoto = containerPostTemplate.querySelector('#post-photo').value;
       const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
       firebase
         .firestore()
         .collection('pyme-posts')
         .add({
           imageURL,
-          photo: getPostPhoto,
           description: getPostInfo,
           user: {
             name: displayName,
@@ -88,43 +98,35 @@ export const viewPost = () => {
           likes: [],
           recommend: [],
         });
-
       modalPost.style.display = 'none';
       containerPostTemplate.querySelector('#image-post').src = '';
       containerPostTemplate.querySelector('#post-form').reset();
+      //containerViews.appendChild(await viewFeed());
       console.log('Data Saved');
     });
-  };
 
-  // Upload Image
-  const btnUploadImage = containerPostTemplate.querySelector('#btn__upload-image');
-  btnUploadImage.addEventListener('click', () => {
-    const ref = firebase.storage().ref();
-    const file = containerPostTemplate.querySelector('#post-image').files[0];
+  // preview image
+  const inputFile = containerPostTemplate.querySelector('#post-image__input');
+  const previewContainer = containerPostTemplate.querySelector('#container__image-post');
+  const previewImage = previewContainer.querySelector('#image-post');
+  const previewDefaultText = previewContainer.querySelector('.image-preview__text');
+
+  inputFile.addEventListener('change', () => {
+    const file = containerPostTemplate.querySelector('#post-image__input').files[0];
     if (file) {
-      const nameFile = `${new Date()}-${file.name}`;
-      const metadata = {
-        contentType: file.type,
-      };
-      const task = ref.child(nameFile).put(file, metadata);
-      task
-        .then((snapshot) => {
-          // eslint-disable-next-line no-console
-          console.log(snapshot.ref.getDownloadURL());
-          return snapshot.ref.getDownloadURL();
-        })
-        .then((url) => {
-          console.log(url);
-          const imagePost = containerPostTemplate.querySelector('#image-post');
-          imagePost.src = url;
-          savePost(url);
-        })
-        .catch(console.error);
+      const reader = new FileReader();
+      previewDefaultText.style.display = 'none';
+      previewImage.style.display = 'block';
+      reader.addEventListener('load', () => {
+        previewImage.setAttribute('src', reader.result);
+      });
+      reader.readAsDataURL(file);
     } else {
-      console.log('no existe ningun archivo');
+      previewDefaultText.style.display = null;
+      previewImage.style.display = null;
+      previewImage.setAttribute('src', '');
     }
   });
-
 
   return containerPostTemplate;
 };

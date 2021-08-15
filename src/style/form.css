@@ -269,21 +269,76 @@ form.sign-in-form {
 .container__forms.sign-up-mode .right-panel {
   pointer-events: all;
 }
-/*ojooo*/
-.containerFooter {
-  background-color: #222;
-  color: #fff;
-  font-size: 18px;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 999;
-  height: 1.5em;
+.error-input {
+  text-align: left;
+  color: red;
+  font-size: 0.85rem;
 }
 
-/*------------------*/
+/*modal verify*/
+/* The Modal (background) */
+.container__modal-verify {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.content__modal-verify {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 4px;
+  width: 500px;
+}
+
+.close__modal-verify {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close__modal-verify:hover,
+.close__modal-verify:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal__footer {
+  text-align: right;
+}
+.btn__modal-verify {
+  width: 100px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn__modal-verify:hover {
+  background-color: #4d84e2;
+}
+#title-modalVerify {
+  font-size: 1.7rem;
+  text-align:center;
+}
+#text-modalVerify {
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
 @media (max-width: 870px) {
   .container__forms {
     min-height: 800px;
@@ -378,20 +433,22 @@ form.sign-in-form {
     top: 5%;
     transform: translate(-50%, 0);
   }
-  .containerFooter {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
+  .content__modal-verify {
+    width: 400px;
+    padding: 5px 20px;
   }
-  
-  .form__p{
-    margin: 2% 0;
+  #title-modalVerify {
+    font-size: 1.5em;
+    text-align:center;
+  }
+  #text-modalVerify {
+    font-size: 1em;
+    text-align: justify;
+  }
+  .btn__modal-verify {
+    width: 90px;
+    height: 35px;
+    font-size: 1em;
   }
 }
 
@@ -403,11 +460,13 @@ form.sign-in-form {
     width: 30%;
   }
   .panel .content {
-    padding: 0.5rem 1em;
+    padding: 0.5rem 0.5em;
   }
   .panel{
     margin-left: -15%;
-    
+  }
+  .panel h3 {
+    font-size: 1.7rem;
   }
   .container__forms {
     padding: 1.5rem;
@@ -420,65 +479,21 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
-}
-
-.error-input {
-  text-align: left;
-  color: red;
-  font-size: 0.85rem;
-}
-
-/*modal verify*/
-/* The Modal (background) */
-.container__modal-verify {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-.content__modal-verify {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: none;
-  border-radius: 4px;
-  width: 30%;/*resize mobile*/
-}
-
-.close__modal-verify {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-.close__modal-verify:hover,
-.close__modal-verify:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-.modal__footer {
-  text-align: right;
-}
-.btn__modal-verify {
-  width: 100px;
-  background-color: #5995fd;
-  border: none;
-  outline: none;
-  height: 49px;
-  border-radius: 49px;
-  color: #fff;
-  font-weight: 600;
-  margin: 10px 0;
-  cursor: pointer;
-}
-.btn__modal-verify:hover {
-  background-color: #4d84e2;
+  .content__modal-verify {
+    width: 250px;
+    padding: 5px 20px;
+  }
+  #title-modalVerify {
+    font-size: 1em;
+    text-align:center;
+  }
+  #text-modalVerify {
+    font-size: 0.7em;
+    text-align: justify;
+  }
+  .btn__modal-verify {
+    width: 80px;
+    height: 30px;
+    font-size: 0.7em;
+  }
 }

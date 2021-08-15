@@ -98,11 +98,11 @@ export const viewForms = () => {
   <div class="content__modal-verify">
     <span class="close__modal-verify" id="close__modal-verify">&times;</span>
     <div>
-      <h1>Valida tu cuenta antes de Iniciar Sesión</h1>
-      <p>Busca el correo electrónico de verificación en la bandeja de entrada y haz click en el vínculo que se muestra en el mensaje.</p>
+      <h1 id="title-modalVerify">Valida tu cuenta antes de Iniciar Sesión</h1>
+      <p id="text-modalVerify">Busca el correo electrónico de verificación en la bandeja de entrada y haz click en el vínculo que se muestra en el mensaje.</p>
     </div> 
     <div class="modal__footer">
-      <button class="btn__modal-verify" id="btn-verify">Verifica e Inicia Sesión</button>
+      <button class="btn__modal-verify" id="btn-verify">Aceptar</button>
     </div>
   </div>
 </div>`;
@@ -279,7 +279,7 @@ export const viewForms = () => {
   inputUserPasswordSignIn.addEventListener('keyup', (e) => {
     passwordInValidate(e.target.value);
   });
-  
+  // modal verify
   const btnSignUpModal = containerFormTemplate.querySelector('#btn-signup');
   const modalVerify = containerFormTemplate.querySelector('#container__modal-verify');
   const closeModalVerify = containerFormTemplate.querySelector('#close__modal-verify');

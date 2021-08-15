@@ -18,8 +18,8 @@ export const viewFeed = async () => {
 
   const feedTemplate = `
     <div class='view__feed'>
-    <img src='images/UserImage.png' class='image__user-feed' id='image__user-feed'/>
-    <div><span id='username'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
+    <img src='images/UserImage.svg' class='image__user-feed' id='image__user-feed'/>
+    <div><span id='username-feed'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span></div>
     </div>`;
   containerFeedTemplate.innerHTML += feedTemplate;
 
@@ -42,7 +42,6 @@ export const viewFeed = async () => {
         <span id='countRecommend${i}'>${post.data.recommend.length > 0 ? post.data.recommend.length : ''}</span> Recomendado
         </button>
       </div>
-        <h5>${post.data.photo}</h5>
         <p>${post.data.description}</p>
       </li>`;
     });
@@ -52,7 +51,7 @@ export const viewFeed = async () => {
     // likes
     const likeBtn = containerFeedTemplate.querySelectorAll('#like');
 
-   likeBtn.forEach(async (btn, i) => {
+    likeBtn.forEach(async (btn, i) => {
       const post = await fetchPosts(firebase);
       const postLikes = post[i].data.likes;
       console.log(postLikes);
