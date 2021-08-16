@@ -10,6 +10,9 @@
   clear: both;
   font-family: "Montserrat", sans-serif;
 }
+body {
+  background: #f6f5f7;
+}
 .container__form-template {
   background: #f6f5f7;
   display: flex;

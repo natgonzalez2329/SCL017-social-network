@@ -1,8 +1,6 @@
-//import { viewFeed } from './viewFeed.js';
+/* eslint-disable no-console */
 
 export const viewPost = () => {
-  // eslint-disable-next-line no-var
-  //const containerViews = document.querySelector('#root');
   const containerPostTemplate = document.createElement('div');
   containerPostTemplate.className = 'container__post-template';
 
@@ -71,39 +69,37 @@ export const viewPost = () => {
         contentType: file.type,
       };
       const task = await ref.child(nameFile).put(file, metadata);
-        console.log(task.ref.getDownloadURL());
-        url = task.ref.getDownloadURL();
+      console.log(task.ref.getDownloadURL());
+      url = task.ref.getDownloadURL();
     } else {
       console.log('no existe ningun archivo');
     }
     return url;
   };
 
-    postForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const imageURL = await uploadImage();
-      const { displayName, email, uid } = firebase.auth().currentUser;
-      const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
-      firebase
-        .firestore()
-        .collection('pyme-posts')
-        .add({
-          imageURL,
-          description: getPostInfo,
-          user: {
-            name: displayName,
-            email,
-            uid,
-          },
-          likes: [],
-          recommend: [],
-        });
-      modalPost.style.display = 'none';
-      containerPostTemplate.querySelector('#image-post').src = '';
-      containerPostTemplate.querySelector('#post-form').reset();
-      //containerViews.appendChild(await viewFeed());
-      console.log('Data Saved');
-    });
+  postForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const imageURL = await uploadImage();
+    const { displayName, email, uid } = firebase.auth().currentUser;
+    const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
+    firebase.firestore().collection('pyme-posts')
+      .add({
+        imageURL,
+        description: getPostInfo,
+        user: {
+          name: displayName,
+          email,
+          uid,
+        },
+        likes: [],
+        recommend: [],
+      });
+    modalPost.style.display = 'none';
+    containerPostTemplate.querySelector('#image-post').src = '';
+    containerPostTemplate.querySelector('#post-form').reset();
+    window.location.hash = '#feed';
+    console.log('Data Saved');
+  });
 
   // preview image
   const inputFile = containerPostTemplate.querySelector('#post-image__input');
@@ -130,4 +126,4 @@ export const viewPost = () => {
 
   return containerPostTemplate;
 };
-//imagen.src = URL.createObjectURL(file); preview image
+// imagen.src = URL.createObjectURL(file); preview image

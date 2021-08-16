@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const firebaseInit = () => {
   const firebaseConfig = {
     apiKey: 'AIzaSyA-7wjgyCL8NqhOvM0D_tlfirof1p-k5l0',
@@ -13,9 +14,10 @@ const firebaseInit = () => {
 //  Email de Verificacion
 const verificationEmail = () => {
   firebase.auth().currentUser.sendEmailVerification().then(() => {
-    alert('Verification Sent');
+    // alert('Verification Sent');
   }).catch((error) => {
-    alert(error);
+    // alert(error);
+    console.log(error);
   });
 };
 const createUserCollection = async () => {
@@ -59,6 +61,7 @@ const isLogged = () => {
   }
   return false;
 };
+const firebaseGetUserId = () => firebase.auth().currentUser.uid;
 
 // inicio de sesión con email y contraseña
 const firebaseLogIn = async (userData) => {
@@ -67,29 +70,24 @@ const firebaseLogIn = async (userData) => {
       .auth()
       .signInWithEmailAndPassword(
         userData.userEmailSignIn,
-        userData.userPasswordSignIn
+        userData.userPasswordSignIn,
       );
     console.log(userCredential);
     const user = firebase.auth().currentUser;
     if (user != null && user.emailVerified) {
-      window.localStorage.setItem(
-        'puntopyme-name',
-        user.displayName,
-      );
+      window.localStorage.setItem('puntopyme-name', user.displayName);
       // Signed in
       window.location.hash = '#feed';
       return user;
     }
-    console.log('usuario no verificado');
-    return null;
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
     console.log(error);
   }
+  console.log('usuario no verificado');
+  return null;
 };
 
-//inicio de sesión con google
+// inicio de sesión con google
 const googleLogin = async () => {
   try {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -102,6 +100,7 @@ const googleLogin = async () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    window.localStorage.setItem('puntopyme-name', user.displayName);
     console.log('user', user);
     window.location.hash = '#feed';
   } catch (error) {
@@ -124,15 +123,10 @@ const facebookLogin = () => {
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
-      /* @type {firebase.auth.OAuthCredential} */
-      const credential = result.credential;
       createUserCollection();
       // The signed-in user info.
       const user = result.user;
-
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const accessToken = credential.accessToken;
-
+      window.localStorage.setItem('puntopyme-name', user.displayName);
       window.location.hash = '#feed';
     })
     .catch((error) => {
@@ -143,7 +137,6 @@ const facebookLogin = () => {
       const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       const credential = error.credential;
-
       // ...
     });
 };
@@ -153,7 +146,7 @@ const firebaseLogout = async () => {
   try {
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
-    alert("se ejecutó logout");
+    // alert("se ejecutó logout");
   } catch (error) {
     console.log(error);
   }
@@ -178,6 +171,7 @@ export {
   firebaseInit,
   firebaseSignUp,
   isLogged,
+  firebaseGetUserId,
   googleLogin,
   firebaseLogIn,
   firebaseLogout,

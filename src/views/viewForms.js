@@ -1,3 +1,4 @@
+// eslint-disable-next-line object-curly-newline
 import { googleLogin, firebaseSignUp, firebaseLogIn, facebookLogin } from '../lib/firebase.js';
 import { footerComponent } from './components/footer.js';
 
@@ -114,6 +115,12 @@ export const viewForms = () => {
   const btnUnmaskify = containerFormTemplate.querySelector('#unmaskify');
   const btnMaskify = containerFormTemplate.querySelector('#maskify');
 
+  const maskify = () => {
+    inputSigninPassword.type = 'password';
+    btnUnmaskify.style.display = 'block';
+    btnMaskify.style.display = 'none';
+  };
+
   btnUnmaskify.addEventListener('click', () => {
     inputSigninPassword.type = 'text';
     btnUnmaskify.style.display = 'none';
@@ -125,17 +132,17 @@ export const viewForms = () => {
     maskify();
   });
 
-  function maskify() {
-    inputSigninPassword.type = 'password';
-    btnUnmaskify.style.display = 'block';
-    btnMaskify.style.display = 'none';
-    }
-
   // -------------------- Ocultar/mostrar contraseñas en input de password-signup--------------//
 
   const inputPassword = containerFormTemplate.querySelector('#user-password');
   const btnUnmaskify2 = containerFormTemplate.querySelector('#unmaskify2');
   const btnMaskify2 = containerFormTemplate.querySelector('#maskify2');
+
+  const maskify2 = () => {
+    inputPassword.type = 'password';
+    btnUnmaskify2.style.display = 'block';
+    btnMaskify2.style.display = 'none';
+  };
 
   btnUnmaskify2.addEventListener('click', () => {
     inputPassword.type = 'text';
@@ -147,12 +154,6 @@ export const viewForms = () => {
   btnMaskify2.addEventListener('click', () => {
     maskify2();
   });
-
-  function maskify2() {
-    inputPassword.type = 'password';
-    btnUnmaskify2.style.display = 'block';
-    btnMaskify2.style.display = 'none';
-  }
 
   // switch panel formularios
   const signInPanelBtn = containerFormTemplate.querySelector('#sign-in-btn');
@@ -170,6 +171,7 @@ export const viewForms = () => {
   // expresiones regulares para validar input
   const expression = {
     userName: new RegExp(/^\w+$/g), // Letras, numeros, guion y guion_bajo.
+    // eslint-disable-next-line no-useless-escape
     email: new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   };
 
@@ -181,6 +183,7 @@ export const viewForms = () => {
       userError.innerHTML = '*Campo obligatorio. El usuario tiene que ser de 4 a 20 carácteres y solo puede contener números, letras y guión bajo';
       userError.style.display = 'block';
     }
+    // eslint-disable-next-line max-len
     if (!expression.userName.test(userNameSignUp) || (userNameSignUp.length < 4 || userNameSignUp.length > 20)) {
       userError.innerHTML = '*Campo obligatorio. El usuario tiene que ser de 4 a 20 carácteres y solo puede contener números, letras y guión bajo.';
       userError.style.display = 'block';
@@ -311,6 +314,7 @@ export const viewForms = () => {
     emailValidate(userEmailSignUp);
     passwordValidate(userPasswordSignUp);
 
+    // eslint-disable-next-line max-len
     if (userValidate(userNameSignUp) && emailValidate(userEmailSignUp) && passwordValidate(userPasswordSignUp)) {
       firebaseSignUp({
         userEmailSignUp,

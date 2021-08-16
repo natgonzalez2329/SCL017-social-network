@@ -1,9 +1,9 @@
+/* eslint-disable no-console */
 import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
 import { firebaseLogout, fetchPosts } from '../lib/firebase.js';
 import { viewPost } from './viewPost.js';
 
-// eslint-disable-next-line no-var
-var containerViews = document.querySelector('#root');
+const containerViews = document.querySelector('#root');
 
 export const viewProfile = async () => {
   containerViews.innerHTML = '';
@@ -11,9 +11,7 @@ export const viewProfile = async () => {
   const containerProfileTemplate = document.createElement('div');
 
   containerProfileTemplate.className = 'container__profile-template';
- 
   containerProfileTemplate.appendChild(topMenuComponent());
-
 
   const profileTemplate = `
   <div class="content__profile">
@@ -22,7 +20,7 @@ export const viewProfile = async () => {
         <img src='images/UserImage.svg' class='image__user-profile' id='image__user-profile'/>
     </div>
     <div class="info-user">
-    <span id='username-profile'>${firebase.auth().currentUser.displayName || window.localStorage.getItem('puntopyme-name')}</span>
+    <span id='username-profile'>${window.localStorage.getItem('puntopyme-name')}</span>
     <div class='select-inputfield'>
             <i class='fas fa-lock'></i>
             <select class='form__select' name='area' id='area__pyme'>
@@ -35,9 +33,9 @@ export const viewProfile = async () => {
           BREVE DESCRIPCIÓN
           </div>
     </div>
-    <button class='btn__edit-profile'>Editar Perfil</button>
+    <button class='btn__edit-profile'><i class="far fa-edit"></i>Editar Perfil</button>
           </div>`;
-    
+
   containerProfileTemplate.innerHTML += profileTemplate;
 
   let containerPostProfile = '';
@@ -46,34 +44,37 @@ export const viewProfile = async () => {
     posts.forEach((post, i) => {
       containerPostProfile += `
       <li class="container_post-profile">
-      <div class="user__postProfile">
-      <div class='user__post-infoProfile'>
+      <div class="user__post">
+        <div class='user__post-info'>
           <img src='images/UserImage.svg' class='image__user-post' id='image__user-postProfile'/>
-          <div><span class='username-post'>${post.data.user.name}</span></div>
-      </div>
-      <div class='dropdown-post'>
+          <div class="user-info">
+            <span class='username-post'>${post.data.user.name}</span><br>
+            <small>Fecha</small>
+          </div>
+        </div>
+        <div class='dropdown-post'>
           <button id='dropbtn-menupost' class='dropbtn-post'>
             <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-three-dots-vertical' id='bi-three-dots-vertical${i}' viewbox='0 0 16 16'>
               <path d='M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/>
             </svg>
           </button>
-          <div id='dropcontent-post${i}' class='dropdown-content-post'>
-            <button class="btn__menudd" id='btn__edit${i}'>Editar</button>
-            <div id='container__modal-edit${i}' class='container__modal-edit'>
-          <div class='content__modal-edit'>
-              <span class='close__modal-edit' id='close-edit${i}'>&times;</span>
-              <div>
-              <span id="title-modalEdit">Editar descripción:</span>
-              <div class="wrapper__input">
-              <i class="fas fa-edit"></i>
-              <p id="text-modalEdit"><input type='text' class="wrapper__input-text" id='editText${i}' value='${post.data.description}' /></p>
+            <div id='dropcontent-post${i}' class='dropdown-content-post'>
+              <button class="btn__menudd" id='btn__edit${i}'>Editar</button>
+              <div id='container__modal-edit${i}' class='container__modal-edit'>
+                <div class='content__modal-edit'>
+                  <span class='close__modal-edit' id='close-edit${i}'>&times;</span>
+                  <div>
+                    <span id="title-modalEdit">Editar descripción:</span>
+                    <div class="wrapper__input">
+                      <i class="fas fa-edit"></i>
+                      <p id="text-modalEdit"><input type='text' class="wrapper__input-text" id='editText${i}' value='${post.data.description}' /></p>
+                    </div>
+                  </div>
+                  <div class='modal__footer'>
+                    <button type='button' class='btn__modal-edit' id='btn-edit${i}' pid='${post.id}'>Publicar</button>
+                  </div>
+                </div>
               </div>
-              </div>
-            <div class='modal__footer'>
-              <button type='button' class='btn__modal-edit' id='btn-edit${i}' pid='${post.id}'>Publicar</button>
-              </div>
-              </div>
-            </div>
             <button class="btn__menudd" id='btn__modal-delete${i}'>Eliminar</button>
         <div id='container__modal-delete${i}' class='container__modal-delete'>
           <div class='content__modal-delete'>
@@ -88,18 +89,29 @@ export const viewProfile = async () => {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
         </div> 
+        </div>
       </div>
-      </div>
-      <div class="container__image" id="container__image-post">
+      <div class="container__image">
           <img src='${post.data.imageURL}' class="image-post" id="image-post"/>
       </div>
-      <span class='username-post'>${post.data.user.name}  </span><p class="text-post">${post.data.description}</p>
+      <div class='container-btn-like'>
+        <button class='like__btn'>
+          <span><i class='fas fa-thumbs-up'></i></span>
+          <span>${post.data.likes.length > 0 ? post.data.likes.length : ''}</span> Me Gusta </button> 
+          <button class='recommend__btn'>
+        <span id='iconRecommend${i}'><i class='fas fa-check-circle'></i></span>
+        <span id='countRecommend${i}'>${post.data.recommend.length > 0 ? post.data.recommend.length : ''}</span> Recomendado </button>
+      </div>
+      <div class="description-post">
+        <span class='username-post'>${post.data.user.name}</span>
+        <p class="text-post">${post.data.description}</p>
+      </div>
       </li>
       `;
     });
-    const profilePostTemplate = `<ul id='posts' class="container__posts-profile">${containerPostProfile}</ul>`;
+    const profilePostTemplate = `<ul id='posts__Profile' class="container__posts-profile">${containerPostProfile}</ul>`;
     containerProfileTemplate.innerHTML += profilePostTemplate;
 
     // menu Edit Delete
@@ -186,17 +198,16 @@ export const viewProfile = async () => {
         try {
           const dataRef = await firebase.firestore().collection('pyme-posts').doc(id);
           await dataRef.update({ description: newDescription.value });
-          console.log("Document successfully updated!");
+          console.log('Document successfully updated!');
           modalEdit.style.display = 'none';
           containerViews.appendChild(await viewProfile()); // ruta muro posts
         } catch (error) {
-          console.error("Error updating document: ", error);
+          console.error('Error updating document: ', error);
         }
       });
-
     });
 
-   /*  window.onclick = (e) => {
+    /* window.onclick = (e) => {
       const dropBtnPost = containerProfileTemplate.querySelectorAll('.dropbtn-post');
       const threeDots = containerProfileTemplate.querySelectorAll('.bi-three-dots-vertical');
       if (!e.target.matches('.dropbtn-post') && !e.target.matches('.bi.bi-three-dots-vertical')) {
@@ -212,15 +223,15 @@ export const viewProfile = async () => {
           });
         }
       }
-       dropBtnPost.forEach(() => {
-         console.log(e.target.parentElement)
-       })
-       threeDots.forEach(() => {
-         console.log(e.target.parentElement.parentElement)
-       })
+      dropBtnPost.forEach(() => {
+        console.log(e.target.parentElement)
+      })
+      threeDots.forEach(() => {
+        console.log(e.target.parentElement.parentElement)
+      })
     }; */
 
-   /*  window.onclick = (e) => {
+  /* window.onclick = (e) => {
       if (!e.target.matches('.dropbtn-post')) {
         const dropdownPost = containerProfileTemplate.querySelector('.dropdown-content-post');
         let i;
@@ -232,9 +243,8 @@ export const viewProfile = async () => {
         }
       }
     }; */
-
   } else {
-    containerPostProfile += '<li>Publica tu primer post</li>';
+    containerProfileTemplate.innerHTML += '<ul id=\'posts\' class="container__posts-profile"><li>Publica tu primer post</li></ul>';
   }
   containerProfileTemplate.appendChild(mobileMenuComponent());
   containerProfileTemplate.appendChild(viewPost());
@@ -246,11 +256,9 @@ export const viewProfile = async () => {
 
   const logOutBtn = containerProfileTemplate.querySelector('.logout-btn');
   logOutBtn.addEventListener('click', () => {
-      alert("chao!");
-      firebaseLogout();
+    // alert("chao!");
+    firebaseLogout();
   });
-
-
   return containerProfileTemplate;
 };
 
