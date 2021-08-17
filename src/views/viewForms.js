@@ -65,6 +65,7 @@ export const viewForms = () => {
               <i class="fab fa-google"></i>
             </a>
           </div>
+          <small class="legal">Al registrarte, aceptas nuestros <a>términos y condiciones legales.</a></small>
         </form>
       </div>
     </div>

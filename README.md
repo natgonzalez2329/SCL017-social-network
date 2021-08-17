@@ -6,13 +6,13 @@
 
 * [1. Preámbulo](#1-preámbulo)
 * [2. Descripción general](#2-descripción-general)
-* [3. Perfil de usuarios](#2-perfil-de-usuarios)
-* [4. Historias de usuarios](#3-historias-de-usuarios)
-* [5. Prototipo y diseño](#4-prototipo-y-diseño)
-* [6. Interfaz](#5-interfaz)
-* [7. Modo de usuarios](#6-modo-de-usuarios)
-* [8. Tecnología](#7-tecnología)
-* [9. Enlace web](#8-enlace-web)
+* [3. Perfil de usuarios](#3-perfil-de-usuarios)
+* [4. Historias de usuarios](#4-historias-de-usuarios)
+* [5. Prototipo y diseño](#5-prototipo-y-diseño)
+* [6. Interfaz](#6-interfaz)
+* [7. Modo de usuarios](#7-modo-de-usuarios)
+* [8. Tecnología](#8-tecnología)
+* [9. Enlace web](#9-enlace-web)
 
 ***
 ## 1. Preámbulo
@@ -23,27 +23,26 @@ Estudios de We Are Social indican que 3 de cada 4 chilenos son activos en redes 
 
  Las Redes Sociales ha revolucionado el mundo comercial, transformándose en el mejor aliado para mejorar la gestión de los emprendedores, de esta manera, las plataformas a las que se puede acceder a través de los diferentes tipos de dispositivos ayudan y potencian el crecimiento del negocio de forma acelerada en contraste de los resultados obtenidos con métodos tradicionales. 
 
- Debido al reciente suceso mundial de la Pandemia, la economía se desestabilizo dando paso a una era tecnológica que antes era opcional, convirtiendose actualmente una de las principales e indispensable forma de hacer negocio, a través de la internet, llegando ser pilar fundamental en el desarrollo y crecimiento de Pymes de una forma más rápida y accesible dandose a conocer sus respectivos productos y servicios, teniendo estos mayor alcance de usuarios a un costo asequible, ya sea a nivel local, nacional o internacional.
+ Debido al reciente suceso mundial de la Pandemia, la economía se desestabilizó dando paso a una era tecnológica que antes era opcional, convirtiéndose actualmente una de las principales e indispensables forma de hacer negocio, a través de la internet, llegando ser pilar fundamental en el desarrollo y crecimiento de Pymes de una forma más rápida y accesible dándose a conocer sus respectivos productos y servicios, teniendo estos mayor alcance de usuarios a un costo asequible, ya sea a nivel local, nacional o internacional.
 
- Algunos tuvieron que partir de cero, otros debieron reducir su personal. Y ante la incertidumbre vieron una única solución: vender sus productos por internet y llevarlos hasta la puerta de las casas.
+ Algunos tuvieron que partir de cero, otros debieron reducir su personal. Y ante la incertidumbre vieron una única solución: vender sus productos por internet y llevarlos hasta la puerta de las casas. Para ello, tuvieron que potenciar fuertemente las redes sociales, algo que ha sido el salvavidas para que microempresas sigan funcionando a lo largo del país. Una forma de vender que llegó para quedarse.
 
- Para ello, tuvieron que potenciar fuertemente las redes sociales, algo que ha sido el salvavidas para que microempresas sigan funcionando a lo largo del país. Una forma de vender que llegó para quedarse.
-
- Cada vez son más populares y atrayentes establecer negocios a través de las Redes Sociales, cada día se suman mas Pymes por una necesidad que la actualidad demanda, que es la cercanía a través de redes para sustentar y potenciar la economía a nivel local. Sin embargo, se tiene presente que hay pymes y pequeños negocios que corren con ciertas desventajas, porque todavía no cuentan con el conocimiento o las herramientas para transformar sus ventas al mundo digital.
+ Cada vez es más popular y atrayente establecer negocios a través de las Redes Sociales, cada día se suman más Pymes por una necesidad que la actualidad demanda, que es la cercanía a través de redes para sustentar y potenciar la economía a nivel local. Sin embargo, se tiene presente que hay Pymes y pequeños negocios que corren con ciertas desventajas, porque todavía no cuentan con el conocimiento o las herramientas para trasladar sus ventas al mundo digital.
 ## 2. Descripción general
-Punto Pyme es una aplicación web gratuita, esta plataforma permite a toda Pyme potenciar su emprendimiento, independientemente de la etapa en que se encuentre. A través de un ámbito profesional y amigable, se busca crear una comunidad en línea para impulsar un compromiso al apoyar la economía local, en donde podran interactuar con sus clientes, y encontrar servicios o proveedores	para sus necesidades.
+Punto Pyme es una aplicación web gratuita que permite a toda Pyme potenciar su emprendimiento, independientemente de la etapa en que se encuentre. A través de un ámbito profesional y amigable, se busca crear una comunidad en línea para impulsar un compromiso al apoyar la economía local, en donde podrán interactuar con sus clientes, y encontrar servicios o proveedores	para sus necesidades.
 
-Respondiendo a esa invisibilidad y desventaja frente a las grandes compañias, es un gran apoyo para asi aprovecharse de las grandes ventajas que puede ocupar pertener a una Red Social como Punto Pyme, en donde juega un papel fundamental para darse a conocer al crear imagen de marca. Permiten atender más rápido y a más clientes a través de promociones efectivas, las cuales tendran un impacto e importancia en la venta. 
+Respondiendo a esa invisibilidad y desventaja frente a las grandes compañias, es un gran apoyo para así aprovecharse de las grandes ventajas que puede ocupar pertenecer a una Red Social como Punto Pyme, en donde juega un papel fundamental para darse a conocer al crear imagen de marca, permitiendo atender más rápido y a más clientes a través de promociones efectivas, las cuales tendran un impacto e importancia en la venta. 
 ## 3. Perfil de usuarios
-Punto Pyme va dirigido a todas las Pymes y usuarios que quieran fomentar la economía local, creando una comunidad en base a la sinergía y la unión de fuerzas, apoyandose en el poder de las Redes Sociales, con el objetivo de dar a conocer la marca, promocionar la compra/venta de servicios y/o productos a través de esta plataforma. Por lo tanto, entre los perfiles de usuario, destacan:
+Punto Pyme va dirigido a todas las Pymes y usuarios que quieran fomentar la economía local, creando una comunidad en base a la sinergia y la unión de fuerzas, apoyándose en el poder de las Redes Sociales, con el objetivo de dar a conocer la marca, promocionar la compra/venta de servicios y/o productos a través de esta plataforma. Por lo tanto, entre los perfiles de usuario destacan:
 - Pymes: * 
   - Microempresa (<10 trabajadores).
   - Pequeña (<50 trabajadores).
   - Mediana (<250 trabajadores).
 - Clientes.
+
 *(Clasificación según el Ministerios de Economía Fomento y Turismo de Chile).
 
-Una vez identificados dichos perfiles de usuarios, se procedio a realizar una encuesta como técnica de investigación con el objetivo de apreciar la experiencia y consideraciones de los mismos para determinar la necesidad de una Red Social centrada en las Pymes, a través de la encuesta se determino, que:
+Una vez identificados dichos perfiles de usuarios, se procedió a realizar una encuesta como técnica de investigación con el objetivo de apreciar la experiencia y consideraciones de los mismos para determinar la necesidad de una Red Social centrada en las Pymes, a través de la encuesta se determinó que:
 
 * El 39.1% se identifica como Pymes de tipo Microempresa, seguido por un 32.6% de Pymes Pequeñas y un 28.3% de Usuarios.
 * Los rubros o áreas comerciales a las que pertenecen las Pymes o a las cuales los usuarios suelen comprar, predominan:
@@ -55,15 +54,20 @@ Una vez identificados dichos perfiles de usuarios, se procedio a realizar una en
    - 8.7% Industrias Manufactureras.
    
 * El 97.8% han utilizado alguna Red Social para vender o comprar.
-* 100%  conincide que publica con mayor frecuencia en su perfil al vender contenido de tipo texto con imágen.
-* 100% como usuario valora en un perfil de compra/venta contenido de tipo texto con imágen.
+* 100%  conincide que publica con mayor frecuencia en su perfil al vender contenido de tipo texto con imagen.
+* 100% como usuario valora en un perfil de compra/venta contenido de tipo texto con imagen.
 * El 43.5% frecuentemente y un 30.4% muy frecuentemente vende por Redes Sociales. 
 * El 45.7% frecuentemente y un 39.1% muy frecuentemente busca y compra productos por Redes Sociales.
-* La recomendaciones son la interacción más valorada con un 47.8%, al momento de decidir una compra, seguida por los comentarios respondidos (45.7%), número de publicaciones (45.7%) y por último el número de likes (37%).
+* Las recomendaciones son la interacción más valorada con un 47.8%, al momento de decidir una compra, seguida por los comentarios respondidos (45.7%), número de publicaciones (45.7%) y por último el número de likes (37%).
 * El 50% le gusta comprar de forma on-line.
 * Un 65.2% le suele comprar a Pymes o pequeños comerciantes.
 * El 100% cree que las Pymes necesitan más áreas o espacios para darse a conocer.
 
+<details>
+<summary>Ver Encuesta</summary>
+
+![Prototipo-inicial](./src/images/encuesta.png)
+</details>
 
 ## 4. Historias de usuarios
 Historia de usuario 1: "yo, como pyme nueva quiero registrarme y crear una cuenta de forma sencilla para mostrar mis productos en una plataforma que sea amigable."
@@ -115,13 +119,13 @@ Criterios de aceptación:
 - El usuario al acceder a la opción de publicar un post, accede a una plantilla que tendrá opciones para personalizar.
 - El usuario en la plantilla del post tiene la opción de publicar Imágen, una breve descripción y/o rubro.
 - El usuario puede dar por publicado el post a través de un botón de publicar.
-- El usuario al visualizar el post publicado puede observar en la plantilla las siguientes descripciones: imágen, nombre de Pyme/Usuario, rubro, y/o breve descripción, likes, sección de comentarios.
-- El usuario puede observar en su perfil los post publicados.
-- El usuario puede editar los post publicados y preservar los cambios.
+- El usuario al visualizar el post publicado puede observar en la plantilla las siguientes descripciones: imágen, nombre de Pyme/Usuario, rubro, breve descripción, likes, y recomendaciones.
+- El usuario puede observar en su perfil los posts propios publicados.
+- El usuario puede editar los posts publicados y preservar los cambios.
 - El usuario puede eliminar los posts.
 - El usuario puede confirmar si está seguro de eliminar o no un post a través de un mensaje de confirmación.
-- El usuario puede interactuar con otros posts dandole like y comentando.
-- El usuario puede quitar el like.
+- El usuario puede interactuar con otros posts dandole like y recomendando.
+- El usuario puede quitar el like y/o recomendación.
 
 Definición de terminado:
 * [X] Crear prototipo de baja fidelidad de la vista perfil y plantilla de publicación, para determinar la distribución de los elementos, siguiendo los fundamentos de mobile first.
@@ -134,37 +138,108 @@ Definición de terminado:
 * [X] Al dar click para editar un post, debe cambiar el texto por un input que permita editar el texto y preservar los cambios.
 * [X] Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada(botón guardar).
 * [X] Eliminar posts, con mensaje de confirmación para ejecutar dicha acción.
-* [X] Poder dar y quitar like a una publicación. Máximo uno por usuario.
-* [X] Mostrar en publicación número interactivo real de likes.
-* [X] Poder comentar publicaciones. 
+* [X] Poder dar y quitar like/recomendaciones a una publicación. Máximo uno por usuario.
+* [X] Mostrar en publicación número interactivo real de likes y/o recomendaciones.
 * [X] Mostrar post en perfil.
-
-Historia de usuario 3: "yo, como pyme grande quiero buscar otras pymes que vendan insumos y materia prima de mi interés para potenciarnos mutuamente."
-
-Criterios de aceptación:
-
-Definición de terminado:
-
 ## 5. Prototipo y diseño
 
-- Diseño de baja fidelidad
+En base a la temática que se quiere proyectar, en el desarrollo del diseño de esta Social Network, se tomó en cuenta el  ámbito comercial y al tipo de usuario al que va dirigido, propiciando un ambiente profesional, minimalista y sencillo de percibir. Se definió una paleta basada en 3 colores pricipales:
 
-![Prototipo baja fidelidad desktop Sign-in](./src/images/prototipo_desktop_sign-in.jpeg)
-![Prototipo baja fidelidad desktop Sign-up](./src/images/prototipo_desktop_sign-up.jpeg)
-![Prototipo baja fidelidad mobile Sign-in](./src/images/prototipo_mobile_sign-in.jpg)
-![Prototipo baja fidelidad mobile Sign-up](./src/images/prototipo_mobile_sign-up.jpg)
+![Paleta-de-colores](./src/images/paletadecolores.png)
 
--Diseño de alta fidelidad
-![Prototipo baja fidelidad desktop Sign-in](./src/images/Figma-Desktop-1.png)
-![Prototipo baja fidelidad desktop Sign-up](./src/images/Figma-Desktop-2.png)
-![Prototipo baja fidelidad iPhone 11 Pro Max Sign-in](./src/images/Figma-iPhone11ProMax-1.png)
-![Prototipo baja fidelidad iPhone 11 Pro Max Sign-up](./src/images/Figma-iPhone11ProMax-2.png)
+ Se diseño un logotipo que representa la esencia de Punto Pyme, el cual posee puzzles como símbolo de integración, de una comunidad unida en sinergia, que se ayuda y apoya mutuamente para potenciar la economía local.
+
+![Logo-punto-pyme](./src/images/logo.png)
+- ## Diseño de baja fidelidad
+
+<details>
+<summary>Móvil</summary> 
+
+![Prototipo-inicial](./src/images/prototipo_mobile_sign-in.jpg)
+
+![Prototipo-inicial](./src/images/prototipo_mobile_sign-up.jpeg)
+
+![Prototipo-inicial](./src/images/prototipo_mobile_profile.jpeg)
+
+![Prototipo-inicial](./src/images/prototipo_post.jpeg)
+</details>
+
+<details>
+<summary>Escritorio</summary> 
+
+![Prototipo-inicial](./src/images/prototipo_desktop_sign-in.jpeg)
+
+![Prototipo-inicial](./src/images/prototipo_desktop_sign-up.jpeg)
+
+![Prototipo-inicial](./src/images/prototipo_desktop_profile.jpeg)
+</details>
+
+- ## Diseño de alta fidelidad
+### Móvil
+
+![Figma](./src/images/FigmaMobileFormSignIn.png)
+![Figma](./src/images/FigmaMobileFormSignUp.png)
+![Figma](./src/images/FigmaMobileMuro.png)
+![Figma](./src/images/FigmaMobilePerfil.png)
+
+<details>
+<summary>Tablet</summary> 
+
+![Figma](./src/images/FigmatemplatePost.png)
+
+![Figma](./src/images/FigmaTabletFormSignIn.png)
+
+![Figma](./src/images/FigmaTabletFormSignUp.png)
+
+![Figma](./src/images/FigmaTabletMuro.png)
+
+![Figma](./src/images/FigmaTabletPerfil.png)
+</details>
+
+<details>
+<summary>Escritorio</summary> 
+
+![Figma](./src/images/FigmaDesktopSignIn.png)
+
+![Figma](./src/images/FigmaDesktopSignUp.png)
+
+![Figma](./src/images/FigmaDesktopPerfil.png)
+
+![Figma](./src/images/FigmaDesktopMuro.png)
+</details>
+
+## Test de usabilidad
+
+Se implementaron 2 tests de usabilidad, tomando en cuenta la experiencia de usuario y la intuitividad durante la navegación de la plataforma
+
+https://www.loom.com/share/67ce1b43ea7142c09eb1edd01c3ec6a3
+
+Como resultado del feedback recibido, se iteró en el diseño e interactividad de la página, en donde se llevaron a cabo las sugerencias recibidas, excepto aquellas que no iban de acuerdo a nuestro objetivos de Historias de Usuario. Se realizaron ciertas mejoras, para así facilitar, optimizar la experiencia de usuario, cuyo principal objetivo es de simplificar el acceso y alcance de la navegación para todo público.
 
 ## 6. Interfaz
 
 ## 7. Modo de usuarios
 
+Al ingresar a la aplicación, se encuentra el formulario de Inicio de sesión, seguido de una panel con un boton para registrarse, de tal forma que si el usuario no tiene cuenta registrada, tendrá la opción de ir al formulario de Registro de cuenta. 
+
+El formulario de Registro de cuenta consta de 3 campos de datos: Nombre de Usuario, Correo Electrónico y Contraseña. Todos estos campos son obligatorios y deben cumplir ciertos criterios de validación. Si estos no se cumplen emergeran mensajes de texto con instrucciones claras de los requerimientos de validación respectivos para cada campo que se deben de cumplir para llevar acabo el Registro. Una vez registrada la cuenta, se desplegará un mensaje de notificación por envio de un correo de verificación de cuenta, el cual debera dar click al enlace para verificar su cuenta. Posterior a esto puede iniciar sesión con su correo correspondiente y tendrá acceso al muro. También tiene la opción en la parte inferior de registrarse con cuenta de Facebook o Google.
+
+Al lado del formulario de Registro de cuenta, el usuario tendra un panel con acceso al formulario de Inicio de sesión, en donde al ingresar correo electrónico válido y contraseña correspondiente podrá acceder al muro. También puede iniciar sesión con cuenta de Google y Facebook.
+
+Al acceder al muro se evidencia el nombre del usuario activo, también se puede ver las publicaciones que el y otros usuarios han compartido. Podrá dar like o recomendar las que le gusten. A través del menú podrá agregar post(icono plus), podrá ir al perfil(icono de usuario), y podrá cerrar sesión(icono logout) y si quiere retornar al muro, por el icono de home.
+
+Al pulsar el icono plus se desplegará una ventana emergente que permitirá subir una imagen, agregar el rubro y descripción; al clickear el boton "Publicar", la imagen será mostrada tanto en muro como en perfil.
+
+Al seleccionar el icono de usuario, se podrá ir al perfil en donde se guardan todas la publicaciones propias; en estas, tendrá la opción de editar y/o eliminar las mismas. También podrá visualizar los números de likes y recomendaciones. En la parte superior se muestra información del perfil del usuario (nombre de usuario, rubro al que pertenece, e información breve del mismo).
+
+Al pulsar el icono logout, el usuario cerrará sesión y será devuelto a la página inicial en donde está desplegado el formulario de registro/inicio de sesión.
 ## 8. Tecnología
+
+* HTML
+* CSS
+* JavaScript
+* NodeJs
+* Firebase
 
 ## 9. Enlace web
 

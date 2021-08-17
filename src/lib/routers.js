@@ -2,13 +2,13 @@ import { viewForms } from '../views/viewForms.js';
 import { viewFeed } from '../views/viewFeed.js';
 import { viewProfile } from '../views/viewProfile.js';
 import { isLogged } from './firebase.js';
+//import { stateObserved } from './firebase.js';
 
 const containerViews = document.querySelector('#root');
 
 export const router = async (route) => {
   containerViews.innerHTML = '';
   const logged = window.localStorage.getItem('puntopyme-name');
-  // eslint-disable-next-line no-console
   if (isLogged() || logged) {
     containerViews.innerHTML = '';
     switch (route) {
@@ -16,12 +16,11 @@ export const router = async (route) => {
       case '#':
       case '#feed':
         containerViews.innerHTML = '';
-        containerViews.appendChild(await viewFeed()); // ruta muro posts
+        containerViews.appendChild(await viewFeed());
         break;
       case '#profile':
         containerViews.innerHTML = '';
-        // document.getElementById('root').innerHTML = '';
-        containerViews.appendChild(await viewProfile()); // ruta perfil
+        containerViews.appendChild(await viewProfile());
         break;
       default:
         containerViews.innerHTML = 'Error 404';
@@ -32,5 +31,6 @@ export const router = async (route) => {
     console.log('no tengo sesion');
     containerViews.innerHTML = '';
     containerViews.appendChild(viewForms());
+    //stateObserved();
   }
 };

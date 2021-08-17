@@ -44,9 +44,10 @@ export const viewFeed = async () => {
         <span id='iconRecommend${i}'><i id='iconCheck${post.data.recommend.includes(firebase.auth().currentUser.uid) ? '2' + i : i}' class='${post.data.recommend.includes(firebase.auth().currentUser.uid) ? 'fas fa-check-circle' : 'far fa-check-circle'}'></i></span>
         <span id='countRecommend${i}'>${post.data.recommend.length > 0 ? post.data.recommend.length : ''}</span> Recomendado </button>
         </div>
+        <div><span class="area-post"><strong>${post.data.area}</strong></span></div>
         <div class="description-post">
-          <span class='username-post'>${post.data.user.name}</span>
-          <p class="text-post">${post.data.description}</p>
+           <span class='username-post'>${post.data.user.name}</span>
+            <p class="text-post">${post.data.description}</p>
         </div>
       </li>`;
     });

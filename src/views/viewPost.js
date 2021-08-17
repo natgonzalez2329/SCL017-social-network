@@ -26,6 +26,7 @@ export const viewPost = () => {
               </div>
               </div>
               <div class="content__form">
+              <input type="text" id="post-area" class="content__form-input" name="area" placeholder="Rubro" autocomplete="off"/>
               <textarea type="text" id="post-description" class="content__form-input" name="description" rows="4" cols="50" maxlength="50" placeholder="Breve descripción..." autocomplete="off" required></textarea>
             </div>
             <div class="modal__footer">
@@ -81,10 +82,12 @@ export const viewPost = () => {
     e.preventDefault();
     const imageURL = await uploadImage();
     const { displayName, email, uid } = firebase.auth().currentUser;
+    const getPostArea = containerPostTemplate.querySelector('#post-area').value;
     const getPostInfo = containerPostTemplate.querySelector('#post-description').value;
     firebase.firestore().collection('pyme-posts')
       .add({
         imageURL,
+        area: getPostArea,
         description: getPostInfo,
         user: {
           name: displayName,

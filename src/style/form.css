@@ -277,6 +277,14 @@ form.sign-in-form {
   color: red;
   font-size: 0.85rem;
 }
+.legal {
+  text-align: center;
+  margin-top: 0.5em;
+}
+.legal a {
+  color: blue;
+  cursor: pointer;
+}
 
 /*modal verify*/
 /* The Modal (background) */

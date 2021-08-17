@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
-import { firebaseLogout, fetchPosts } from '../lib/firebase.js';
+import { firebaseLogout, fetchPosts, firebaseGetUserId } from '../lib/firebase.js';
 import { viewPost } from './viewPost.js';
 
 const containerViews = document.querySelector('#root');
@@ -20,26 +20,37 @@ export const viewProfile = async () => {
         <img src='images/UserImage.svg' class='image__user-profile' id='image__user-profile'/>
     </div>
     <div class="info-user">
-    <span id='username-profile'>${window.localStorage.getItem('puntopyme-name')}</span>
-    <div class='select-inputfield'>
-            <i class='fas fa-lock'></i>
+      <span id='username-profile'>${window.localStorage.getItem('puntopyme-name')}</span>
+      <div class='select-inputfield'>
+            <i id ="icon-store" class="fas fa-store"></i>
             <select class='form__select' name='area' id='area__pyme'>
               <option value='' active>Rubro</option>
               <option value='Alimentos'>Alimentos</option>
               <option value='Textil'>Textil</option>
               <option value='Agropecuaria'>Agropecuaria</option>
               </select>  
-          </div>
-          BREVE DESCRIPCIÓN
-          </div>
+      </div>
+      Información de Pyme
+    </div>
     </div>
     <button class='btn__edit-profile'><i class="far fa-edit"></i>Editar Perfil</button>
           </div>`;
 
   containerProfileTemplate.innerHTML += profileTemplate;
-
   let containerPostProfile = '';
-  const posts = await fetchPosts(firebase, firebase.auth().currentUser.uid);
+  /* const idCurrentUser = firebaseGetUserId(); */
+ let userId = '';
+ firebase.auth().onAuthStateChanged((userFb) => {
+    console.log(userFb);
+    if (userFb) {
+      userId = userFb.uid;
+      } else {
+        // No user is signed in.
+      }
+    });
+    console.log(userId);
+
+  const posts = await fetchPosts(firebase, userId);
   if (posts.length > 0) {
     posts.forEach((post, i) => {
       containerPostProfile += `
@@ -71,7 +82,7 @@ export const viewProfile = async () => {
                     </div>
                   </div>
                   <div class='modal__footer'>
-                    <button type='button' class='btn__modal-edit' id='btn-edit${i}' pid='${post.id}'>Publicar</button>
+                    <button type='button' class='btn__modal-edit' id='btn-edit${i}' pid='${post.id}'>Guardar</button>
                   </div>
                 </div>
               </div>
@@ -104,10 +115,11 @@ export const viewProfile = async () => {
         <span id='iconRecommend${i}'><i class='fas fa-check-circle'></i></span>
         <span id='countRecommend${i}'>${post.data.recommend.length > 0 ? post.data.recommend.length : ''}</span> Recomendado </button>
       </div>
-      <div class="description-post">
-        <span class='username-post'>${post.data.user.name}</span>
-        <p class="text-post">${post.data.description}</p>
-      </div>
+        <div class="area-post"><span><strong>${post.data.area}</strong></span></div>
+        <div class="description-post">
+           <span class='username-post'>${post.data.user.name}</span>
+            <p class="text-post">${post.data.description}</p>
+        </div>
       </li>
       `;
     });

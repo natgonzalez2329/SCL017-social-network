@@ -1,3 +1,5 @@
+// import { viewForms } from '../views/viewForms.js';
+
 /* eslint-disable no-console */
 const firebaseInit = () => {
   const firebaseConfig = {
@@ -10,6 +12,21 @@ const firebaseInit = () => {
   };
   firebase.initializeApp(firebaseConfig);
 };
+
+
+
+/* const containerViews = document.querySelector('#root');
+
+export const stateObserved = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user && user.emailVerified) {
+      window.location.hash = '#feed';
+    } else {
+      containerViews.appendChild(viewForms());
+    }
+  });
+};
+stateObserved(); */
 
 //  Email de Verificacion
 const verificationEmail = () => {
@@ -61,6 +78,14 @@ const isLogged = () => {
   }
   return false;
 };
+/* firebase.auth().onAuthStateChanged((userFb) => {
+  console.log(userFb);
+  if (userFb) {
+    userId = userFb.uid;
+  } else {
+    // No user is signed in.
+  }
+}); */
 const firebaseGetUserId = () => firebase.auth().currentUser.uid;
 
 // inicio de sesión con email y contraseña
