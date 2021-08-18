@@ -216,7 +216,7 @@ Como resultado del feedback recibido, se iteró en el diseño e interactividad d
 
 ![Figma](./src/images/FinalDesktop2.png)
 ![Figma](./src/images/FinalDesktop.png)
-![Figma](./src/images/Finaldesktop1.png)
+![Figma](./src/images/FinalDesktop1.png)
 </details>
 
 ## 7. Modo de usuarios
