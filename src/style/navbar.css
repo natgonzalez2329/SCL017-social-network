@@ -13,13 +13,11 @@
   padding-top: 2px;
   margin-bottom: 10px;
 }
-
 .nameApp {
   font-size: 80%;
   margin-left: 3em;
   margin-top: 0.3rem;
 }
-
 .inputSearch {
   height: auto;
   width: 80%;
@@ -32,10 +30,12 @@
   margin-top: 1%;
   color: #ffffff;
 }
+.search input::placeholder {
+  color: #ffffff;
+}
 .menu-icons2 {
   display: none;
 }
-
 .menuMobileContainer {
   display: flex;
   position: fixed;
@@ -48,14 +48,10 @@
   height: 2em;
   background: #0052d4;
   padding-top: 5px;
-
-  /*padding-left:5px;*/
 }
-
 .auxiliarContainer {
   width: 50%;
 }
-
 .menu-icons-mobile {
   width: 100%;
   display: flex;
@@ -68,6 +64,7 @@
 footer {
   display: none;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .headerContainer {
     display: flex;
@@ -126,7 +123,6 @@ footer {
   .search {
     background: #0052d4;
   }
-
   .inputSearch {
     background: #0052d4;
     height: auto;
@@ -138,7 +134,6 @@ footer {
     border: 2px solid #fff;
     margin-top: 1%;
   }
-
   .menu-icons2 {
     width: 15%;
     display: flex;

@@ -1,21 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-/* The Modal (background) */
 .container__modal-post {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
 }
-
-/* Modal Content */
 .content__modal-post {
   background-color: #fefefe;
   margin: auto;
@@ -25,8 +22,6 @@
   width: 80%;
   height: 28em;
 }
-
-/* The Close Button */
 .close__modal-post {
   color: #aaaaaa;
   float: right;
@@ -46,25 +41,23 @@
 .container__image-preview {
   width: 250px;
   height: 200px;
-  /*min-height: 100px;*/
   border: 2px dashed rgb(148, 146, 146);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   color: rgb(122, 121, 121);
-  object-fit: contain;/*fit the image*/
+  object-fit: contain;
 }
 .container__image-preview img {
   display: none;
-   width: 100%;
+  width: 100%;
   height: 200px;
-  object-fit: contain;/*fit the image*/
+  object-fit: contain;
 }
 .file input {
   display: none;
 }
-
 #iconImagePost {
   color: rgb(122, 121, 121);
   cursor: pointer;
@@ -104,6 +97,7 @@
 .btn__modal-post:hover {
   background-color: #4d84e2;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .content__modal-post {
     width: 60%;
@@ -143,4 +137,3 @@
     font-size: 1rem;
   }
 }
-

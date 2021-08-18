@@ -1,5 +1,3 @@
-// import { viewForms } from '../views/viewForms.js';
-
 /* eslint-disable no-console */
 const firebaseInit = () => {
   const firebaseConfig = {
@@ -13,21 +11,6 @@ const firebaseInit = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
-
-
-/* const containerViews = document.querySelector('#root');
-
-export const stateObserved = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user && user.emailVerified) {
-      window.location.hash = '#feed';
-    } else {
-      containerViews.appendChild(viewForms());
-    }
-  });
-};
-stateObserved(); */
-
 //  Email de Verificacion
 const verificationEmail = () => {
   firebase.auth().currentUser.sendEmailVerification().then(() => {
@@ -37,6 +20,7 @@ const verificationEmail = () => {
     console.log(error);
   });
 };
+
 const createUserCollection = async () => {
   const user = firebase.auth().currentUser;
   await firebase.firestore().collection('users').doc(user.uid).set({
@@ -45,7 +29,8 @@ const createUserCollection = async () => {
     description: null,
     area: null,
   });
-} 
+};
+
 // registro con email y contraseña
 const firebaseSignUp = async (userData) => {
   try {
@@ -66,7 +51,7 @@ const firebaseSignUp = async (userData) => {
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(error);
+    console.log(errorCode, errorMessage);
   }
 };
 
@@ -78,14 +63,7 @@ const isLogged = () => {
   }
   return false;
 };
-/* firebase.auth().onAuthStateChanged((userFb) => {
-  console.log(userFb);
-  if (userFb) {
-    userId = userFb.uid;
-  } else {
-    // No user is signed in.
-  }
-}); */
+
 const firebaseGetUserId = () => firebase.auth().currentUser.uid;
 
 // inicio de sesión con email y contraseña
@@ -141,7 +119,6 @@ const googleLogin = async () => {
 };
 
 // Inicio de sesion con facebook
-
 const facebookLogin = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase
@@ -171,7 +148,6 @@ const firebaseLogout = async () => {
   try {
     await firebase.auth().signOut();
     window.localStorage.removeItem('puntopyme-name');
-    // alert("se ejecutó logout");
   } catch (error) {
     console.log(error);
   }

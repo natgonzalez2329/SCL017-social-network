@@ -46,7 +46,7 @@ export const viewFeed = async () => {
         </div>
         <div><span class="area-post"><strong>${post.data.area}</strong></span></div>
         <div class="description-post">
-           <span class='username-post'>${post.data.user.name}</span>
+          <span class='username-post'>${post.data.user.name}</span>
             <p class="text-post">${post.data.description}</p>
         </div>
       </li>`;
@@ -56,7 +56,6 @@ export const viewFeed = async () => {
     containerFeedTemplate.innerHTML += feedPostTemplate;
     // likes
     const likeBtn = containerFeedTemplate.querySelectorAll('#like');
-
     likeBtn.forEach(async (btn, i) => {
       const idCurrentUser = firebaseGetUserId();
       const likeIcon = containerFeedTemplate.querySelector(`#iconLike${i}`);
@@ -126,7 +125,6 @@ export const viewFeed = async () => {
 
   const logOutBtn = containerFeedTemplate.querySelector('.logout-btn');
   logOutBtn.addEventListener('click', () => {
-    // alert('chao!');
     firebaseLogout();
   });
   return containerFeedTemplate;

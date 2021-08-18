@@ -65,7 +65,6 @@ export const viewForms = () => {
               <i class="fab fa-google"></i>
             </a>
           </div>
-          <small class="legal">Al registrarte, aceptas nuestros <a>términos y condiciones legales.</a></small>
         </form>
       </div>
     </div>
@@ -241,7 +240,7 @@ export const viewForms = () => {
     passwordValidate(e.target.value);
   });
 
-  // validación inputs sign in
+  // validación inputs signin
   const emailInValidate = (userEmailSignIn) => {
     const emailInError = containerFormTemplate.querySelector('#email-in-error');
     let valid = false;
@@ -340,7 +339,7 @@ export const viewForms = () => {
     }
   });
 
-  // inicio de sesión google-event
+  // inicio de sesión Google
   const googleLoginBtn = containerFormTemplate.querySelector('#google_login');
   googleLoginBtn.addEventListener('click', () => googleLogin());
   const googleLoginBtn2 = containerFormTemplate.querySelector('#googleLoginBtn2');
@@ -349,9 +348,9 @@ export const viewForms = () => {
   // inicio de sesion Facebook
   const facebookLoginBtn = containerFormTemplate.querySelector('#facebook_login');
   facebookLoginBtn.addEventListener('click', () => facebookLogin());
-
   const facebookLoginBtn2 = containerFormTemplate.querySelector('#facebook_login2');
   facebookLoginBtn2.addEventListener('click', () => facebookLogin());
+
   containerFormTemplate.appendChild(footerComponent());
   return containerFormTemplate;
 };

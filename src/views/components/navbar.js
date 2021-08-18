@@ -1,19 +1,15 @@
 import { viewPost } from '../viewPost.js';
 import { firebaseLogout } from '../../lib/firebase.js';
 
-// -------menu superior
-
 export const topMenuComponent = () => {
   const containerTopMenu = document.createElement('div');
   containerTopMenu.className = 'container__top-menu';
 
   const topMenu = `<div class="headerContainer">
     <div class="nameApp">PUNTO PYME</div>
-
     <div class="search">
       <input type="text" class="inputSearch" placeholder="Buscar">
     </div>
-
     <div class="menu-icons2">
       <span class="first_item" id="home2">
         <a href='#feed' style='color:white;'>
@@ -28,7 +24,6 @@ export const topMenuComponent = () => {
       <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
       </svg>
       </span>
-      
   <span class="fourth_item2" id="usuario2">
   <a href='#profile' style='color:white;'>
   <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" id="persona1" class="bi bi-person" viewbox="0 0 16 16">
@@ -36,8 +31,6 @@ export const topMenuComponent = () => {
     </svg>
   </a>
     </span>
-
-
     <span class='logout-btn'>
   <a href='' style='color:white;'>
   <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -47,14 +40,12 @@ export const topMenuComponent = () => {
   </a>
   </span>
   </div>
-
   </div> `;
 
   containerTopMenu.innerHTML = topMenu;
 
   return containerTopMenu;
 };
-//------------------------
 
 export const mobileMenuComponent = () => {
   const containerMobileMenu = document.createElement('div');
@@ -96,6 +87,7 @@ export const mobileMenuComponent = () => {
 </div>
 </div> 
 </div>`;
+
   containerMobileMenu.innerHTML = mobileMenu;
 
   const btnModalPost = containerMobileMenu.querySelector('.second_item2');
@@ -107,7 +99,6 @@ export const mobileMenuComponent = () => {
 
   const logOutBtn = containerMobileMenu.querySelector('.logout-btn');
   logOutBtn.addEventListener('click', () => {
-    //  alert("chao!");
     firebaseLogout();
   });
 

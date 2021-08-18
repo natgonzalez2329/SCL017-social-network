@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-
 export const viewPost = () => {
   const containerPostTemplate = document.createElement('div');
   containerPostTemplate.className = 'container__post-template';
@@ -26,7 +25,7 @@ export const viewPost = () => {
               </div>
               </div>
               <div class="content__form">
-              <input type="text" id="post-area" class="content__form-input" name="area" placeholder="Rubro" autocomplete="off"/>
+              <input type="text" id="post-area" class="content__form-input" name="area" placeholder="Rubro" autocomplete="off" required/>
               <textarea type="text" id="post-description" class="content__form-input" name="description" rows="4" cols="50" maxlength="50" placeholder="Breve descripción..." autocomplete="off" required></textarea>
             </div>
             <div class="modal__footer">
@@ -38,20 +37,15 @@ export const viewPost = () => {
   </div>`;
   containerPostTemplate.innerHTML += postTemplate;
 
-  // Get the modal
   const modalPost = containerPostTemplate.querySelector('#container__modal-post');
-
-  // Get the <span> element that closes the modal
   const closeModalPost = containerPostTemplate.querySelector('.close__modal-post');
 
-  // When the user clicks on <span> (x), close the modal
   closeModalPost.addEventListener('click', () => {
     modalPost.style.display = 'none';
     containerPostTemplate.querySelector('#image-post').src = '';
     containerPostTemplate.querySelector('#post-form').reset();
   });
 
-  // When the user clicks anywhere outside of the modal, close it//NO ESTA FUNCIONANDO
   window.onclick = (e) => {
     if (e.target === modalPost) {
       modalPost.style.display = 'none';

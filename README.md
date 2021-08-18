@@ -77,7 +77,6 @@ Criterios de aceptación:
 - El usuario puede ingresar el nombre de la Pyme o usuario, email y contraseña.
 - El usuario tendrá la opción de registrarse a través de su cuenta Google o Facebook en caso de tenerla, dichas cuentas deben ser válidas.
 - El usuario recibirá un email de verificación de registro de cuenta.
-- Se le garantizará al usuario su seguridad y privacidad a través de la aceptación de términos y condiciones legales.
 - El usuario podrá iniciar sesión ingresando su email y contraseña creada.
 - El usuario solamente puede iniciar sesión cuando sus credenciales (email y contraseña) son válidas.
 - Tanto en el formulario de registro e inicio de sesión la contraseña al ser ingresada estará enmascarada.
@@ -132,7 +131,7 @@ Definición de terminado:
 * [X] Crear prototipo de alta fidelidad de la vista perfil y plantilla de publicación, para determinar diseño interactivo y amigable, siguiendo los fundamentos de mobile first.
 * [X] Crear barra de navegación que contenga nombre de aplicación y menú con opción para publicar, acceder al perfil, acceder al muro y cerrar sesión.
 * [X] La barra de navegación debe ser responsive siguiendo los fundamentos de mobile first.
-* [X] Crear plantilla de publicación con la siguiente distribución: sección de imágen, nombre de Pyme/Usuario, breve descripción, likes(número de likes), sección de comentarios, botón de publicar, y botón de opción de editar y eliminar.
+* [X] Crear plantilla de publicación con la siguiente distribución: sección de imágen, nombre de Pyme/Usuario, breve descripción, likes(número de likes), número de recomendaciones, sección de comentarios, botón de publicar, y botón de opción de editar y eliminar.
 * [X] Publicar: cargar imágen en publicación y/o breve descripción y guardar.
 * [X] Botón con opción de Editar y Eliminar publicación.
 * [X] Al dar click para editar un post, debe cambiar el texto por un input que permita editar el texto y preservar los cambios.
@@ -149,78 +148,80 @@ En base a la temática que se quiere proyectar, en el desarrollo del diseño de 
 
  Se diseño un logotipo que representa la esencia de Punto Pyme, el cual posee puzzles como símbolo de integración, de una comunidad unida en sinergia, que se ayuda y apoya mutuamente para potenciar la economía local.
 
-![Logo-punto-pyme](./src/images/logo.png)
+![Logo-punto-pyme](./src/images/logotipo.png)
 - ## Diseño de baja fidelidad
 
 <details>
 <summary>Móvil</summary> 
 
-![Prototipo-inicial](./src/images/prototipo_mobile_sign-in.jpg)
-
-![Prototipo-inicial](./src/images/prototipo_mobile_sign-up.jpeg)
-
+![Prototipo-inicial](./src/images/prototipo_mobile_form.jpg)
 ![Prototipo-inicial](./src/images/prototipo_mobile_profile.jpeg)
-
 ![Prototipo-inicial](./src/images/prototipo_post.jpeg)
 </details>
 
 <details>
 <summary>Escritorio</summary> 
 
-![Prototipo-inicial](./src/images/prototipo_desktop_sign-in.jpeg)
-
-![Prototipo-inicial](./src/images/prototipo_desktop_sign-up.jpeg)
-
+![Prototipo-inicial](./src/images/prototipo_desktop_Form.jpeg)
 ![Prototipo-inicial](./src/images/prototipo_desktop_profile.jpeg)
 </details>
 
 - ## Diseño de alta fidelidad
 ### Móvil
 
-![Figma](./src/images/FigmaMobileFormSignIn.png)
-![Figma](./src/images/FigmaMobileFormSignUp.png)
-![Figma](./src/images/FigmaMobileMuro.png)
-![Figma](./src/images/FigmaMobilePerfil.png)
+![Figma](./src/images/FigmaMobileForm.png)
+![Figma](./src/images/FigmaMobileMuro-Perfil.png)
+![Figma](./src/images/FigmatemplatePost.png)
 
 <details>
 <summary>Tablet</summary> 
 
-![Figma](./src/images/FigmatemplatePost.png)
-
-![Figma](./src/images/FigmaTabletFormSignIn.png)
-
-![Figma](./src/images/FigmaTabletFormSignUp.png)
-
-![Figma](./src/images/FigmaTabletMuro.png)
-
-![Figma](./src/images/FigmaTabletPerfil.png)
+![Figma](./src/images/FigmaTabletForm.png)
+![Figma](./src/images/FigmaTabletMuro-Perfil.png)
 </details>
 
 <details>
 <summary>Escritorio</summary> 
 
-![Figma](./src/images/FigmaDesktopSignIn.png)
-
-![Figma](./src/images/FigmaDesktopSignUp.png)
-
-![Figma](./src/images/FigmaDesktopPerfil.png)
-
-![Figma](./src/images/FigmaDesktopMuro.png)
+![Figma](./src/images/FigmaDesktopForm.png)
+![Figma](./src/images/FigmaDesktopMuro-Perfil.png)
 </details>
 
 ## Test de usabilidad
 
-Se implementaron 2 tests de usabilidad, tomando en cuenta la experiencia de usuario y la intuitividad durante la navegación de la plataforma
+Se implementaron 2 tests de usabilidad, tomando en cuenta la experiencia de usuario y la intuitividad durante la navegación de la plataforma.
 
-https://www.loom.com/share/67ce1b43ea7142c09eb1edd01c3ec6a3
+[Video Test de usabilidad 1](https://www.loom.com/share/67ce1b43ea7142c09eb1edd01c3ec6a3)
+
+[Video Test de usabilidad 2](https://www.loom.com/share/170e4df3b3d24b0abe6475a21f2b79e6)
 
 Como resultado del feedback recibido, se iteró en el diseño e interactividad de la página, en donde se llevaron a cabo las sugerencias recibidas, excepto aquellas que no iban de acuerdo a nuestro objetivos de Historias de Usuario. Se realizaron ciertas mejoras, para así facilitar, optimizar la experiencia de usuario, cuyo principal objetivo es de simplificar el acceso y alcance de la navegación para todo público.
 
 ## 6. Interfaz
+### Móvil
+
+![Figma](./src/images/FinalMobileForm.png)
+![Figma](./src/images/FinalFeedProfile.png)
+
+<details>
+<summary>Tablet</summary> 
+
+![Figma](./src/images/FinalTabletForm.png)
+![Figma](./src/images/FinalTablet.png)
+![Figma](./src/images/FinalTabletPost.png)
+</details>
+
+<details>
+<summary>Escritorio</summary> 
+
+![Figma](./src/images/FinalDesktop2.png)
+![Figma](./src/images/FinalDesktop.png)
+![Figma](./src/images/Finaldesktop1.png)
+</details>
 
 ## 7. Modo de usuarios
 
-Al ingresar a la aplicación, se encuentra el formulario de Inicio de sesión, seguido de una panel con un boton para registrarse, de tal forma que si el usuario no tiene cuenta registrada, tendrá la opción de ir al formulario de Registro de cuenta. 
+Al ingresar a la aplicación, se encuentra el formulario de Inicio de sesión, seguido de un panel con un boton para registrarse, de tal forma que si el usuario no tiene cuenta registrada, tendrá la opción de ir al formulario de Registro de cuenta. 
 
 El formulario de Registro de cuenta consta de 3 campos de datos: Nombre de Usuario, Correo Electrónico y Contraseña. Todos estos campos son obligatorios y deben cumplir ciertos criterios de validación. Si estos no se cumplen emergeran mensajes de texto con instrucciones claras de los requerimientos de validación respectivos para cada campo que se deben de cumplir para llevar acabo el Registro. Una vez registrada la cuenta, se desplegará un mensaje de notificación por envio de un correo de verificación de cuenta, el cual debera dar click al enlace para verificar su cuenta. Posterior a esto puede iniciar sesión con su correo correspondiente y tendrá acceso al muro. También tiene la opción en la parte inferior de registrarse con cuenta de Facebook o Google.
 

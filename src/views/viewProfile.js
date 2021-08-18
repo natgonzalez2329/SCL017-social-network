@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { topMenuComponent, mobileMenuComponent } from './components/navbar.js';
-import { firebaseLogout, fetchPosts, firebaseGetUserId } from '../lib/firebase.js';
+import { firebaseLogout, fetchPosts } from '../lib/firebase.js';
 import { viewPost } from './viewPost.js';
 
 const containerViews = document.querySelector('#root');
@@ -38,19 +38,8 @@ export const viewProfile = async () => {
 
   containerProfileTemplate.innerHTML += profileTemplate;
   let containerPostProfile = '';
-  /* const idCurrentUser = firebaseGetUserId(); */
- let userId = '';
- firebase.auth().onAuthStateChanged((userFb) => {
-    console.log(userFb);
-    if (userFb) {
-      userId = userFb.uid;
-      } else {
-        // No user is signed in.
-      }
-    });
-    console.log(userId);
 
-  const posts = await fetchPosts(firebase, userId);
+  const posts = await fetchPosts(firebase, firebase.auth().currentUser.uid);
   if (posts.length > 0) {
     posts.forEach((post, i) => {
       containerPostProfile += `
@@ -117,7 +106,7 @@ export const viewProfile = async () => {
       </div>
         <div class="area-post"><span><strong>${post.data.area}</strong></span></div>
         <div class="description-post">
-           <span class='username-post'>${post.data.user.name}</span>
+          <span class='username-post'>${post.data.user.name}</span>
             <p class="text-post">${post.data.description}</p>
         </div>
       </li>
@@ -127,8 +116,6 @@ export const viewProfile = async () => {
     containerProfileTemplate.innerHTML += profilePostTemplate;
 
     // menu Edit Delete
-
-    /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
     const dropBtnMenuPost = containerProfileTemplate.querySelectorAll('#dropbtn-menupost');
     dropBtnMenuPost.forEach((dropbtnmenu, i) => {
       dropbtnmenu.addEventListener('click', () => {
@@ -137,21 +124,14 @@ export const viewProfile = async () => {
           .classList.toggle('show');
       });
 
-      // -------------- Get the modal delete message----------------
       const modalDelete = containerProfileTemplate.querySelector(`#container__modal-delete${i}`);
-
-      // Get the button that opens the modal
       const btnModalDelete = containerProfileTemplate.querySelector(`#btn__modal-delete${i}`);
-
-      // Get the <span> element that closes the modal
       const closeModalDelete = containerProfileTemplate.querySelector(`#close-delete${i}`);
 
-      // When the user clicks the button, open the modal
       btnModalDelete.addEventListener('click', () => {
         modalDelete.style.display = 'block';
       });
 
-      // When the user clicks on <span> (x), close the modal
       closeModalDelete.addEventListener('click', () => {
         modalDelete.style.display = 'none';
       });
@@ -173,24 +153,16 @@ export const viewProfile = async () => {
 
       // update modal
       const modalEdit = containerProfileTemplate.querySelector(`#container__modal-edit${i}`);
-
-      // Get the button that opens the modal
       const btnModalEdit = containerProfileTemplate.querySelector(`#btn__edit${i}`);
-
-      // Get the <span> element that closes the modal
       const closeModalEdit = containerProfileTemplate.querySelector(`#close-edit${i}`);
 
-      // When the user clicks the button, open the modal
       btnModalEdit.addEventListener('click', () => {
         modalEdit.style.display = 'block';
       });
 
-      // When the user clicks on <span> (x), close the modal
       closeModalEdit.addEventListener('click', () => {
         modalEdit.style.display = 'none';
       });
-
-      // When the user clicks anywhere outside of the modal, close it
 
       window.onclick = (e) => {
         if (e.target === modalDelete) {
@@ -218,46 +190,10 @@ export const viewProfile = async () => {
         }
       });
     });
-
-    /* window.onclick = (e) => {
-      const dropBtnPost = containerProfileTemplate.querySelectorAll('.dropbtn-post');
-      const threeDots = containerProfileTemplate.querySelectorAll('.bi-three-dots-vertical');
-      if (!e.target.matches('.dropbtn-post') && !e.target.matches('.bi.bi-three-dots-vertical')) {
-        dropBtnPost.forEach((dbp) => {
-          console.log(dbp.nextElementSibling.classList)
-          if (dbp.nextElementSibling.classList.contains('show')) {
-            dbp.nextElementSibling.classList.remove('show');
-          }
-        });
-        if (e.target.matches('.bi.bi-three-dots-vertical')) {
-          threeDots.forEach((dbp) => {
-            dbp.classList.toggle()
-          });
-        }
-      }
-      dropBtnPost.forEach(() => {
-        console.log(e.target.parentElement)
-      })
-      threeDots.forEach(() => {
-        console.log(e.target.parentElement.parentElement)
-      })
-    }; */
-
-  /* window.onclick = (e) => {
-      if (!e.target.matches('.dropbtn-post')) {
-        const dropdownPost = containerProfileTemplate.querySelector('.dropdown-content-post');
-        let i;
-        for (i = 0; i < dropdownPost.length; i + 1) {
-          const openDropdownPost = dropdownPost[i];
-          if (openDropdownPost.classList.contains('show')) {
-            openDropdownPost.classList.remove('show');
-          }
-        }
-      }
-    }; */
   } else {
     containerProfileTemplate.innerHTML += '<ul id=\'posts\' class="container__posts-profile"><li>Publica tu primer post</li></ul>';
   }
+
   containerProfileTemplate.appendChild(mobileMenuComponent());
   containerProfileTemplate.appendChild(viewPost());
   const btnPlus = containerProfileTemplate.querySelector('.second_item');
@@ -268,11 +204,8 @@ export const viewProfile = async () => {
 
   const logOutBtn = containerProfileTemplate.querySelector('.logout-btn');
   logOutBtn.addEventListener('click', () => {
-    // alert("chao!");
     firebaseLogout();
   });
+
   return containerProfileTemplate;
 };
-
-/* const area = containerFormTemplate.querySelector('#area__pyme');
-    const userAreaSignUp = area.options[area.selectedIndex].text; */
