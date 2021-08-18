@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.container__modal-post {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+}
+.content__modal-post {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 4px;
+  width: 80%;
+  height: 28em;
+}
+.close__modal-post {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close__modal-post:hover,
+.close__modal-post:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.content__form {
+  display: flex;
+  flex-direction: column;
+}
+.container__image-preview {
+  width: 250px;
+  height: 200px;
+  border: 2px dashed rgb(148, 146, 146);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: rgb(122, 121, 121);
+  object-fit: contain;
+}
+.container__image-preview img {
+  display: none;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.file input {
+  display: none;
+}
+#iconImagePost {
+  color: rgb(122, 121, 121);
+  cursor: pointer;
+  float: right;
+  margin-right: 1%;
+  margin-bottom: 15px;
+}
+#iconImagePost:hover {
+  color: #5995fd;
+}
+.content__form-input {
+  width: 271px;
+  background-color: rgb(235, 230, 230);
+  padding: 5px;
+  border: none;
+}
+#post-area {
+  margin-bottom: 0.5em;
+}
+.modal__footer {
+  align-items: right;
+}
+.btn__modal-post {
+  width: 80px;
+  height: 30px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  border-radius: 49px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7em;
+  margin: 10px 0;
+  cursor: pointer;
+  margin-left:7%;
+}
+.btn__modal-post:hover {
+  background-color: #4d84e2;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .content__modal-post {
+    width: 60%;
+    height: 30em;
+  }
+  .container__image-preview {
+    width: 400px;
+    height: 210px;
+    min-height: 150px;
+  } 
+  .content__form-input {
+    width: 400px;
+  }
+  .btn__modal-post {
+    width: 90px;
+    height: 35px;
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .content__modal-post {
+    width: 50%;
+    height: 35em;
+  }
+  .container__image-preview {
+    width: 600px;
+    height: 310;
+    min-height: 250px;
+  } 
+  .content__form-input {
+    width: 600px;
+  }
+  .btn__modal-post {
+    width: 100px;
+    height: 49px;
+    font-size: 1rem;
+  }
+}
